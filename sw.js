@@ -1,5 +1,5 @@
-/* PRACTICE by FLINGR: offline copy, build 7b56102898 */
-const C = 'fam-practice-7b56102898';
+/* PRACTICE by FLINGR: offline copy, build d2a1fc4b39 */
+const C = 'fam-practice-d2a1fc4b39';
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(['./', './manifest.webmanifest', './icon-192.png'])).catch(() => {})); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('fam-practice-') && k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', e => {
