@@ -793,6 +793,12 @@ body[data-page=educators] #ftr{padding-bottom:84px}
 /* learning together (49-extras.js): five small level dots per person */
 .lt-dots{display:inline-flex;gap:4px}.lt-dots i{width:8px;height:8px;border-radius:50%;border:1px solid var(--ln);display:block}.lt-dots i.on{background:var(--fg);border-color:var(--fg)}
 .btn-wrap{white-space:normal;text-align:center;height:auto;min-height:44px;max-width:100%}   /* wraps on small phones, still a 44px tap target */
+/* the crowd (51-more.js) */
+.pcrowd{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:12px 16px;border:1px solid var(--ln)}
+.pcrowd a{color:var(--fg);text-decoration:none}.pcrowd a:hover,.pcrowd a:focus-visible{text-decoration:underline}
+.pcrowd .mono{display:inline-flex;align-items:center;gap:6px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:640px){.pcrowd{flex-direction:column;align-items:flex-start;gap:6px}}
+.plive{display:flex;align-items:center;gap:6px}
 
 </style>
 <script>if(/^(#\/?)?$/.test(location.hash)){var l=document.createElement('link');l.rel='preload';l.as='image';l.href='photos/site-hero.avif';l.fetchPriority='high';document.head.appendChild(l)}</script>
@@ -2815,7 +2821,7 @@ const countAt = (t, ms) => { if (ms < t.since) return 0; const n0 = Math.floor((
 const gen = (t, i) => {
   const at = slotAt(t, i), rating = ratingOf(t, i), lines = bank(t.kind)[rating] || BANK[rating], name = (F.SITE.reviewBank && F.SITE.reviewBank.names || NAMES)[U.hash(t.id + ':n' + i) % (F.SITE.reviewBank && F.SITE.reviewBank.names || NAMES).length];
   const map = Object.assign({ t: t.label, s: t.staff || '', c: t.city || '' }, F.SITE.reviewFill ? F.SITE.reviewFill(t, i) : {});
-  const rv = { id: t.id + ':' + i, target: t.id, at, rating, name, text: fill(lines[(U.hash(t.id) + i * 7) % lines.length], map), verified: true };
+  const rv = { id: t.id + ':' + i, target: t.id, at, rating, name, text: fill(lines[(U.hash(t.id) + i) % lines.length], map), verified: true };
   if (rating <= 3 && h01(t.id, i, 'rep') < (rating <= 2 ? .9 : .5)) { const rat = at + (6 + h01(t.id, i, 'rh') * 40) * 36e5; if (rat <= now()) rv.reply = { at: rat, by: (F.SITE.reviewBank && F.SITE.reviewBank.replyBy) || 'The ' + F.SITE.brand + ' team', text: fill((F.SITE.reviewBank && F.SITE.reviewBank.replies || REPLIES)[U.hash(rv.id + 'rp') % (F.SITE.reviewBank && F.SITE.reviewBank.replies || REPLIES).length], { n: name.split(' ')[0] }) }; }
   return rv;
 };
@@ -2912,7 +2918,7 @@ const L = '2026-10-22', S2 = '2027-01-15', S3 = '2027-04-15';
 // q: [question, [three answers], index of the right one]; dr: [name, minutes, how]; ax: [label, options] in a meaningful order (gentlest first)
 F.SKILLS = [
   { id: 'clit', g: 'vulva', n: 'Clit Fluency', s: 'Hands on a clitoris, from the first touch to her finish.', body: 'vulva', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'She comes',
-    why: 'Most vulva owners need direct, steady clitoral touch to come, and most partners either rush it or keep changing it. You learn the anatomy you can’t see, how to warm up the hood before the glans, and the one rule that matters most near the end: when it’s working, don’t change a thing.',
+    why: 'Most vulva owners need steady clitoral touch to come, and most partners rush it or keep changing it. You learn the anatomy you can’t see, how to warm up first, and the rule that matters most: when it’s working, don’t change a thing.',
     pts: ['The glans is the tip of an organ the size of a wishbone; the hood and the sides are often better at first than the tip itself.', 'Wet fingers, light pressure, and a rhythm you can keep for ten minutes beat clever technique.', 'Near the finish, keep the same spot, pressure and speed. Changing it “to help” is the classic mistake.'],
     q: [['What usually works best in the last minute before she comes?', ['Speeding up a lot', 'Keeping exactly what’s working', 'Switching to a new spot'], 1], ['Where do most people prefer the first touch?', ['Directly on the glans', 'Over the hood or to the sides', 'Inside the vagina'], 1], ['Why use lube or her own wetness?', ['It looks better', 'Friction on the glans can sting', 'It’s faster'], 1]],
     dr: [['The Ten-Minute Rhythm', 10, 'On your own thigh or the back of your hand, keep one small circle at an even pace for ten minutes without changing it. Count it out loud if you need to.'], ['Hood Map', 8, 'With your partner, try four places around the hood for thirty seconds each and ask for a number from one to five after each.']],
@@ -2924,7 +2930,7 @@ F.SKILLS = [
     dr: [['The Alphabet', 6, 'Trace the alphabet slowly with your tongue on the inside of your own wrist. Keep the tongue soft and flat.'], ['Neck Hold', 5, 'Lie on your front, chin resting on a pillow, and practise small tongue movements with your head still for five minutes.']],
     ax: [['Where', ['Inner lips', 'Around the hood', 'Over the hood', 'Directly on the glans']], ['Pressure', ['Breath only', 'Soft and flat', 'Firm and flat', 'Pointed']], ['Rhythm', ['Slow licks', 'Side to side', 'Small circles', 'Gentle suction']]] },
   { id: 'gspot', g: 'vulva', n: 'G-Spot & Squirt', s: 'Two fingers, the right curve, and a towel down.', body: 'vulva', room: 'wet', fm: ALL, int: 2, rel: L, fin: 'She squirts',
-    why: 'The G-spot area is felt, not found: a ridged patch on the front wall that swells with arousal. Squirting is real, it isn’t pee, and it comes from steady pressure and a body that feels allowed to let go. You learn the come-here curl, how to keep the pressure up with your whole arm, and why relaxing the belly matters more than speed.',
+    why: 'The G-spot is felt, not found: a ridged patch on the front wall that swells with arousal. Squirting is real and comes from steady pressure. You learn the come-here curl, how to keep pressure with your whole arm, and why relaxing matters more than speed.',
     pts: ['Warm up first: the area only becomes easy to feel once she’s aroused.', 'Use the pads of two fingers in a come-here motion, pressing up toward the belly button, driven from the forearm, not the wrist.', 'The feeling of needing to pee usually comes just before squirting. Towels down, no rush, let it happen.'],
     q: [['Which wall is the G-spot area on?', ['The back wall', 'The front wall, toward the belly button', 'Deep inside, at the cervix'], 1], ['What powers the motion so you don’t tire?', ['Your wrist', 'Your forearm and shoulder', 'Your fingertips'], 1], ['She says it feels like she needs to pee. What now?', ['Stop straight away', 'Keep going and reassure her', 'Go much faster'], 1]],
     dr: [['Forearm Curl', 6, 'Rest your forearm on a table and curl two fingers against a soft ball for three sets of two minutes, keeping the wrist still.'], ['Permission Talk', 5, 'With your partner, agree out loud that a wet bed is welcome. Put the towels down before you start.']],
@@ -3275,7 +3281,7 @@ F.CONTENT = {
     cookies: { title: 'Cookie Policy', updated: 'October 22, 2026', sections: [['Essential', 'Sign-in, checkout and security.'], ['Preferences', 'Your city and currency.'], ['Analytics', 'Aggregated, non-identifying usage, only if you agree.']] }
   },
   journal: [
-    { slug: 'why-practice', cat: 'Practice', title: 'Why we built Practice', read: 4, ago: 0, excerpt: 'Nobody teaches this. Porn teaches it badly. So we hired the best teachers we could find and gave them a studio.', body: [['p', 'Every week FLINGR hosts hear the same thing: “Nobody ever showed me.” Not how to touch a clitoris so it works, not how to last, not how to ask for what you want. Sex education stops at biology, and porn starts at performance.'], ['h', 'Lessons, not lectures'], ['p', 'Practice is lessons in the plainest sense: a teacher, a skill, practice, feedback. You can learn privately by voice, watch a class from the dark gallery, or practise hands-on with a professional practice model who tells you, honestly, what works.'], ['h', 'Honest feedback, out loud'], ['p', 'The heart of it is the Feedback Dial: five lights in a model’s hand, from “not that” to “don’t change a thing”, and a STOP button. It turns guesswork into learning.'], ['h', 'At your pace'], ['p', 'You pay per lesson, members pay a little less, and the Shy Ladder never pushes. Start with a voice lesson with your camera off, or start in the Hall. Either is right.']], cta: ['See the skills', '#/skills'] },
+    { slug: 'why-practice', cat: 'Practice', title: 'Why we built Practice', read: 4, ago: 0, excerpt: 'Nobody teaches this. Porn teaches it badly. So we hired the best teachers we could find and gave them a studio.', body: [['p', 'Every week FLINGR hosts hear the same thing: “Nobody ever showed me.” Not how to touch a clitoris so it works, not how to last, not how to ask for what you want. Sex education stops at biology, and porn starts at performance.'], ['h', 'Lessons, not lectures'], ['p', 'Practice is lessons in the plainest sense: a teacher, a skill, practice, feedback. Learn privately by voice, watch a class from the gallery, or practise hands-on with a model who tells you honestly what works.'], ['h', 'Honest feedback, out loud'], ['p', 'The heart of it is the Feedback Dial: five lights in a model’s hand, from “not that” to “don’t change a thing”, and a STOP button. It turns guesswork into learning.'], ['h', 'At your pace'], ['p', 'You pay per lesson, members pay a little less, and the Shy Ladder never pushes. Start with a voice lesson with your camera off, or start in the Hall. Either is right.']], cta: ['See the skills', '#/skills'] },
     { slug: 'the-shy-ladder', cat: 'Getting started', title: 'The Shy Ladder', read: 3, ago: 0, excerpt: 'Voice, camera off, camera on, the studio, the practical, the Stage. Climb as high as you like, as slowly as you like.', body: [['p', 'Most people who want to learn are also a little embarrassed. That’s normal and it’s built into how Practice works.'], ['h', 'Seven rungs'], ['p', 'The Library. A voice lesson, camera never on. Video with your camera off. Video with it on. In person. A practical with a model. The Stage. After two lessons on a rung we suggest the next one, once. That’s all.'], ['h', 'Going back down'], ['p', 'Plenty of people do a practical and then go back to voice lessons for a month. The ladder is a map, not a staircase.']], cta: ['Book a voice lesson', '#/skills'] },
     { slug: 'what-a-practice-model-does', cat: 'Behind the scenes', title: 'What a practice model does', read: 4, ago: 0, excerpt: 'They’re paid professionals who give honest feedback for a living. Here’s how they work, and what they never do.', body: [['p', 'Our practice models choose which skills they practise, how many lessons a day (never more than four), and what is off their list. They are screened, tested and paid for every minute.'], ['h', 'The Dial'], ['p', 'During a practical the model holds the Feedback Dial. It isn’t a score; it’s information. A “not quite” early on is the most useful thing you’ll hear all month.'], ['h', 'The STOP button'], ['p', 'If anything is too much, they press STOP and the lesson ends. Your educator talks you through it afterwards. It happens rarely, and when it does, it’s the system working.']] },
     { slug: 'squirting-plainly', cat: 'Skills', title: 'Squirting, plainly', read: 5, ago: 0, excerpt: 'It’s real, it isn’t pee, and it comes from steady pressure and permission. What we teach in G-Spot & Squirt.', body: [['p', 'Squirting is the release of fluid from the glands around the urethra during arousal. Some people do it easily, some with practice, some never, and every one of those is normal.'], ['h', 'The technique'], ['p', 'Warm up first. Two fingers, pads up, a come-here motion pressing toward the belly button, driven from the forearm. Keep it steady when she says it feels like she needs to pee. That feeling is the sign.'], ['h', 'The permission'], ['p', 'Towels down before you start, and say out loud that a wet bed is welcome. Half of the skill is making letting go feel safe.']], cta: ['G-Spot & Squirt', '#/skill/gspot'] },
@@ -3819,8 +3825,8 @@ const skillTag = s => { const u = E.user(), lv = u ? E.level(u, s.id) : 0; retur
 // a photo card for sideways rows, and a compact row for long lists
 F.skillCard = s => `<a class="scard spot-on rv" href="#/skill/${s.id}">${F.skillArt(s)}<div class="scard-b"><div class="row between nowrap"><span class="lbl">${F.GROUP[s.g]}</span>${skillTag(s)}</div><h3 class="h-disp h4 mt8">${esc(s.n)}</h3><p class="small muted mt4">${esc(s.s)}</p><div class="scard-f tiny muted">${F.revMeta('skill', s.id)}${intensity(s)}</div></div></a>`;
 F.skillRow = (s, o = {}) => { const u = E.user(), lv = u ? E.level(u, s.id) : 0; return F.compact({ href: '#/skill/' + s.id, key: 'site/skill-' + s.id, art: F.SITE.art(s.id, 'skill'), cls: 'r11', title: esc(s.n), sub: esc(o.why || s.s), meta: `${F.revMeta('skill', s.id)} ${intensity(s)}`, tag: !F.skillOpen(s) ? 'Opens ' + U.keyFmt(F.skillRel(s), 'dshort') : lv ? 'Level ' + lv : '' }); };
-F.eduCard = (e, o = {}) => `<a class="ecard spot-on rv" href="#/educator/${e.id}${o.skill ? '?skill=' + o.skill : ''}">${F.eduPlate(e)}<div class="ecard-b"><div class="row between nowrap"><h3 class="h-disp h4">${esc(e.name)}</h3>${F.revMeta('edu', e.id)}</div><p class="small muted mt4">${esc(e.line)}</p><p class="tiny muted mt8">${e.gender} (${e.pr}) · ${F.STYLES[e.style][0]} · ${e.remote ? 'Remote, ' + F.place(e) : F.place(e)}</p></div></a>`;
-const seatsLabel = (c, left) => c.cancelled ? '<span class="tag">Cancelled</span>' : left.seat > 0 ? `<span class="seats ${left.seat <= 2 ? 'low' : ''}"><i class="dot live"></i>${left.seat} left</span>` : '<span class="tag">Full · waitlist</span>';
+F.eduCard = (e, o = {}) => `<a class="ecard spot-on rv" href="#/educator/${e.id}${o.skill ? '?skill=' + o.skill : ''}">${F.eduPlate(e)}<div class="ecard-b"><div class="row between nowrap"><h3 class="h-disp h4">${esc(e.name)}</h3>${F.revMeta('edu', e.id)}</div><p class="small muted mt4">${esc(e.line)}</p><p class="tiny muted mt8">${e.gender} (${e.pr}) · ${F.STYLES[e.style][0]} · ${e.remote ? 'Remote, ' + F.place(e) : F.place(e)}</p>${E.prEduToday && E.prEduToday(e) ? `<p class="tiny mt4 plive"><i class="dot live"></i> ${U.plural(E.prEduToday(e), 'lesson')} today</p>` : ''}</div></a>`;
+const seatsLabel = (c, left) => F.prSeats ? F.prSeats(c, left) : c.cancelled ? '<span class="tag">Cancelled</span>' : left.seat > 0 ? `<span class="seats ${left.seat <= 2 ? 'low' : ''}"><i class="dot live"></i>${left.seat} left</span>` : '<span class="tag">Full · waitlist</span>';
 F.classRow = c => { const s = E.skill(c.skillId), e = E.edu(c.eduId), left = E.classLeft(c), tz = E.city(c.cityId).tz; return `<a class="crow ${c.cancelled ? 'off' : ''}" href="#/class/${c.id}"><span class="crow-t"><strong class="mono">${U.fmt(c.start, tz, 'time')}</strong><small class="muted">${U.dur((c.end - c.start) / 6e4)}</small></span><span class="crow-m"><strong>${esc(s.n)}</strong><small class="muted d-b">${c.kind === 'couples' ? 'Couples workshop' : c.season === 'Summer intensive' ? 'Intensive' : 'Class'} · ${esc(e.name)}</small></span><span class="crow-s tiny">${seatsLabel(c, left)}</span></a>`; };
 F.cityPick = () => `<div class="chiprow">${F.CITIES.map(c => `<button class="chip chip-sm ${c.id === F.cityId() ? 'on' : ''}" data-a="setcity" data-c="${c.id}" aria-pressed="${c.id === F.cityId()}">${c.name}</button>`).join('')}</div>`;
 const opening = () => !E.launched() ? `<div class="notice founding">${F.ic('clock', 16)}<span>Practice opens ${U.fmt(E.launchAt(), F.city().tz, 'dateLong')}. Join the list and you’ll hear first.</span></div>` : '';
@@ -3846,7 +3852,7 @@ F.pages.home = {
     <p class="live-l mt16"><span><i class="dot live"></i>${teach} educators teaching today</span><button class="btn-link tiny" data-a="firstQuiz">Not sure? Find your first lesson</button></p></div></div></section>
     ${opening() ? `<section class="sec-sm"><div class="wrap">${opening()}</div></section>` : ''}
     ${u && F.prHomeExtras ? F.prHomeExtras(u) : ''}
-    <section class="sec-md"><div class="wrap">${head(mine.length >= 3 ? 'For you' : 'Most booked this month', mine.length >= 3 ? 'Your next <span class="it">steps</span>' : `Thirty-three <span class="it">skills</span>`, '<a class="btn-link" href="#/skills">All skills</a>')}
+    <section class="sec-md"><div class="wrap">${F.prStrip ? `<div class="mb24">${F.prStrip(c)}</div>` : ''}${head(mine.length >= 3 ? 'For you' : 'Most booked this month', mine.length >= 3 ? 'Your next <span class="it">steps</span>' : `Thirty-three <span class="it">skills</span>`, '<a class="btn-link" href="#/skills">All skills</a>')}
     <div class="ways mt24">${[['voice', 'Camera never on'], ['video', 'Camera on, off or body-only'], ['practical', 'With a model and the Dial'], ['class', 'Twelve seats or the gallery']].map(([f, l]) => `<a class="way" href="#/how-it-works">${F.ic(F.FORMATS[f].icon, 18)}<span><strong>${F.FORMATS[f].name}</strong><small class="muted">${l}</small></span><span class="mono tiny">${E.money(E.listPrice(F.FORMATS[f].usd, c, f === 'class' ? ['class'] : undefined), c)}</span></a>`).join('')}</div>
     <div class="g g4 hscroll hs-sk mt24">${picks.slice(0, 4).map(p => F.skillCard(p.s)).join('')}</div></div></section>
     <section class="sec-md sec-deep" id="how"><div class="wrap">${head('How a lesson works', 'Four steps, <span class="it">no surprises</span>', '<a class="btn-link" href="#/how-it-works">More detail</a>')}
@@ -3905,7 +3911,7 @@ F.pages.skill = {
     const card = open ? `<div class="card dbook"><span class="lbl">Book a lesson</span><div class="row wrap-gap end mt8"><span class="h-disp dbook-p">${E.money(mine, c)}</span><span class="small muted">${mine < full ? `<s>${E.money(full, c)}</s> member price` : `members ${E.money(E.mprice(full), c)}`}</span></div>
       <div class="fopts" role="group" aria-label="How">${fmts.map(f => `<button class="fopt ${f === pick ? 'on' : ''}" data-a="skFmt" data-s="${s.id}" data-v="${f}" aria-pressed="${f === pick}">${F.ic(F.FORMATS[f].icon, 15)}<span><strong>${F.FORMATS[f].name}</strong><small class="d-b muted">${U.dur(F.FORMATS[f].min)}</small></span><span class="mono tiny">${E.money(E.yourPrice(u, E.listPrice(F.FORMATS[f].usd, c)), c)}</span></button>`).join('')}</div>
       <a class="btn btn-pri btn-block mt24 dbook-go" href="#/book?skill=${s.id}&fmt=${pick}">Book ${pf.name.toLowerCase()} · ${E.money(mine, c)}</a></div>` : `<div class="card"><div class="notice">${F.ic('clock', 16)}<span>Opens ${U.keyFmt(F.skillRel(s), 'dateLong')}.</span></div></div>`;
-    return { title: s.n, html: `${F.detailHead({ back: `<a class="btn-link tiny" href="#/skills?g=${s.g}">${F.ic('back', 12)} ${F.GROUP[s.g]}</a>`, art: F.skillArt(s, 'r45'), title: esc(s.n), line: esc(s.s), meta: `<span class="mono">from ${E.money(from, c)}</span> · ${F.revMeta('skill', s.id)}`, extra: u && lv ? F.passStrip(u, s) : '', cta })}
+    return { title: s.n, html: `${F.detailHead({ back: `<a class="btn-link tiny" href="#/skills?g=${s.g}">${F.ic('back', 12)} ${F.GROUP[s.g]}</a>`, art: F.skillArt(s, 'r45'), title: esc(s.n), line: esc(s.s), meta: `<span class="mono">from ${E.money(from, c)}</span> · ${F.revMeta('skill', s.id)}${E.prPassedWeek ? ` <span class="d-b tiny mt8 plive"><i class="dot live"></i> ${E.prPassedWeek(s)} passed its check this week</span>` : ''}`, extra: u && lv ? F.passStrip(u, s) : '', cta })}
     ${F.detailBody(`
     <div><div class="row between end"><h2 class="eyebrow ln">Five levels</h2>${u && lv ? `<button class="btn-link tiny" data-a="certSheet" data-s="${s.id}">Certificate</button>` : ''}</div><div class="lvxs mt16">${lvRow(0, l1, false)}${lvRow(1, l2, false)}${[2, 3, 4].map(i => lvRow(i, '', false)).join('')}</div></div>
     <div><h2 class="eyebrow ln">Why it matters</h2><div class="prose mt16">${F.clamp(`<p>${esc(s.why)}</p>`, { id: 'why-' + s.id, lines: 2 })}</div></div>
@@ -4830,6 +4836,29 @@ F.SITE.eveningAdopt = (u, g, ev) => F.store.commit(() => {
 });
 })();
 
+/* ---- 51-more.js ---- */
+/* Practice, the crowd: seats taken and people waiting on every class, an educator's lessons today, how many passed a
+   skill's check this week, and the home page's live strip. Real seats and lessons count first; the rest is worked out
+   from the shared clock, so it moves as time passes. */
+(() => {
+'use strict';
+const E = F.E, S = () => F.S, now = () => Date.now(), M = 6e4, H = 36e5, D = 864e5;
+const hx = s => U.hash(String(s)), slot = mins => Math.floor(now() / (mins * M)), week = () => Math.floor(now() / (7 * D));
+const ago = ms => { const d = now() - ms; return d < H ? Math.max(1, Math.round(d / M)) + ' min ago' : Math.round(d / H) + (Math.round(d / H) === 1 ? ' hour ago' : ' hours ago'); };
+
+// people waiting for a full class: others first, then the real waitlist (you included)
+E.prWaiting = c => { const left = E.classLeft(c); if (left.seat > 0) return 0; const real = S().seats.filter(x => x.classId === c.id && x.status === 'wait').length, lead = (c.start - now()) / H; return 1 + hx(c.id + 'w') % 4 + (lead < 24 ? 1 : 0) + real; };
+E.prEduToday = e => { const key = E.todayKey(e.city || F.cityId()); if (!E.eduWorks(e, key)) return 0; return 1 + hx(e.id + key) % 4 + S().lessons.filter(l => l.eduId === e.id && ['confirmed', 'live', 'done'].includes(l.status) && U.dayKey(l.start, E.city(e.city || F.cityId()).tz) === key).length; };
+E.prPassedWeek = s => 12 + hx(s.id + week()) % 140;
+E.prFeed = (cityId, n = 3) => {
+  const out = [], sk = F.SKILLS.filter(F.skillOpen);
+  for (let k = 0; k < 4; k++) { const s0 = slot(30) - k, s = sk[hx(cityId + s0) % sk.length], at = s0 * 30 * M + hx(cityId + s0 + 'a') % (25 * M); if (at <= now()) out.push({ at, text: k % 2 ? `Someone passed ${s.n}` : `A ${s.n} lesson booked`, href: '#/skill/' + s.id }); }
+  return out.sort((a, b) => b.at - a.at).slice(0, n);
+};
+F.prStrip = cityId => { const f = E.prFeed(cityId, 3), teach = F.EDUCATORS.filter(e => (e.city === cityId || e.remote) && E.eduWorks(e, E.todayKey(cityId))).length; return f.length ? `<div class="pcrowd mt24"><span class="tiny mono"><i class="dot live"></i>${teach} educators teaching today</span>${f.map(z => `<a class="tiny" href="${z.href}">${esc(z.text)} <span class="muted">· ${ago(z.at)}</span></a>`).join('')}</div>` : ''; };
+F.prSeats = (c, left) => c.cancelled ? '<span class="tag">Cancelled</span>' : left.seat > 0 ? `<span class="seats ${left.seat <= 2 ? 'low' : ''}"><i class="dot live"></i>${c.cap - left.seat} of ${c.cap} taken</span>` : `<span class="tag">Full · ${E.prWaiting(c)} waiting</span>`;
+})();
+
 /* ---- 96-health.js ---- */
 /* Shared by FLINGR, Velvet and Practice: one sexual health record for the FLINGR account, synced across the three sites.
    Two ways to add to it:
@@ -5213,7 +5242,6 @@ const html = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&
 const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const put = k => v => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); return true; } catch (e) { return false; } };
 const toast = (m, k, a) => F.toast && F.toast(m, k, a);
-const user = () => { try { return F.E.user(); } catch (e) { return null; } };
 const fmtT = ms => { try { return new Date(ms).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return String(ms); } };
 
 /* ---------- where the sister sites live ---------- */
@@ -5407,7 +5435,7 @@ FAM.elsewhereHtml = (q, rowFn) => { const xs = FAM.elsewhere(q); if (!xs.length)
 // (new accounts, cards, Wallet, bookings, visits, lessons, messages, settings, the clock, uploaded photos) goes, and
 // everything that came with the sites (hosts, therapists, educators, the built-in accounts and their history) is back
 // as on day one. Display settings (text size, contrast) stay. It starts again at the age check.
-FAM.RESET_LINE = 'Removes everything you changed on this browser, on FLINGR, Velvet and Practice: new accounts, cards, Wallet, bookings, messages and settings. Everything that came with the sites, including the built-in accounts, comes back as it was on day one.';
+FAM.RESET_LINE = 'Removes everything you changed on this browser, on all three sites: accounts, cards, Wallet, bookings, messages and settings. The built-in accounts come back as they were on day one.';
 A.resetSite = async () => {
   if (!(await F.confirm({ title: 'Reset the whole site?', body: FAM.RESET_LINE + ' You’ll start again at the age check.', ok: 'Reset everything', danger: true }))) return;
   F.resetting = true;
