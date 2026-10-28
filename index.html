@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PRACTICE by FLINGR · Pleasure, properly taught</title>
 <meta name="description" content="Private lessons in pleasure, kink and confidence. Voice, video, in person or in class, with expert educators and practice models. A monthly membership that moves at your pace.">
+<meta name="format-detection" content="telephone=no">
 <meta name="theme-color" content="#05060E">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="PRACTICE by FLINGR · Pleasure, properly taught">
 <meta property="og:description" content="Private lessons in pleasure, kink and confidence. Voice, video, in person or in class, with expert educators and practice models. A monthly membership that moves at your pace.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://titastudio.github.io/flingr-practice/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -156,7 +161,7 @@ legend{padding:0;margin-bottom:10px}
 .ticks{display:flex;flex-direction:column;gap:9px}.ticks li{display:flex;gap:10px;align-items:flex-start;font-size:14px}.ticks .ic{flex:none;margin-top:3px;color:var(--pri)}
 .tl{position:relative;display:flex;flex-direction:column;gap:14px;padding-left:20px}.tl::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--ln2)}
 .tl li{position:relative}.tl li::before{content:"";position:absolute;left:-20px;top:6px;width:9px;height:9px;border-radius:50%;border:1px solid var(--ln2);background:var(--bg)}.tl li.done::before{background:var(--pri);border-color:var(--pri)}.tl li.now::before{background:var(--hi);border-color:var(--hi)}
-.acc{border-bottom:1px solid var(--ln)}.acc>summary{list-style:none;cursor:pointer;padding:16px 0;font-size:15px;gap:16px}.acc>summary::-webkit-details-marker{display:none}.acc[open]>summary .ic{transform:rotate(45deg)}.acc>summary .ic{transition:transform .2s;flex:none}.acc-b{padding:0 0 18px;color:var(--mut)}
+.acc{border-bottom:1px solid var(--ln)}.acc>summary{list-style:none;cursor:pointer;padding:16px 0;font-size:15px;gap:16px}.acc>summary.row{flex-wrap:nowrap}.acc>summary.row>span{min-width:0}.acc>summary::-webkit-details-marker{display:none}.acc[open]>summary .ic{transform:rotate(45deg)}.acc>summary .ic{transition:transform .2s;flex:none}.acc-b{padding:0 0 18px;color:var(--mut)}
 .lbl+.acc{margin-top:12px}
 .subnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--ln);margin-top:28px}.subnav::-webkit-scrollbar{display:none}
 .subnav a{flex:none;padding:12px 14px;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);border-bottom:2px solid transparent;margin-bottom:-1px}.subnav a.on{color:var(--fg);border-bottom-color:var(--pri)}.subnav a:hover{color:var(--fg)}
@@ -290,7 +295,7 @@ legend{padding:0;margin-bottom:10px}
 @media (max-width:960px){
   :root{--gut:24px;--hdr:64px}
   .hnav{display:none}.mmb{display:inline-grid}
-  .split,.co,.help{grid-template-columns:minmax(0,1fr);gap:40px}.co-side{position:static;order:-1}.help-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none}.help-nav a{flex:none;border:1px solid var(--ln2);border-radius:999px}
+  .split,.co,.help{grid-template-columns:minmax(0,1fr);gap:40px}.co-side{position:static;order:-1}.co-side-end{order:1}.help-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none}.help-nav a{flex:none;border:1px solid var(--ln2);border-radius:999px}
   .g3,.g4,
   .ftr-grid{grid-template-columns:1fr 1fr}.ftr-grid>div:first-child{grid-column:1/-1}
   .settings,.inbox{grid-template-columns:minmax(0,1fr)}
@@ -430,6 +435,7 @@ body.locked .ck{visibility:hidden}   /* the cookie bar stays out of the way of a
 .narrow-l{max-width:760px}
 /* phone: the account tab row scrolls; a soft edge shows there is more */
 @media(max-width:640px){.acct-nav .subnav{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}.acct-more summary{padding:12px 8px}}
+.costep{scroll-margin-top:calc(var(--hdr) + 16px)}
 
 /* ============ shared kit: spacing scale, tab bar, sheets, compact lists, chips, reviews, search, hub ============ */
 :root{--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;
@@ -482,6 +488,7 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
   .bb-t{min-width:0;display:flex;flex-direction:column}.bb-t strong{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bb-t small{color:var(--mut);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .bookbar .btn{flex:none}
   body:has(.bookbar){padding-bottom:calc(var(--tabbar) + 68px)}
+  body:has(.bookbar) .dh-cta{display:none}   /* the booking bar already carries the same button */
   body:has(.bookbar) #toasts{bottom:calc(var(--tabbar) + 80px)}body:has(.bookbar) .totop{display:none}
 }
 
@@ -606,6 +613,20 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
 @media (min-width:1024px){.dgrid{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:56px;align-items:start}.dside{position:sticky;top:calc(var(--hdr) + 24px)}.dh-cta{display:none}.dh{padding:32px 0}.dh-ph .plate{aspect-ratio:4/3}.dbook .fopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.dbook .fopt{padding:10px 12px;gap:8px}}
 @media (max-width:1023px){.dbook .dbook-go{display:none}}
 
+/* phones: 16px in fields so iOS does not zoom the page on focus; no grey flash on tap (every control has its own pressed state) */
+@media (hover:none) and (pointer:coarse){input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),select,textarea{font-size:16px!important}}
+a,button,label,summary,[data-a]{-webkit-tap-highlight-color:transparent}
+.nobr{white-space:nowrap}
+
+/* keyboard shortcuts sheet (shared/js/keys.js) */
+.kb{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;border:1px solid var(--ln2);border-bottom-width:2px;border-radius:6px;font:500 12px/1 var(--f-mono);color:var(--fg)}
+.kb-list{display:flex;flex-direction:column}
+.kb-row{display:flex;align-items:center;gap:20px;padding:10px 0;border-top:1px solid var(--ln)}
+.kb-row:last-child{border-bottom:1px solid var(--ln)}
+.kb-k{display:flex;gap:6px;min-width:96px}
+.kb-link{display:none}
+@media (hover:hover) and (pointer:fine) and (min-width:1024px){.kb-link{display:inline}}
+
 /* ============ Practice · after hours: ultramarine, chalk and a saffron highlighter ============ */
 :root{
   --bg:#05060E;--bg2:#090B17;--bg3:#030409;--fg:#F3F4FF;--mut:rgba(243,244,255,.68);--ln:rgba(243,244,255,.13);--ln2:rgba(243,244,255,.3);--card:rgba(255,255,255,.03);--spot:rgba(90,120,255,.2);
@@ -623,7 +644,7 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
 .hand{font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--hi)}.paper .hand{font-family:var(--f-hand);font-size:22px;line-height:1.25}.hand.red,.red{color:var(--pri)}
 .jc-t{margin-left:auto;margin-right:auto}
 
-.dial-demo{display:flex;flex-direction:column;gap:18px}.dd-r{gap:18px}.dd-r .hand{color:var(--fg);font-size:16px}
+.dial-show{display:flex;flex-direction:column;gap:18px}.dd-r{gap:18px}.dd-r .hand{color:var(--fg);font-size:16px}
 
 /* the Dial */
 .dial{display:inline-flex;align-items:center;gap:6px}.dial i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--ln2);background:transparent;transition:background .3s}
@@ -680,15 +701,10 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
 .rp{position:relative;box-shadow:0 12px 40px rgba(0,0,0,.4)}.rp-stamp{position:absolute;right:28px;top:24px}.rp-note{font-size:25px;line-height:1.35;color:#1F3F8F}.rp .sig{font-size:34px}
 .dchart{display:flex;align-items:flex-end;gap:6px;height:90px;padding-bottom:4px;border-bottom:1px solid var(--ln2)}.dchart i{width:18px;border-radius:3px 3px 0 0;background:var(--ln2)}.dchart i.l3{background:#9CB75B}.dchart i.l4{background:#4F9C5D}.dchart i.l5{background:#2B7A4B}.dchart i.l1,.dchart i.l0{background:#D9A066}.dchart i.l2{background:#D6B25A}
 
-/* account */
-.acct-ov{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}.ov-main{min-width:0}
-.ladder-s{display:flex;flex-direction:column;gap:6px}.ladder-s li{font-size:13px;color:var(--mut);padding-left:18px;position:relative}.ladder-s li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;border:1px solid var(--ln2)}.ladder-s li.done{color:var(--fg)}.ladder-s li.done::before{background:var(--pri);border-color:var(--pri)}.ladder-s li.next{color:var(--fg);font-weight:500}.ladder-s li.next::before{border-color:var(--pri)}
-
 @media (max-width:1080px){.lv5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:960px){.sim{grid-template-columns:minmax(0,1fr)}.week-l{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){
   .lg-a{font-size:22px}.lg-b{font-size:14px}
-  .acct-ov{grid-template-columns:minmax(0,1fr)}
   .crow{grid-template-columns:64px minmax(0,1fr);gap:4px 12px}.crow-s{grid-column:2}
   .week{grid-template-columns:repeat(4,minmax(0,1fr))}.lv5{grid-template-columns:minmax(0,1fr)}
 
@@ -724,8 +740,6 @@ body[data-page=educators] #ftr{padding-bottom:84px}
 .ways{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.way{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--ln);border-radius:var(--rs);background:var(--card)}.way .ic{color:var(--pri)}.way strong{font-size:14px;display:block}.way small{font-size:12px}
 .hw4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--card-gap);counter-reset:none}.hw4 li{display:flex;flex-direction:column;padding:var(--card-pad);border:1px solid var(--ln);border-radius:var(--r);background:var(--card)}
 .hw4-n{display:grid;place-items:center;width:32px;height:32px;margin-bottom:var(--s4);border-radius:50%;background:var(--pri);color:var(--pri-fg);font-size:13px}.hw4-d{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:var(--s4)}
-.hplans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--card-gap);max-width:900px}
-.hplan{position:relative;display:flex;flex-direction:column;gap:6px;padding:22px 20px 20px;border:1px solid var(--ln);border-radius:var(--r);background:var(--card);transition:border-color .2s}.hplan:hover{border-color:var(--ln2)}.hplan.feat{border-color:var(--pri);box-shadow:0 0 0 1px var(--pri) inset}.hplan-p{margin-top:auto;padding-top:var(--s3);font-size:15px}
 .xsite{border-color:rgba(120,145,255,.35)}
 
 /* timetable week */
@@ -749,14 +763,14 @@ body[data-page=educators] #ftr{padding-bottom:84px}
 .cert{text-align:left}.cert-b{text-align:center;padding:36px 0 28px}.cert-n{font:400 46px/1.1 var(--f-sign);margin:14px 0 10px}.cert-s{font:500 34px/1.15 var(--f-disp);margin-top:6px}
 .rc-ch{margin-top:12px}
 
-@media (max-width:1080px){.hw4,.hplans{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s5)}.ways{grid-template-columns:repeat(2,minmax(0,1fr))}.smap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1080px){.hw4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s5)}.ways{grid-template-columns:repeat(2,minmax(0,1fr))}.smap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:960px){.wk-tabs{display:flex}.wk{grid-template-columns:minmax(0,1fr)}.wk-d{display:none}.wk-d.on{display:block}.wk-h{display:none}}
 @media (min-width:641px) and (max-width:1080px){.hs-sk,.hs-edu{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.hs-sk::-webkit-scrollbar,.hs-edu::-webkit-scrollbar{display:none}.hs-sk>*,.hs-edu>*{scroll-snap-align:start}}
 
 @media (max-width:640px){
   .lvx summary small{display:none}.lvx-b{padding-left:0}.lvx-b .btn{white-space:normal;max-width:100%}
   .hs-edu,.hs-sk{grid-auto-columns:64%}.home-j{display:none}
-  .hw4{grid-template-columns:minmax(0,1fr);gap:var(--s3)}.hw4 li{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:var(--s4);padding:16px}.hw4-n{grid-row:1/3;margin:0}.hw4 li p{grid-column:2;margin-top:4px}.hw4-d{display:none}.hplans{gap:var(--s3)}.hplan{padding:20px 16px 16px}
+  .hw4{grid-template-columns:minmax(0,1fr);gap:var(--s3)}.hw4 li{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:var(--s4);padding:16px}.hw4-n{grid-row:1/3;margin:0}.hw4 li p{grid-column:2;margin-top:4px}.hw4-d{display:none}
   .ways{display:flex;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--gut));padding-right:var(--gut)}.ways::-webkit-scrollbar{display:none}.ways .way{flex:none;grid-template-columns:auto auto;padding:10px 14px}.crow{grid-template-columns:76px minmax(0,1fr)}.crow-t strong{font-size:14px;white-space:nowrap}
 
   .way .mono,.way small{display:none}
@@ -996,7 +1010,7 @@ F.SITE = {
 
 /* ---- 01-store.js ---- */
 /* Two stores live side by side in this browser:
-   - the site's own store (lessons, visits, memberships, the simulated world), one key per site;
+   - the site's own store (lessons, visits, memberships, the living world), one key per site;
    - the FLINGR passport, shared by every FLINGR site on this domain: who you are, how you pay, your Wallet and Reserve.
    Every change goes through commit(), which re-reads both first so another tab or another FLINGR site never gets overwritten. */
 (() => {
@@ -1120,7 +1134,7 @@ F.store = {
 
 /* ---- 02-engine.js ---- */
 /* The shared engine: cities and money, the signed-in member (from the passport), the Wallet and cards, notifications,
-   events, promo codes and the tick that runs the simulated world. Each site adds its own rules on top. */
+   events, promo codes and the tick that runs the living world. Each site adds its own rules on top. */
 (() => {
 'use strict';
 const E = F.E = {};
@@ -1350,7 +1364,7 @@ F.footer = () => {
   <div class="ftr-grid"><div><a href="#/" class="logo">${F.SITE.logo}</a><p class="small muted mt16">${f.blurb}</p>${famLinks().length ? `<div class="fam mt24"><span class="lbl">The FLINGR family</span><div class="fam-l mt8">${famLinks().map(x => `<a class="fam-a" href="${x.url}">${esc(x.name)}<small>${esc(x.line)}</small></a>`).join('')}</div></div>` : ''}</div>
   ${f.cols.map(([h, links]) => `<div><h4 class="eyebrow">${h}</h4>${links.map(([l, href]) => `<a href="${href}">${l}</a>`).join('')}</div>`).join('')}
   <div><h4 class="eyebrow">Help</h4><a href="#/help">Help & FAQ</a><a href="#/contact">Contact</a><p class="tiny muted mt16">24/7 line<br><button class="btn-link tiny" data-a="call" data-c="${c.id}">${c.phone}</button></p></div></div>
-  <div class="ftr-b"><span>© ${new Date(Date.now()).getUTCFullYear()} FLINGR Technologies, Inc. ${esc(F.SITE.brand)} is part of FLINGR.</span><span class="row wrap-gap"><button class="btn-link qx-link" data-a="quickExit" title="Or press Esc twice">Quick exit</button><button class="btn-link qx-link" data-a="resetSite">Reset site</button>${F.fam ? F.fam.footLink() : ''}<a href="#/legal/terms">Terms</a><a href="#/legal/privacy">Privacy</a><a href="#/legal/cookies">Cookies</a><button class="btn-link tiny" data-a="cookieSettings">Cookie settings</button></span></div></div>`;
+  <div class="ftr-b"><span>© ${new Date(Date.now()).getUTCFullYear()} FLINGR Technologies, Inc. ${esc(F.SITE.brand)} is part of FLINGR.</span><span class="row wrap-gap"><button class="btn-link qx-link" data-a="quickExit" title="Or press Esc twice">Quick exit</button><button class="btn-link qx-link" data-a="resetSite">Reset site</button><button class="btn-link qx-link kb-link" data-a="keys">Shortcuts</button>${F.fam ? F.fam.footLink() : ''}<a href="#/legal/terms">Terms</a><a href="#/legal/privacy">Privacy</a><a href="#/legal/cookies">Cookies</a><button class="btn-link tiny" data-a="cookieSettings">Cookie settings</button></span></div></div>`;
 };
 A.call = el => { const c = E.city(el.dataset.c || F.cityId()); F.modal(`<h2 class="h-disp h3">Call us</h2><p class="muted mt8">${esc(F.SITE.brand)} ${c.name} · open around the clock. You’ll speak to a person, not a menu.</p><a class="btn btn-pri mt24" href="tel:${c.phone.replace(/[^\d+]/g, '')}" data-a="closeModal" data-follow="1">${F.ic('phone', 16)} ${c.phone}</a><p class="tiny muted mt16">In an emergency call ${c.emergency}.</p>`, { cls: 'modal-sm', label: 'Call us' }); };
 
@@ -2873,7 +2887,7 @@ F.Fm.reviewSave = (f, d) => { const g = F.ui.rvNew, u = E.user(), x = g && E.rev
 
 /* ---- 20-skills.js ---- */
 /* Practice: the curriculum. 33 skills in six groups, each with five levels, theory, a short quiz, home drills,
-   and the three things the practical simulator lets you change (where, how firm, what rhythm). */
+   and the three things the practical rehearsal lets you change (where, how firm, what rhythm). */
 (() => {
 'use strict';
 F.GROUPS = [['vulva', 'Her pleasure'], ['penis', 'His pleasure'], ['anal', 'Anal'], ['together', 'Together'], ['kink', 'Kink & power'], ['show', 'Show & confidence']];
@@ -2894,7 +2908,6 @@ F.BOOKABLE = ['voice', 'video', 'earpiece', 'private', 'practical', 'blind'];   
 F.LEVELS = ['Theory', 'Drills', 'Coached', 'Practical', 'Mastery'];
 F.LEVEL_LINE = ['Read the lesson and pass the three-question check.', 'Log the home drill three times.', 'Finish one coached lesson on this skill (voice, video, earpiece or in person).', 'Pass a practical with a model, or with your partner on the earpiece.', 'Pass the Blind Practical.'];
 const ALL = ['voice', 'video', 'earpiece', 'private', 'practical', 'blind', 'class', 'gallery', 'couples', 'stage'];
-const NOEAR = ALL.filter(f => f !== 'earpiece');
 const L = '2026-10-22', S2 = '2027-01-15', S3 = '2027-04-15';
 // q: [question, [three answers], index of the right one]; dr: [name, minutes, how]; ax: [label, options] in a meaningful order (gentlest first)
 F.SKILLS = [
@@ -3150,7 +3163,7 @@ const ED = [
   ['ED-3031', 'Inês Duarte', 34, 'she/her', 'Europe/Lisbon', 'gentle', ['yours', 'clit', 'talk', 'kiss', 'multi', 'tongue', 'aftercare', 'gspot', 'watched', 'strip'], ['English', 'Portuguese'], 'Voice lessons for shy people.', 'Inês teaches almost entirely by voice and has a gift for putting nervous people at ease within a minute.', 'Certified sex educator, Pleasure Pedagogy Institute', '2025-02-11'],
   ['ED-3032', 'Akira Mori', 41, 'he/him', 'Asia/Tokyo', 'drill', ['longer', 'multim', 'handwork', 'rhythm', 'pspot', 'control', 'ruin', 'throat', 'mm', 'massage'], ['English', 'Japanese'], 'Your evening is my morning.', 'Akira takes late-night US lessons from Tokyo: precise, encouraging, and very good on stamina.', 'Pelvic health physiotherapist', '2025-03-30'],
   ['ED-3033', 'Clara Weiss', 38, 'she/her', 'Europe/Berlin', 'strict', ['dom', 'sub', 'impact', 'rope', 'scenes', 'control', 'sensation', 'aftercare', 'pegging'], ['English', 'German'], 'Kink, by appointment.', 'Clara teaches kink theory and negotiation on video from Berlin, with the best scene sheets we’ve seen.', 'BDSM educator, Berlin Kink Academy', '2025-05-20'],
-  ['ED-3034', 'Mateo Alvarez', 32, 'he/him', 'America/Mexico_City', 'coach', ['mm', 'analgive', 'anal0', 'pspot', 'throat', 'three', 'talk', 'pegging', 'kiss', 'rhythm'], ['English', 'Spanish'], 'En español también.', 'Mateo teaches in English and Spanish, with a soft spot for people trying anal or Men × Men for the first time.', 'Sex educator, CENSIDA-trained', '2025-06-27'],
+  ['ED-3034', 'Mateo Alvarez', 32, 'he/him', 'America/Mexico_City', 'coach', ['mm', 'analgive', 'anal0', 'pspot', 'throat', 'three', 'talk', 'pegging', 'kiss', 'rhythm'], ['English', 'Spanish'], 'Lessons in English or Spanish, your call.', 'Mateo teaches in English and Spanish, with a soft spot for people trying anal or Men × Men for the first time.', 'Sex educator, CENSIDA-trained', '2025-06-27'],
   ['ED-3035', 'Hana Seo', 29, 'she/her', 'Asia/Seoul', 'gentle', ['clit', 'gspot', 'blended', 'tongue', 'yours', 'massage', 'kiss', 'strip', 'ww', 'multi'], ['English', 'Korean'], 'Small steps, big results.', 'Hana’s video lessons are known for their beautiful diagrams and very gentle pace.', 'Sex educator, Seoul Sexual Health Institute', '2025-08-08'],
   ['ED-3036', 'Noah Bennett', 37, 'he/him', 'Australia/Sydney', 'coach', ['longer', 'rhythm', 'handwork', 'talk', 'aftercare', 'three', 'watching', 'sensation', 'control', 'scenes'], ['English'], 'Down-to-earth and dead honest.', 'Noah teaches from Sydney, which means he’s fresh for your late-night lessons. Practical, kind and very Australian.', 'Sex therapist (Dip. Psychosexual Therapy)', '2025-04-04']
 ];
@@ -3430,7 +3443,7 @@ F.revBlock = (kind, id, o = {}) => { const t = F.prTarget(kind, id); return `<di
 
 /* ---- 30-engine.js ---- */
 /* Practice: the engine. Who can teach what and when, the weekly timetable, booking and cancelling lessons in plain money
-   (member prices for members), health checks, the skill passport, the practical simulator, programs, and the simulated world (other members,
+   (member prices for members), health checks, the skill passport, the practical rehearsal, programs, and the living world (other members,
    sick days, hires and leavers) that keeps every calendar moving on its own. */
 (() => {
 'use strict';
@@ -3470,7 +3483,6 @@ const SLOTS = { 1: [[19 * 60 + 30, 'class']], 2: [[18 * 60 + 30, 'class'], [20 *
 // The Hall's calendar, worked out for any year in each city: seasonal weeks lean the timetable towards fitting skills,
 // Valentine's adds couples workshops, summer weekends add a daytime intensive, and the studios close on the big holidays
 const nthWd = (y, m, wd, n) => { const first = U.wd(`${y}-${U.pad(m)}-01`), d = 1 + ((wd - first + 7) % 7) + (n - 1) * 7; return `${y}-${U.pad(m)}-${U.pad(d)}`; };
-const lastWd = (y, m, wd) => { const dim = new Date(Date.UTC(y, m, 0)).getUTCDate(), last = U.wd(`${y}-${U.pad(m)}-${U.pad(dim)}`); return `${y}-${U.pad(m)}-${U.pad(dim - ((last - wd + 7) % 7))}`; };
 const easter = y => { const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1; return `${y}-${U.pad(mo)}-${U.pad(da)}`; };
 const closedOn = (cityId, key) => E.memo('hc' + cityId + key, () => {
   const y = +key.slice(0, 4), md = key.slice(5);
@@ -3651,7 +3663,7 @@ E.cancelSeat = x => { const u = E.userById(x.userId), pct = x.start - now() >= 2
 E.seatTags = seatTags;
 E.joinWait = (u, c) => { if (!S().seats.some(x => x.classId === c.id && x.userId === u.id && x.status === 'wait')) S().seats.push({ id: U.uid('st'), classId: c.id, userId: u.id, kind: 'seat', status: 'wait', at: now(), start: c.start, end: c.end, cityId: c.cityId, skillId: c.skillId }); };
 
-/* ---------- the practical simulator ---------- */
+/* ---------- the practical rehearsal ---------- */
 const REACT = ['Hmm. Not that.', 'Not quite.', 'That’s okay…', 'Mm. Nice.', 'Yes. Like that.', 'Don’t stop. Don’t change a thing.'];
 const GAIN = [-10, -4, 5, 10, 15, 19];
 E.simPrefs = (l) => { const s = E.skill(l.skillId), who = l.modelId || 'partner' + l.userId; return s.ax.map(([, opts], a) => { let p = U.hash(who + s.id + a) % opts.length; if (h100(l.id + a + 'mood') < 18) p = Math.max(0, Math.min(opts.length - 1, p + (h100(l.id + a) % 2 ? 1 : -1))); return p; }); };
@@ -3980,7 +3992,7 @@ F.pages.membership = { render: () => { const c = F.cityId(), u = E.user(), sv = 
 F.pages.how = { render: () => ({ title: 'How it works', html: `${F.pageHead({ eyebrow: 'How it works', title: 'Learn it. <span class="it">Practise it.</span>', lead: 'Five levels for every skill, seven ways to learn, and a promise that nothing ever happens you didn’t agree to.'})}
   <section class="sec-sm"><div class="wrap"><h2 class="eyebrow ln">Five levels</h2><ol class="lv5 mt24">${F.LEVELS.map((l, i) => `<li><span class="h-cond">${i + 1}</span><div><strong>${l}</strong><p class="small muted mt4">${F.LEVEL_LINE[i]}</p></div></li>`).join('')}</ol></div></section>
   <section class="sec-sm sec-deep"><div class="wrap"><h2 class="eyebrow ln">The Shy Ladder</h2><p class="lead">Start wherever feels right. After two lessons on a rung we suggest the next, once.</p><ol class="ladder mt24">${F.LADDER.map(([k, l], i) => `<li><span class="mono">${i + 1}</span>${l}</li>`).join('')}</ol></div></section>
-  <section class="sec-sm" id="dial"><div class="wrap split al-start"><div><h2 class="eyebrow ln">A practical, step by step</h2><ol class="plan-l mt24">${['Meet your educator and model; agree the Practice Contract.', 'Your educator demonstrates on the model and explains every move.', 'Your hands: you choose where, how firm and what rhythm.', 'The model’s Dial lights up from one to five. Check in when you’re unsure.', 'Hold what works. Finish, or try again next time.', 'A written report and your next step, the same evening.'].map((x, i) => `<li><span class="mono">${i + 1}</span><div>${x}</div></li>`).join('')}</ol></div><div class="dial-demo">${[[1, 'Not quite.'], [3, 'Mm. Nice.'], [5, 'Don’t change a thing.']].map(([n, t]) => `<div class="row nowrap dd-r">${F.dial(n)}<span class="hand">${t}</span></div>`).join('')}</div></div></section>
+  <section class="sec-sm" id="dial"><div class="wrap split al-start"><div><h2 class="eyebrow ln">A practical, step by step</h2><ol class="plan-l mt24">${['Meet your educator and model; agree the Practice Contract.', 'Your educator demonstrates on the model and explains every move.', 'Your hands: you choose where, how firm and what rhythm.', 'The model’s Dial lights up from one to five. Check in when you’re unsure.', 'Hold what works. Finish, or try again next time.', 'A written report and your next step, the same evening.'].map((x, i) => `<li><span class="mono">${i + 1}</span><div>${x}</div></li>`).join('')}</ol></div><div class="dial-show">${[[1, 'Not quite.'], [3, 'Mm. Nice.'], [5, 'Don’t change a thing.']].map(([n, t]) => `<div class="row nowrap dd-r">${F.dial(n)}<span class="hand">${t}</span></div>`).join('')}</div></div></section>
   <section class="sec-sm sec-deep" id="safety"><div class="wrap split al-start"><div><h2 class="eyebrow ln">Safety and consent</h2><h3 class="h-cond h2 mt16">Agreed <span class="it">first</span></h3></div><div>${F.acc([['The Practice Contract', 'What’s touched, by whom, with what protection. Nothing outside it happens.'], ['Protection', 'Gloves, condoms and dams by default. Barrier-free only with tests within 14 days on both sides and both agreeing.'], ['Health tests', 'A sexual health test within 30 days for practicals and the Stage. Your consent card for the model is filled in from your record.'], ['Practice models', 'They choose their skills, work at most four practicals a day, and hold a STOP button.'], ['Recording', 'No recording, ever, in any format.'], ['Reporting', 'Report anything from your lesson page; a person reviews it within the hour.']], { open: 0, name: 'safety' })}</div></div></section>` }) };
 F.pages.studios = { render: () => ({ title: 'Studios', html: `${F.pageHead({ eyebrow: 'Studios', title: 'Three cities, <span class="it">six rooms each.</span>', lead: 'The Hall for classes, three suites for one-to-one lessons, the Rope Room and the Wet Room. Open 11am to 11pm.'})}
   <section class="sec-sm"><div class="wrap g g3 al-start">${F.CITIES.map(c => { const st = F.STUDIOS[c.id]; return `<div class="card"><div class="row between nowrap"><span class="lbl">${c.name} · ${esc(st.hood)}</span>${F.revMeta('studio', c.id)}</div><h2 class="h-disp h3 mt8">${esc(st.name)}</h2><p class="small mt16">${esc(st.addr)}</p><p class="small muted mt8">${esc(st.note)}</p><p class="small muted mt16">${F.ROOMS.map(r => r.name).join(' · ')}</p><button class="btn-link mono mt16" data-a="call" data-c="${c.id}">${c.phone}</button><div class="mt24">${F.reviewBrief(F.prTarget('studio', c.id), { n: 1 })}</div></div>`; }).join('')}</div></section>` }) };
@@ -4080,7 +4092,8 @@ F.pages.book = {
       ${isMember ? `<p class="small">${F.ic('check', 14)} Member price: ${E.money(pp.member * n, c, true)} less than the list price.</p>` : `<p class="small muted">Members pay ${E.money(E.mprice(pp.full), c, true)} for this lesson. <a class="u" href="#/membership">About membership</a></p>`}
       ${n > 1 ? `<p class="small">A pack of ${n}, paid once now: ${E.money(saving, c, true)} less than booking them one by one.</p>` : `<form class="promo row nowrap" data-f="bkPromo"><label class="sr" for="bkPr">Promo code</label><input class="inp inp-sm" id="bkPr" name="code" value="${esc(b.promo)}" placeholder="Promo code" autocomplete="off"><button class="btn btn-ghost btn-sm">Apply</button></form>${pr && !pr.ok ? `<p class="ferr">${esc(pr.reason)}</p>` : ''}`}${F.payBlock(u, c, due)}
       <button class="btn btn-pri btn-lg btn-block" data-a="bkConfirm" ${err || (b.fmt === 'earpiece' && !b.partnerOk) ? 'disabled' : ''}>Pay ${E.money(due, c, true)} and book${n > 1 ? ' · ' + n + ' lessons' : ''}</button><p class="tiny muted">Move free up to ${E.moveLimit(u)} hours before. Cancel more than 24 hours ahead for everything back.</p></div>` : ''}</section></div>
-    <aside class="co-side"><div class="card co-sum">${F.skillArt(s, 'r11')}<h2 class="h-disp h3 mt16">${esc(s.n)}</h2><p class="small muted mt8">${f.name} · ${U.dur(f.min)}</p><div class="sum mt16">${F.kv('Educator', e ? esc(e.name) : '—')}${prac(b.fmt) ? F.kv('Practise with', b.partner ? 'Your partner' : b.modelId ? esc(E.model(b.modelId).name) : sl && sl.modelId ? esc(E.model(sl.modelId).name) : 'A practice model') : ''}${F.kv('When', b.start ? U.fmt(b.start, tz, 'dt') : '—')}${F.kv('Where', f.remote ? (b.fmt === 'earpiece' ? 'Your place, in your ear' : 'Online, from your lesson page') : esc(F.STUDIOS[c].name))}${n > 1 ? F.kv('Lessons', `${n}, weekly`) : ''}${F.kv(n > 1 ? 'List price' : 'Lesson', E.money(pp.full * n, c, true))}${pp.member ? F.kv('Member price', '−' + E.money(pp.member * n, c, true), 'kv-disc') : ''}${saving ? F.kv('Pack saving', '−' + E.money(saving, c, true), 'kv-disc') : ''}${pr && pr.ok ? F.kv(esc(pr.label), '−' + E.money(pr.amount, c, true), 'kv-disc') : ''}${F.kv('Total', E.money(due, c, true), 'kv-total')}</div><p class="small mt16">Your passport: level ${E.level(u, s.id)} of 5</p></div></aside></div></div></section>` };
+    <aside class="co-side co-side-end"><div class="card co-sum">${F.skillArt(s, 'r11')}<h2 class="h-disp h3 mt16">${esc(s.n)}</h2><p class="small muted mt8">${f.name} · ${U.dur(f.min)}</p><div class="sum mt16">${F.kv('Educator', e ? esc(e.name) : '—')}${prac(b.fmt) ? F.kv('Practise with', b.partner ? 'Your partner' : b.modelId ? esc(E.model(b.modelId).name) : sl && sl.modelId ? esc(E.model(sl.modelId).name) : 'A practice model') : ''}${F.kv('When', b.start ? U.fmt(b.start, tz, 'dt') : '—')}${F.kv('Where', f.remote ? (b.fmt === 'earpiece' ? 'Your place, in your ear' : 'Online, from your lesson page') : esc(F.STUDIOS[c].name))}${n > 1 ? F.kv('Lessons', `${n}, weekly`) : ''}${F.kv(n > 1 ? 'List price' : 'Lesson', E.money(pp.full * n, c, true))}${pp.member ? F.kv('Member price', '−' + E.money(pp.member * n, c, true), 'kv-disc') : ''}${saving ? F.kv('Pack saving', '−' + E.money(saving, c, true), 'kv-disc') : ''}${pr && pr.ok ? F.kv(esc(pr.label), '−' + E.money(pr.amount, c, true), 'kv-disc') : ''}${F.kv('Total', E.money(due, c, true), 'kv-total')}</div><p class="small mt16">Your passport: level ${E.level(u, s.id)} of 5</p></div></aside></div></div></section>
+    ${F.bookBar({ title: esc(s.n), sub: b.start ? U.fmt(b.start, tz, 'dt') : f.name + ' · ' + U.dur(f.min), price: E.money(due, c, true), btn: { label: !e ? 'Choose educator' : !b.start ? 'Choose a time' : 'Review and pay', a: 'bkJump' } })}` };
   }
 };
 F.C.bkSkill = el => F.nav('/book?skill=' + el.value);
@@ -4098,6 +4111,8 @@ F.C.bkGuide = el => { bk().guide = el.checked; };
 F.C.bkPartnerOk = el => { bk().partnerOk = el.checked; F.rerender(); };
 F.C.bkField = el => { bk()[el.dataset.k] = el.value; };
 F.Fm.bkPromo = (f, d) => { bk().promo = String(d.code || '').trim().toUpperCase(); F.rerender(); };
+// the phone's booking bar: straight to the first step still to do (the payment once everything is chosen)
+A.bkJump = () => { const st = [...document.querySelectorAll('.co .costep')], el = bk().start ? st[st.length - 1] : st.slice(1).find(x => !x.classList.contains('done')) || st[st.length - 1]; if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 A.bkConfirm = async el => {
   const b = bk(), u = E.user(), c = F.cityId(), f = F.FORMATS[b.fmt]; F.busy(el, true, 'Booking'); await U.sleep(500);
   const barrier = b.protect.some(p => p.startsWith('Barrier-free')); if (barrier && !E.healthOk(u, b.start, 14)) { F.busy(el, false); return F.toast('Barrier-free needs your test to be within 14 days. Untick it or add a newer test.', 'err'); }
@@ -4178,7 +4193,7 @@ A.drillLog = () => { const st = F.ui.drill, s = E.skill(st.s); clearInterval(F._
 
 /* ---- 42-lesson.js ---- */
 /* Practice: a single lesson. Before (checklist, messages, move or cancel), during (the call, the studio, or the practical
-   simulator with the Feedback Dial) and after (the report, the next step, a review). */
+   rehearsal with the Feedback Dial) and after (the report, the next step, a review). */
 (() => {
 'use strict';
 const E = F.E, A = F.A, now = () => Date.now(), M = 6e4, H = 36e5, D = 864e5;
@@ -4293,7 +4308,7 @@ V[''] = u => {
       ${tile('#/account/health', 'shield', 'Health record', hr.length ? U.plural(hr.length, 'result') + ' on file' : u.healthTest ? 'Test booked' : 'Needed before a practical')}
       ${tile('#/account/wallet', 'wallet', E.money(E.walletIn(u, c), c) + ' in your Wallet', m ? `Member prices until ${U.fmt(m.periodEnd, E.city(m.cityId).tz, 'md')}` : 'Paying per lesson')}
       ${tile('#/account/lessons', 'cal', up.length ? U.plural(up.length, 'lesson') + ' booked' : 'Lessons', 'Coming up, before and your classes')}
-    </div></aside></div>` };
+    </div></aside></div>${(d => d ? `<div class="mt48">${d}</div>` : '')(F.digestCard(u))}` };
 };
 // Lessons: one list at a time (coming up, before, classes, programs), like Velvet's visits
 V.lessons = (u, x, r) => {
@@ -4503,7 +4518,7 @@ A.programSheet = el => F.openSheet(F.programPaper(F.S.enrol.find(x => x.id === e
 
 /* ---- 47-learn.js ---- */
 /* Practice: learning tools. "Find your first lesson" (five questions and a recommendation), the learning path (skill
-   map, streaks, certificates), the lesson recap generated from the practical simulator, and the consent card for the practice model, filled in from the health record. */
+   map, streaks, certificates), the lesson recap generated from the practical rehearsal, and the consent card for the practice model, filled in from the health record. */
 (() => {
 'use strict';
 const E = F.E, A = F.A, now = () => Date.now(), D = 864e5;
@@ -4799,6 +4814,22 @@ F.togetherCard = u => { const p = E.partnerOf(u), others = (F.P.users || []).fil
 A.togetherSet = el => { F.store.commit(s => { s.together = s.together || {}; const u = E.user(); if (el.dataset.u) s.together[u.id] = el.dataset.u; else delete s.together[u.id]; }); F.rerender(); };
 })();
 
+/* ---- 50-evening.js ---- */
+/* Practice's part of One Evening (shared/js/evening.js): the follow-up lesson paid for on FLINGR is booked here,
+   prepaid, with an educator free at that time (or within the next few hours). */
+(() => {
+'use strict';
+const E = F.E, M = 6e4;
+F.SITE.eveningAdopt = (u, g, ev) => F.store.commit(() => {
+  const s = E.skill(g.item), fmt = g.fmt, cityId = g.city; if (!s) return { ok: false };
+  const edus = E.edusFor(s, fmt, cityId); let e = null, start = g.at;
+  for (let k = 0; k <= 8 && !e; k++) { const at = g.at + k * 30 * M; e = edus.find(x => E.eduFree(x, fmt, at, cityId)) || null; if (e) start = at; }
+  if (!e) return { ok: false };
+  const r = E.bookLesson(u, { skillId: s.id, fmt, eduId: e.id, cityId, start, note: 'One Evening · ' + ev.no }, { prepaid: { money: g.amount, label: 'One Evening · ' + ev.no, cur: g.cur } });
+  return r.ok ? { ok: true, ref: r.l.no, href: '#/account/lesson/' + r.l.id, at: start } : { ok: false, reason: r.reason };
+});
+})();
+
 /* ---- 96-health.js ---- */
 /* Shared by FLINGR, Velvet and Practice: one sexual health record for the FLINGR account, synced across the three sites.
    Two ways to add to it:
@@ -4939,6 +4970,45 @@ H.card = u => { const rs = H.records(u); return `<div class="card" id="health"><
 (() => { const s = document.createElement('style'); s.textContent = `.hrow{border:1px solid var(--ln);border-radius:10px;padding:12px 14px}.hchip{display:inline-block;margin:0 4px 4px 0;padding:2px 7px;border-radius:999px;border:1px solid var(--ln);opacity:.5}.hchip.on{opacity:1}.hopt{text-align:left;cursor:pointer;color:inherit;font:inherit;background:none}.hopt:disabled{opacity:.5;cursor:default}.hi .spin{display:inline-block}.hrow+.hrow{margin-top:0}.hdoc .pp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:14px 0;margin-top:20px;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}.hdoc .pp-grid>div{display:flex;flex-direction:column;gap:4px}.hdoc .pp-tbl{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px}.hdoc .pp-tbl th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding:8px 8px 8px 0;border-bottom:1px solid #1C1916}.hdoc .pp-tbl td{padding:10px 8px 10px 0;border-bottom:1px dotted var(--ln2);vertical-align:top}.hdoc .pp-note{margin-top:16px;color:var(--mut);max-width:62ch}.hdoc .pp-m2{display:none}.hdoc .pp-ref{display:flex;flex-direction:column;align-items:flex-end}@media(max-width:640px){.hdoc .pp-grid{grid-template-columns:1fr 1fr}.hdoc .pp-m{display:none}.hdoc .pp-m2{display:block;margin-top:4px;font-size:11.5px;color:var(--mut)}.hdoc .pp-ref{align-items:flex-start}}`; document.head.appendChild(s); })();
 })();
 
+/* ---- 97a-evening.js ---- */
+/* One Evening: a Velvet ritual, then a FLINGR night, then a Practice follow-up the next day, paid for in one checkout
+   on FLINGR (10% off the whole evening with All-Access). FLINGR books its own part at once; the Velvet and Practice parts
+   are paid for and held, and each site books its part (prepaid) the next time it's open on this browser. The evenings
+   live in localStorage['flingr.evening'], shared by the three sites on this domain. */
+(() => {
+'use strict';
+const KEY = 'flingr.evening', SITE = (F.SITE && F.SITE.id) || 'flingr';
+// [id, name, minutes, US dollars]; Practice lessons are Voice or Video, 45 minutes
+F.EVENING = {
+  pct: 10,
+  velvet: [['warm', 'Warm Oil Awakening', 60, 220], ['breast', 'Breast & Nipple Ritual', 45, 190], ['prostate', 'Prostate Release', 60, 280], ['yoni', 'Yoni Ritual', 90, 360], ['lingam', 'Lingam Ritual', 90, 340]],
+  practice: [['talk', 'Dirty Talk'], ['kiss', 'Kissing & Build-up'], ['massage', 'Erotic Massage'], ['aftercare', 'Aftercare'], ['longer', 'Last Longer']],
+  lesson: { voice: ['Voice', 69], video: ['Video', 69] }
+};
+const read = () => { try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } };
+const write = list => { try { localStorage.setItem(KEY, JSON.stringify(list.slice(-60))); return true; } catch (e) { return false; } };
+F.evening = {
+  read,
+  mine: uid => read().filter(x => x.uid === uid).sort((a, b) => b.createdAt - a.createdAt),
+  get: id => read().find(x => x.id === id) || null,
+  save: ev => { const l = read().filter(x => x.id !== ev.id); l.push(ev); return write(l); },
+  leg: (id, site, patch) => { const l = read(), ev = l.find(x => x.id === id); if (!ev) return; const g = ev.legs.find(x => x.site === site); if (g) Object.assign(g, patch); write(l); }
+};
+// Velvet and Practice: book what was paid for on FLINGR, once, the next time this site is open
+const adopt = () => {
+  if (SITE === 'flingr' || !F.SITE || !F.SITE.eveningAdopt || !F.E || !F.E.user || !F.S) return;
+  const u = F.E.user(); if (!u) return; let any = false;
+  F.evening.mine(u.id).forEach(ev => ev.legs.filter(g => g.site === SITE && g.status === 'held').forEach(g => {
+    let r = null; try { r = F.SITE.eveningAdopt(u, g, ev); } catch (e) { console.error(e); r = { ok: false }; }
+    if (r && r.ok) { F.evening.leg(ev.id, SITE, { status: 'booked', ref: r.ref, href: r.href, at: r.at || g.at, bookedAt: Date.now() }); any = true; }
+    else { F.store.commit(() => { F.E.walletTx(u, g.usd, 'One Evening · ' + ev.no + ' (couldn’t be fitted)', ev.id); F.E.notify(u.id, 'bookings', 'Part of your evening is refunded', `${g.name} couldn’t be fitted around your night, so ${U.money(g.usd, 'USD', true)} is back in your Wallet.`, '#/account/wallet', Date.now()); }); F.evening.leg(ev.id, SITE, { status: 'refunded' }); any = true; }
+  }));
+  if (any && F.rerender) F.rerender();
+};
+if (SITE !== 'flingr') { setTimeout(adopt, 900); setInterval(adopt, 30e3); window.addEventListener('storage', e => { if (e.key === KEY) adopt(); }); }
+F.eveningAdoptNow = adopt;
+})();
+
 /* ---- 97b-autofill.js ---- */
 /* Shared by FLINGR, Velvet and Practice. Saved info, like a browser's autofill: focus any field of a form and a small
    quiet "Use saved …" line appears in the form; one click fills every EMPTY field of that form (nothing typed is overwritten):
@@ -4947,7 +5017,7 @@ H.card = u => { const rs = H.records(u); return `<div class="card" id="health"><
    a sign-up form it makes a new person with an email nobody has used. Escape or clicking elsewhere closes it. */
 (() => {
 'use strict';
-const AF = F.autofill = {};
+const AF = {};
 const DAY = 864e5;
 const CITY = {
   la: { city: 'Los Angeles', street: '1450 N Laurel Ave', zip: '90046', country: 'US', phone: '+1 (323) 555-0148' },
@@ -5096,6 +5166,34 @@ try { new MutationObserver(ms => { if (!ms.some(m => [...m.addedNodes].some(n =>
   setTimeout(() => document.querySelectorAll('.modal form, .sheet form, #gate form').forEach(line), 200); }).observe(document.body, { childList: true, subtree: true }); } catch (e) { }
 })();
 
+/* ---- 97c-keys.js ---- */
+/* Keyboard shortcuts on desktop, shared by FLINGR, Practice and Velvet: "?" opens the list; "g" then a letter goes
+   somewhere. Never while typing, never on phones (no keyboard), never over an open dialog. */
+(() => {
+'use strict';
+const SITE = (F.SITE && F.SITE.id) || 'flingr';
+const GO = {
+  flingr: [['h', 'Home', '/'], ['b', 'Bookings', '/account/bookings'], ['i', 'Inbox', '/account/inbox'], ['a', 'Account', '/account'], ['s', 'Hosts', '/hosts'], ['e', 'Escapes', '/escapes'], ['c', 'Afterhours', '/afterhours'], ['o', 'One Evening', '/evening']],
+  practice: [['h', 'Home', '/'], ['b', 'Lessons', '/account/lessons'], ['i', 'Inbox', '/account/inbox'], ['a', 'Account', '/account'], ['s', 'Skills', '/skills'], ['t', 'Timetable', '/timetable']],
+  velvet: [['h', 'Home', '/'], ['b', 'Visits', '/account/visits'], ['i', 'Inbox', '/account/inbox'], ['a', 'Account', '/account'], ['m', 'Menu', '/menu'], ['s', 'Shop', '/shop']]
+}[SITE] || [];
+const typing = t => t && (/INPUT|TEXTAREA|SELECT/.test(t.tagName) || t.isContentEditable);
+const kbd = k => `<kbd class="kb">${k}</kbd>`;
+const sheet = () => {
+  const rows = [['/', 'Search'], ['?', 'This list'], ['Esc', 'Close a window or menu'], ['Esc Esc', 'Quick exit: cover the page at once']].map(([k, l]) => [k.split(' ').map(kbd).join(' '), l]).concat(GO.map(([k, l]) => [kbd('g') + ' ' + kbd(k), l]));
+  F.modal(`<h2 class="h-disp h3">Keyboard shortcuts</h2><p class="small muted mt8">Press <strong>g</strong>, then a letter, to go straight to a page.</p><div class="kb-list mt24">${rows.map(([k, l]) => `<div class="kb-row"><span class="kb-k">${k}</span><span class="small">${l}</span></div>`).join('')}</div>`, { label: 'Keyboard shortcuts' });
+};
+let gAt = 0;
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey || typing(e.target) || document.getElementById('gate')) return;
+  if (e.key === '?') { if (F._modal) return; e.preventDefault(); sheet(); return; }
+  if (F._modal || F._drawer) return;
+  if (e.key === 'g' && !e.shiftKey) { gAt = Date.now(); return; }
+  if (gAt && Date.now() - gAt < 1200) { const hit = GO.find(x => x[0] === e.key.toLowerCase()); gAt = 0; if (hit) { e.preventDefault(); F.nav(hit[2]); } }
+});
+F.A.keys = () => sheet();
+})();
+
 /* ---- 98-family.js ---- */
 /* Shared by FLINGR, Velvet and Practice (build.js copies it into each site, after the site's own code and before boot).
    Everything here works the same on the three sites, which share one origin and therefore one localStorage:
@@ -5111,12 +5209,9 @@ const FAM = F.fam = F.fam || {}, A = F.A;
 const SITE = (F.SITE && F.SITE.id) || 'flingr';
 const NAMES = { flingr: 'FLINGR', velvet: 'Velvet', practice: 'Practice' }, DIRS = { flingr: 'flingr', velvet: 'flingr-velvet', practice: 'flingr-practice' };
 FAM.site = SITE; FAM.NAMES = NAMES;
-const q1 = s => document.querySelector(s);
 const html = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const put = k => v => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); return true; } catch (e) { return false; } };
-const sget = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
-const sput = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) { } };
 const toast = (m, k, a) => F.toast && F.toast(m, k, a);
 const user = () => { try { return F.E.user(); } catch (e) { return null; } };
 const fmtT = ms => { try { return new Date(ms).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return String(ms); } };
