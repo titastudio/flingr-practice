@@ -65,7 +65,7 @@ legend{padding:0;margin-bottom:10px}
 .sec-alt{background:var(--bg2)}.sec-deep{background:var(--bg3)}
 .g{display:grid;gap:var(--card-gap)}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .al-start{align-items:start}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.split.al-start{align-items:start}
 .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.row.nowrap{flex-wrap:nowrap}.row.between{justify-content:space-between}.row.end{align-items:flex-end}.wrap-gap{flex-wrap:wrap;gap:8px 12px}.jc{justify-content:center}
 .stack{display:flex;flex-direction:column;gap:20px}.stack-s{display:flex;flex-direction:column;gap:10px}
 .center{text-align:center}.d-b{display:block}
@@ -227,7 +227,7 @@ legend{padding:0;margin-bottom:10px}
 .mail summary{padding:14px 0}
 .wbal{font-size:clamp(40px,5vw,60px)}
 .pm-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ln)}.pm-row:last-child{border-bottom:0}.pm-main{display:flex;gap:12px;align-items:center}
-.pmi{width:44px;height:30px;border-radius:5px;border:1px solid var(--ln2);display:grid;place-items:center;font:700 9px var(--f-mono);flex:none}
+.pmi{width:44px;height:30px;border-radius:5px;border:1px solid var(--ln2);display:flex;align-items:center;justify-content:center;gap:1px;font:700 9px var(--f-mono);flex:none}.pmi-apple b{font:600 10px/1 var(--f-body);letter-spacing:-.01em}.pmi-paypal b{font-size:8px;letter-spacing:-.02em}
 .pm-types{display:flex;flex-direction:column;gap:8px}.pm-type{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--ln);border-radius:var(--rs);text-align:left}.pm-type>span{flex:1}.pm-type:hover{border-color:var(--ln2)}
 .pmethods{display:flex;flex-direction:column;gap:8px}.pm{position:relative;display:flex;gap:12px;align-items:center;min-height:48px;padding:12px 14px;border:1px solid var(--ln2);border-radius:var(--rs);cursor:pointer}
 /* the whole row is the radio: the real input covers it (invisible) and a drawn dot shows the choice */
@@ -238,7 +238,7 @@ legend{padding:0;margin-bottom:10px}
 .tblw{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--rs)}
 .tbl{width:100%;border-collapse:collapse;font-size:14px}.tbl th{font:500 10px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-align:left;padding:12px 14px;border-bottom:1px solid var(--ln2);white-space:nowrap}.tbl td{padding:12px 14px;border-bottom:1px solid var(--ln);vertical-align:middle}.tbl tr:last-child td{border-bottom:0}.tbl td.num,.tbl th.num{text-align:right;font-family:var(--f-mono)}
 .stat{display:flex;flex-direction:column;gap:6px}.stat .h-disp{font-size:32px}
-.ops-in{max-width:360px;margin-left:auto;margin-right:auto;text-align:left}
+.ops-in{max-width:420px}
 
 /* checkout and plans */
 .co-page{padding:48px 0 96px;min-height:80vh}
@@ -246,7 +246,7 @@ legend{padding:0;margin-bottom:10px}
 .co-side{position:sticky;top:calc(var(--hdr) + 24px)}
 .sum .kv{font-size:14px}
 .plan-tools{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s4)}
-.plan-g{display:grid;grid-template-columns:repeat(var(--pn,4),minmax(0,1fr));gap:var(--card-gap);align-items:stretch;margin-top:var(--s5);max-width:900px}
+.plan-g{display:grid;grid-template-columns:repeat(var(--pn,4),minmax(0,1fr));gap:var(--card-gap);align-items:stretch;margin-top:var(--s5)}
 @media (max-width:640px){.plan-g{grid-template-columns:minmax(0,1fr);margin-top:var(--s4)}.plan-g>.plan.feat{order:-1}}
 .plan{display:flex;flex-direction:column;position:relative}.plan.feat{border-color:var(--pri);box-shadow:0 0 0 1px var(--pri) inset}
 .plan-p{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.plan-p .h-disp{font-size:40px}
@@ -266,7 +266,17 @@ legend{padding:0;margin-bottom:10px}
 .help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;align-items:start}.help-nav{display:flex;flex-direction:column;gap:2px;position:sticky;top:calc(var(--hdr) + 24px)}.help-nav a{padding:8px 12px;border-radius:var(--rs);font-size:14px;color:var(--mut)}.help-nav a.on,.help-nav a:hover{color:var(--fg);background:var(--card)}
 .help-s{display:flex;gap:8px}
 .jcard{display:block}.jcard:hover h3{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
-.gift-amt{font-size:64px}.gcard-big{min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--bg3)}
+.jgrid>.jfeat{grid-column:span 2}.jgrid>.jfeat .plate{aspect-ratio:3/1}
+/* gift: the card sits at the top of its column (sticky on desktop); on phones card, then the form, then summary and payment */
+.gift-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}.gift-l{position:sticky;top:calc(var(--hdr) + 24px)}.gift-f{display:flex;flex-direction:column;gap:var(--card-gap)}
+.gc{position:relative;aspect-ratio:1.586;width:100%;max-width:560px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:clamp(18px,4.2%,30px);border-radius:18px;overflow:hidden;isolation:isolate;color:#fff;background:var(--bg3);border:1px solid var(--ln2);box-shadow:0 30px 70px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.12)}
+.gc::before,.gc::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.gc-top,.gc-bot{display:flex;justify-content:space-between;align-items:center;gap:12px}.gc-logo{display:inline-flex;align-items:baseline;gap:6px;line-height:1;white-space:nowrap}
+.gc-k,.gc-bot{font:500 9.5px/1.3 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;opacity:.85}.gc-bot span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gc-t{font:500 clamp(20px,3.1vw,30px)/1.08 var(--f-disp);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gc-a{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}.gc-amt{font:500 clamp(26px,4vw,40px)/1 var(--f-disp)}.gc-sub{font-size:12px;opacity:.8}
+.gc-msg{font-size:13.5px;line-height:1.4;opacity:.92;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gc-ds .chip{gap:8px}.gc-sw{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid var(--ln2);background:var(--bg3)}
 
 /* paper documents */
 .paper{--fg:#1C1916;--mut:rgba(28,25,22,.62);--ln:rgba(28,25,22,.16);--ln2:rgba(28,25,22,.34);--card:rgba(28,25,22,.03);--bg:#FBFAF5;--bg2:#F1EEE5;position:relative;max-width:820px;margin:0 auto;padding:52px 56px 44px;background:#FBFAF5;color:#1C1916;border-radius:4px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
@@ -295,7 +305,7 @@ legend{padding:0;margin-bottom:10px}
 @media (max-width:960px){
   :root{--gut:24px;--hdr:64px}
   .hnav{display:none}.mmb{display:inline-grid}
-  .split,.co,.help{grid-template-columns:minmax(0,1fr);gap:40px}.co-side{position:static;order:-1}.co-side-end{order:1}.help-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none}.help-nav a{flex:none;border:1px solid var(--ln2);border-radius:999px}
+  .split,.co,.help,.gift-g{grid-template-columns:minmax(0,1fr);gap:40px}.gift-l{position:static}.gc{margin:0 auto}.co-side{position:static;order:-1}.co-side-end{order:1}.help-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none}.help-nav a{flex:none;border:1px solid var(--ln2);border-radius:999px}.help-nav a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
   .g3,.g4,
   .ftr-grid{grid-template-columns:1fr 1fr}.ftr-grid>div:first-child{grid-column:1/-1}
   .settings,.inbox{grid-template-columns:minmax(0,1fr)}
@@ -306,6 +316,7 @@ legend{padding:0;margin-bottom:10px}
   .cityb span{display:none}.cityb{padding:0 10px}
   .logo{font-size:22px}
   .g2,.g3,.g4,.fgrid{grid-template-columns:minmax(0,1fr)}
+  .jgrid>.jfeat{grid-column:auto}.jgrid>.jfeat .plate{aspect-ratio:3/2}
   .modal{padding:28px 20px}.paper{padding:28px 20px 24px}
   .phero{padding:48px 0 32px}
   .hscroll{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;margin-right:calc(-1 * var(--gut));padding-right:var(--gut);padding-bottom:4px}
@@ -341,8 +352,6 @@ legend{padding:0;margin-bottom:10px}
 .pcard{display:flex;flex-direction:column}.pcard-f{display:flex;justify-content:space-between;align-items:baseline;margin-top:auto;padding-top:24px}.pcard .badge{align-self:flex-start}
 .person{display:flex;gap:14px;align-items:center}.pp-a{width:64px;flex:none}
 .rev{padding-bottom:16px;border-bottom:1px solid var(--ln)}
-.bk-g{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start}
-.bk-side{position:sticky;top:calc(var(--hdr) + 24px)}
 .stack-l{display:flex;flex-direction:column;gap:48px;min-width:0}
 .fopts{display:flex;flex-direction:column;gap:8px}.fopts-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
 .fopt{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--ln2);border-radius:var(--rs);text-align:left;background:var(--card);width:100%}.fopt>span:nth-child(2){flex:1;min-width:0}.fopt:hover{border-color:var(--fg)}.fopt.on{border-color:var(--pri);box-shadow:0 0 0 1px var(--pri) inset}.fopt .ic{color:var(--pri);flex:none}.fopt[aria-disabled=true]{opacity:.5;pointer-events:none}
@@ -355,7 +364,7 @@ legend{padding:0;margin-bottom:10px}
 .next{display:block}.next.live{border-color:var(--pri);box-shadow:0 0 0 1px var(--pri) inset}
 .lrow{display:grid;grid-template-columns:64px 18px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 14px;background:var(--card);border:1px solid var(--ln);border-radius:var(--rs)}.lrow:hover{border-color:var(--ln2)}.lrow-d{display:flex;flex-direction:column}.lrow-d b{font:400 20px var(--f-disp)}.lrow-d small{font-size:11px;color:var(--mut)}.lrow .ic{color:var(--pri)}
 .prow{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--ln)}.prow:last-child{border-bottom:0}.prow .pstrip{margin-top:8px}
-@media (max-width:960px){.bk-g,.bd2{grid-template-columns:minmax(0,1fr)}.bk-side{position:static}}
+@media (max-width:960px){.bd2{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.lrow{grid-template-columns:52px minmax(0,1fr) auto}.lrow>.ic{display:none}}
 .stack>.btn-link,.stack-s>.btn-link{align-self:flex-start}
 @media (max-width:640px){.co-sum>.plate{display:none}.co-sum>.plate+*{margin-top:0}}
@@ -501,6 +510,7 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
 .cc:hover{border-color:var(--ln2)}.cc .plate{width:88px;max-height:110px;border-radius:calc(var(--r) - 4px);margin:0}
 .cc-b{display:flex;flex-direction:column;gap:2px;min-width:0}.cc-t{font:500 15px/1.3 var(--f-body);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .cc-s{font-size:13px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cc-m{font:500 10.5px/1.5 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-n{display:flex;align-items:center;gap:6px;font-size:12px;line-height:1.4;color:var(--mut)}.cc-n .dot{width:6px;height:6px}
 .cc-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px}.cc-p{font:500 13px var(--f-mono);white-space:nowrap}
 @media (max-width:380px){.cc{grid-template-columns:72px minmax(0,1fr) auto;gap:12px}.cc .plate{width:72px;max-height:90px}}
 /* show more */
@@ -588,9 +598,9 @@ html{scroll-padding-top:calc(var(--hdr) + 16px)}
 /* plan calculators: steppers, the result card with a bar per plan */
 .calc-l{display:flex;flex-direction:column;border-top:1px solid var(--ln)}.calc-r{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--ln)}.calc-r>span:first-child{display:flex;gap:12px;align-items:center;min-width:0}.calc-r .ic{color:var(--pri);flex:none}
 .step{display:inline-flex;align-items:center;gap:4px;flex:none}.step b{min-width:24px;text-align:center;font:500 16px var(--f-mono)}.step .ibtn{border:1px solid var(--ln2);width:44px;height:44px}.step .ibtn:disabled{opacity:.35}
-.calc-o{position:sticky;top:calc(var(--hdr) + 24px)}.calc-bars{display:flex;flex-direction:column;gap:10px}.calc-bars>div{display:grid;grid-template-columns:96px 1fr 72px;gap:12px;align-items:center}.calc-bars i{height:8px;border-radius:4px;background:var(--ln);overflow:hidden}.calc-bars b{display:block;height:100%;background:var(--hi);opacity:.6}.calc-bars b.mute{background:var(--ln2)}.calc-bars .on b{background:var(--pri);opacity:1}.calc-bars .on .small{color:var(--pri)}.calc-bars .mono{text-align:right}
+.calc-o{position:sticky;top:calc(var(--hdr) + 24px)}.calc-bars{display:flex;flex-direction:column;gap:10px}.calc-bars>div{display:grid;grid-template-columns:7.5em 1fr 72px;gap:12px;align-items:center}.calc-bars .small{white-space:nowrap}.calc-bars i{height:8px;border-radius:4px;background:var(--ln);overflow:hidden}.calc-bars b{display:block;height:100%;background:var(--hi);opacity:.6}.calc-bars b.mute{background:var(--ln2)}.calc-bars .on b{background:var(--pri);opacity:1}.calc-bars .on .small{color:var(--pri)}.calc-bars .mono{text-align:right}
 @media (max-width:960px){.calc-o{position:static}}
-@media (max-width:640px){.calc-bars>div{grid-template-columns:80px 1fr 64px}}
+@media (max-width:640px){.calc-bars>div{grid-template-columns:7.5em 1fr 64px;gap:10px}}
 /* the compact review block on detail pages */
 .rvb{display:flex;flex-direction:column;gap:var(--s4)}.rvb-h{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap}.rvb-n{font-size:32px;line-height:1}
 .rvb-q{margin:0;padding-left:var(--s4);border-left:2px solid var(--ln2)}.rvb-q p{font-size:15px;line-height:1.5}.rvb-q cite{display:block;margin-top:4px;font-style:normal}.rvb .btn-link{align-self:flex-start}
@@ -638,17 +648,29 @@ a,button,label,summary,[data-a]{-webkit-tap-highlight-color:transparent}
   color-scheme:dark;
 }
 .sec-deep{background:var(--bg3)}
+.stars{color:var(--pri)}
+/* gift cards: Midnight (ultramarine with chalk rings), Chalk (a ruled board), Highlighter (saffron with a navy stroke) */
+.gc .lg-a{font-size:18px}.gc .lg-b{font-size:13px;color:inherit;opacity:.75}
+.gd-midnight{background:radial-gradient(90% 120% at 100% 0%,#2A44D8 0%,#15218A 38%,#080C2C 80%);border-color:rgba(157,184,255,.4)}
+.gc.gd-midnight::before{background:radial-gradient(circle at 82% 30%,transparent 0 17%,rgba(243,244,255,.22) 17.3% 17.6%,transparent 17.9% 25%,rgba(243,244,255,.16) 25.3% 25.6%,transparent 25.9% 33%,rgba(243,244,255,.1) 33.3% 33.6%,transparent 33.9%)}.gc.gd-midnight .gc-amt{color:var(--pri)}
+.gd-chalk{background:#11141C;border-color:rgba(243,244,255,.3)}
+.gc.gd-chalk::before{background:repeating-linear-gradient(0deg,rgba(243,244,255,.06) 0 1px,transparent 1px 22px),repeating-linear-gradient(90deg,rgba(243,244,255,.06) 0 1px,transparent 1px 22px)}
+.gc.gd-chalk::after{background:radial-gradient(60% 50% at 90% 10%,rgba(157,184,255,.25),transparent 70%),linear-gradient(transparent calc(100% - 3px),rgba(255,208,46,.9) 0)}.gc.gd-chalk .gc-amt{color:var(--hi)}
+.gd-marker{background:linear-gradient(140deg,#FFE066 0%,#FFD02E 55%,#F2B705 100%);color:#0B1147;border-color:#FFE066}
+.gc.gd-marker{color:#0B1147}.gc.gd-marker::before{background:radial-gradient(circle at 84% 26%,transparent 0 15%,rgba(11,17,71,.2) 15.3% 15.7%,transparent 16% 23%,rgba(11,17,71,.15) 23.3% 23.7%,transparent 24% 31%,rgba(11,17,71,.1) 31.3% 31.7%,transparent 32%)}.gc.gd-marker::after{background:radial-gradient(90% 70% at 0% 100%,rgba(255,255,255,.35),transparent 60%)}.gc.gd-marker .lg-b{opacity:.7}
+
 .h-disp{font-weight:400;letter-spacing:-.005em}
 .logo{display:inline-flex;align-items:baseline;gap:8px}.lg-a{font:400 26px/1 var(--f-logo);letter-spacing:.02em}.lg-b{font:italic 400 16px/1 var(--f-it);color:var(--mut)}
 .gate .lg-a{font-size:44px}.gate .lg-b{font-size:22px}
 .hand{font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--hi)}.paper .hand{font-family:var(--f-hand);font-size:22px;line-height:1.25}.hand.red,.red{color:var(--pri)}
-.jc-t{margin-left:auto;margin-right:auto}
+
 
 .dial-show{display:flex;flex-direction:column;gap:18px}.dd-r{gap:18px}.dd-r .hand{color:var(--fg);font-size:16px}
 
 /* the Dial */
 .dial{display:inline-flex;align-items:center;gap:6px}.dial i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--ln2);background:transparent;transition:background .3s}
-.dial i.on{border-color:transparent}.dial i.on.l1{background:#D9A066}.dial i.on.l2{background:#D6B25A}.dial i.on.l3{background:#9CB75B}.dial i.on.l4{background:#4F9C5D}.dial i.on.l5{background:#2B7A4B}
+/* the Dial lights in the saffron highlighter, brighter as it climbs from one to five */
+.dial i.on{border-color:transparent}.dial i.on.l1{background:rgba(255,208,46,.42)}.dial i.on.l2{background:rgba(255,208,46,.56)}.dial i.on.l3{background:rgba(255,208,46,.7)}.dial i.on.l4{background:rgba(255,208,46,.85)}.dial i.on.l5{background:#FFD02E;box-shadow:0 0 10px rgba(255,208,46,.55)}
 .dial b{margin-left:6px;padding:3px 8px;border-radius:4px;border:1.5px solid var(--ln2);font:700 9px var(--f-mono);letter-spacing:.12em;color:var(--mut)}.dial b.on{background:var(--err);border-color:var(--err);color:#0D1324}
 .dial-big i{width:26px;height:26px}.dial-big{gap:10px}.dial-big b{font-size:11px;padding:6px 10px}
 
@@ -744,7 +766,7 @@ body[data-page=educators] #ftr{padding-bottom:84px}
 
 /* timetable week */
 .wk-tabs{display:none;gap:6px;overflow-x:auto;scrollbar-width:none}.wk-tabs::-webkit-scrollbar{display:none}.wk-tabs .dayb{width:auto;flex:1;min-width:44px}
-.wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.wk-d{min-width:0}.wk-h{font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding-bottom:10px;border-bottom:1px solid var(--ln);margin-bottom:10px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}.wk-h .mono{color:var(--fg)}
+.wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.wk-d{min-width:0}.wk-h{font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding-bottom:10px;border-bottom:1px solid var(--ln);margin-bottom:10px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}.wk-h .mono{color:var(--fg)}.wk-h{flex-wrap:nowrap;line-height:18px;white-space:nowrap}.wk-h .tag{padding:0 6px;line-height:16px}
 .wk-l{display:flex;flex-direction:column;gap:8px}.wk-c{display:flex;flex-direction:column;gap:3px;padding:10px;border:1px solid var(--ln);border-left:2px solid var(--hi);border-radius:var(--rs);background:var(--card)}.wk-c.couples{border-left-color:var(--pri)}.wk-c:hover{border-color:var(--ln2)}.wk-c.off{opacity:.5}.wk-c strong{font:400 15px/1.2 var(--f-disp)}.wk-c small{font-size:11.5px}.wk-c .seats,.wk-c .tag{margin-top:4px;align-self:flex-start}
 
 /* membership */
@@ -799,6 +821,14 @@ body[data-page=educators] #ftr{padding-bottom:84px}
 .pcrowd .mono{display:inline-flex;align-items:center;gap:6px;letter-spacing:.06em;text-transform:uppercase}
 @media (max-width:640px){.pcrowd{flex-direction:column;align-items:flex-start;gap:6px}}
 .plive{display:flex;align-items:center;gap:6px}
+
+/* promotions (the season, the opening) share the banner's saffron */
+.founding{border-color:var(--pri)}
+/* numbered steps: a narrow number column */
+.plan-l.plan-n li{grid-template-columns:28px minmax(0,1fr)}
+.pcard .tag{align-self:flex-start}
+/* studios: equal cards, every line (address, note, rating) on the same baseline */
+.stu{display:flex;flex-direction:column}.stu>.btn-link{align-self:flex-start}.stu-a,.stu-n{min-height:3.2em}.stu-r{padding-top:24px}
 
 </style>
 <script>if(/^(#\/?)?$/.test(location.hash)){var l=document.createElement('link');l.rel='preload';l.as='image';l.href='photos/site-hero.avif';l.fetchPriority='high';document.head.appendChild(l)}</script>
@@ -929,7 +959,8 @@ const FMT = {
   wd: { weekday: 'short' },
   wdl: { weekday: 'long' }
 };
-U.fmt = (ms, tz = 'UTC', kind = 'dt') => { if (ms == null || !isFinite(ms)) return '—'; const k = tz + kind; if (!_fmt[k]) _fmt[k] = new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: tz }, FMT[kind])); return _fmt[k].format(new Date(ms)); };
+// London reads the clock in 24 hours (14:30), the US cities in 12 (2:30 PM)
+U.fmt = (ms, tz = 'UTC', kind = 'dt') => { if (ms == null || !isFinite(ms)) return '—'; const k = tz + kind; if (!_fmt[k]) _fmt[k] = new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: tz }, FMT[kind], tz === 'Europe/London' && FMT[kind].hour ? { hourCycle: 'h23' } : {})); return _fmt[k].format(new Date(ms)); };
 U.keyFmt = (key, kind = 'date') => U.fmt(U.zoned('UTC', key, 720), 'UTC', kind);
 U.tzAbbr = (tz, ms = Date.now()) => { try { const p = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' }).formatToParts(new Date(ms)).find(x => x.type === 'timeZoneName'); return p ? p.value : ''; } catch (e) { return ''; } };
 U.dur = m => { const h = Math.floor(m / 60), mm = m % 60; return h ? (h + ' hr' + (mm ? ' ' + mm + ' min' : '')) : mm + ' min'; };
@@ -982,7 +1013,7 @@ F.SITE = {
   id: 'practice', brand: 'Practice', title: 'Practice by FLINGR', storeKey: 'flingr.practice', launch: '2026-10-22', refPrefix: 'PR', descriptor: 'FLG*LEARN', opsCode: 'LESSON-PLAN',
   logo: '<span class="lg-a">PRACTICE</span><span class="lg-b">by FLINGR</span>', gateLine: 'Pleasure, <span class="it">properly</span> taught.', emptyIcon: 'book',
   arrays: ['lessons', 'classes', 'seats', 'enrol', 'progress', 'drills', 'members', 'reviews', 'incidents', 'tickets', 'blocks'],
-  nav: [{ label: 'Skills', href: '#/skills', pages: ['skills', 'skill'] }, { label: 'Educators', href: '#/educators', pages: ['educators', 'educator'] }, { label: 'Timetable', href: '#/timetable', pages: ['timetable', 'class'] }, { label: 'Membership', href: '#/membership', pages: ['membership', 'join', 'programs', 'program'] }],
+  nav: [{ label: 'Skills', href: '#/skills', pages: ['skills', 'skill', 'programs', 'program'] }, { label: 'Educators', href: '#/educators', pages: ['educators', 'educator'] }, { label: 'Timetable', href: '#/timetable', pages: ['timetable', 'class'] }, { label: 'Membership', href: '#/membership', pages: ['membership', 'join'] }],
   more: [['How it works', '#/how-it-works'], ['Programs', '#/programs'], ['Studios', '#/studios'], ['Journal', '#/journal'], ['Gift', '#/gift'], ['Help', '#/help']],
   meLinks: [['#/account', 'Overview'], ['#/account/lessons', 'Lessons'], ['#/account/passport', 'Learning path'], ['#/account/membership', 'Membership'], ['#/account/inbox', 'Inbox'], ['#/account/settings', 'Settings']],
   accountTabs: [['', 'Overview'], ['lessons', 'Lessons'], ['passport', 'Learning path'], ['health', 'Health'], ['inbox', 'Inbox'], ['wallet', 'Wallet'], ['homework', 'Homework', 'more'], ['membership', 'Membership', 'more'], ['settings', 'Settings', 'more'], ['privacy', 'Privacy', 'more']],
@@ -991,9 +1022,11 @@ F.SITE = {
   // a booking made while planning a FLINGR trip becomes a leg of that trip
   tripLeg: (type, id) => { const E = F.E, base = URL.practice; if (type === 'lesson_booked') { const l = E.lesson(id); return l ? { kind: 'lesson', title: `${E.skill(l.skillId).n} · ${F.FORMATS[l.format].name}`, at: l.start, href: base + '#/account/lesson/' + l.id } : false; } if (type === 'seat_booked') { const c = E.classById(id); return c ? { kind: 'class', title: `${E.skill(c.skillId).n} in the Hall`, at: c.start, href: base + '#/class/' + c.id } : false; } return false; },
   rememberPages: ['skills', 'educators', 'timetable'], searchHint: 'skills, educators, programs',
+  giftDesigns: [['midnight', 'Midnight'], ['chalk', 'Chalk'], ['marker', 'Highlighter']], giftName: 'Practice gift code', journalLead: 'Short, plain reads from our educators: how lessons work, and what to try at home.',
   freshPages: ['skill', 'educator', 'class', 'program', 'article', 'lesson'], livePages: ['account', 'lesson', 'class', 'studio', 'ops', 'timetable'],
   family: [{ id: 'flingr', name: 'FLINGR', line: 'One night, properly arranged', url: URL.flingr }, { id: 'practice', name: 'Practice', line: 'Pleasure, properly taught', url: URL.practice }, { id: 'velvet', name: 'Velvet', line: 'The sensual spa', url: URL.velvet }],
-  venues: { la: { addr: '2214 Sunset Blvd, Los Angeles' }, ny: { addr: '61 Leonard Street, New York' }, ldn: { addr: '14 Britton Street, London EC1' } },
+  // the contact page reads each studio's one address, so every page writes it the same way
+  get venues() { return Object.fromEntries(Object.entries(F.STUDIOS).map(([k, x]) => [k, { addr: x.addr }])); },
   member: { pauseMax: 2, annualFree: 2, coupleMult: 1.6, foundingPct: 30, foundingCap: 500, foundingDays: 30, graceDays: 3 },
   // one membership, an add-on in plain money; paying per lesson is the default
   plans: [{ id: 'member', name: 'Practice Membership', kicker: 'For regular learners', usd: 29, pct: 20, blurb: 'Pays for itself with one practical, or three online lessons, a month. The member price is shown next to every price.', perks: ['The member price on every lesson, class and program: 20% off', 'Book five weeks ahead, a week before everyone else', 'Move a lesson free up to 2 hours before (24 hours otherwise)', 'Pause up to two months a year; cancel any time'] }],
@@ -1204,7 +1237,7 @@ E.unread = u => E.myNotes(u).filter(n => !n.read).length;
 // Site promos: { code, label, pct | usd, minUsd, plans:[...], kinds:[...], firstOnly, until: 'YYYY-MM-DD' }
 E.promo = (code, ctx) => {
   const c = String(code || '').trim().toUpperCase(); if (!c) return null;
-  const p = (F.SITE.promos || []).find(x => x.code === c); if (!p) return { ok: false, reason: 'This code isn’t recognised.' };
+  const p = (F.SITE.promos || []).find(x => x.code === c); if (!p) return { ok: false, reason: 'This code isn’t recognized.' };
   if (p.until && E.todayKey('la') > p.until) return { ok: false, reason: 'This code has expired.' };
   if (p.from && E.todayKey('la') < p.from) return { ok: false, reason: 'This code isn’t live yet.' };
   if (p.kinds && !p.kinds.includes(ctx.kind)) return { ok: false, reason: p.kindsMsg || 'This code doesn’t apply here.' };
@@ -1284,7 +1317,9 @@ F.uc = u => { const p = F.avColors(); return p[U.hash((u && u.id) || '') % p.len
 F.stars = (n, s = 12) => `<span class="stars" role="img" aria-label="${n} out of 5">${[1, 2, 3, 4, 5].map(i => `<span class="${i <= Math.round(n) ? '' : 'off'}">${F.ic('star', s)}</span>`).join('')}</span>`;
 F.tone = t => `<span class="badge b-${t.tone}"><i class="dot ${t.tone}"></i>${esc(t.label)}</span>`;
 F.empty = (title, body, cta) => `<div class="empty"><div class="empty-mark">${F.ic(F.SITE.emptyIcon || 'moon', 26)}</div><h3 class="h-disp h4">${title}</h3><p class="muted">${body}</p>${cta || ''}</div>`;
-F.pageHead = ({ eyebrow, title, lead, extra = '', cls = '' }) => `<section class="phero ${cls}"><div class="wrap"><div class="eyebrow ln rv">${eyebrow}</div><h1 class="h-cond phero-t rv">${title}</h1>${lead ? `<p class="lead rv">${lead}</p>` : ''}${extra}</div></section>`;
+// the last two words of a heading stay together, so no line ends with one word alone (only spaces in text, never inside a tag)
+F.noOrphan = h => { const parts = String(h).split(/(<[^>]*>)/); for (let i = parts.length - 1; i >= 0; i--) { if (parts[i][0] === '<') continue; const j = parts[i].trimEnd().lastIndexOf(' '); if (j > -1) { parts[i] = parts[i].slice(0, j) + '&nbsp;' + parts[i].slice(j + 1); break; } } return parts.join(''); };
+F.pageHead = ({ eyebrow, title, lead, extra = '', cls = '' }) => `<section class="phero ${cls}"><div class="wrap"><div class="eyebrow ln rv">${eyebrow}</div><h1 class="h-cond phero-t rv">${F.noOrphan(title)}</h1>${lead ? `<p class="lead rv">${lead}</p>` : ''}${extra}</div></section>`;
 F.signedOut = (title, body, next) => `<section class="sec"><div class="wrap narrow center">${F.empty(title, body, `<button class="btn btn-pri mt24" data-a="signin" data-next="${esc(next || '')}">Sign in</button><p class="small muted mt16">New here? <button class="btn-link" data-a="signup" data-next="${esc(next || '')}">Create a FLINGR account</button></p>`)}</div></section>`;
 F.subnav = (items, cur, label = 'Sections') => `<nav class="subnav" aria-label="${label}">${items.map(([href, l, n]) => `<a href="${href}" class="${cur === href ? 'on' : ''}" ${cur === href ? 'aria-current="page"' : ''}>${l}${n ? ` <span class="n">${n}</span>` : ''}</a>`).join('')}</nav>`;
 F.kv = (k, v, cls = '') => `<div class="kv ${cls}"><span>${k}</span><span>${v}</span></div>`;
@@ -1526,7 +1561,7 @@ F.Fm.signup = (f, d) => {
 A.signout = () => { F.store.commit((s, p) => { if (F.onSignOut) F.onSignOut(s); p.session.userId = null; }); F.closeModal(true); F.closeMenus(); F.toast('You have been signed out.'); F.nav('/'); };
 A.verifyId = () => {
   F.modal(`<h2 class="h-disp h3">Verify your identity</h2><p class="muted mt8">Once, for every FLINGR site. Staff see that you are verified, never your documents.</p>
-  <form data-f="verify" class="stack mt24"><fieldset><legend class="lbl">Document</legend><div class="rgrid">${['Passport', 'Driving licence', 'National ID card'].map((x, i) => `<label class="rcard"><input type="radio" name="doc" value="${x}" ${i === 0 ? 'checked' : ''}><span>${x}</span></label>`).join('')}</div></fieldset>
+  <form data-f="verify" class="stack mt24"><fieldset><legend class="lbl">Document</legend><div class="rgrid">${['Passport', 'Driver’s license', 'National ID card'].map((x, i) => `<label class="rcard"><input type="radio" name="doc" value="${x}" ${i === 0 ? 'checked' : ''}><span>${x}</span></label>`).join('')}</div></fieldset>
   <div class="field"><label for="vC">Issuing country</label><select class="inp" id="vC" name="country"><option>United States</option><option>United Kingdom</option><option>Canada</option><option>France</option><option>Germany</option><option>Australia</option></select></div>
   <p class="tiny muted">${F.ic('lock', 12)} Checked by our identity partner. Documents are deleted once you’re verified.</p>
   <button class="btn btn-pri btn-block">Start verification</button></form>`, { label: 'Verify identity' });
@@ -1659,7 +1694,7 @@ window.addEventListener('scroll', () => { const h = $('#hdr'); if (h) h.classLis
 
 /* ---------- pages every site has ---------- */
 F.pages.notfound = { render: (r, err) => ({ title: err ? 'Something went wrong' : 'Not found', html: `<section class="sec"><div class="wrap narrow center">${F.empty(err ? 'That page didn’t load' : 'This page isn’t here', err ? 'Please try again. If it keeps happening, call us and we’ll sort it out.' : 'It may have moved, or the link was mistyped.', `<a class="btn btn-pri mt24" href="#/">Back to the start</a>`)}</div></section>` }) };
-F.pages.legal = { render(r) { const d = F.CONTENT.legal[r.params[0]]; if (!d) return F.pages.notfound.render(r); return { title: d.title, html: `${F.pageHead({ eyebrow: 'Legal', title: esc(d.title), lead: 'Updated ' + esc(d.updated) })}<section class="sec-sm"><div class="wrap narrow legal">${F.acc(d.sections.map(([h, b], i) => [`<span id="sec-${i}">${i + 1}. ${esc(h)}</span>`, `<p>${esc(b)}</p>`]), { open: 0 })}<p class="tiny muted mt24">Questions about these terms? <a class="u" href="#/contact">Write to us</a>.</p></div></section>` }; } };
+F.pages.legal = { render(r) { const d = F.CONTENT.legal[r.params[0]]; if (!d) return F.pages.notfound.render(r); return { title: d.title, html: `${F.pageHead({ eyebrow: 'Legal', title: esc(d.title), lead: 'Updated ' + esc(d.updated) })}<section class="sec-sm"><div class="wrap"><div class="narrow-l legal">${F.acc(d.sections.map(([h, b], i) => [`<span id="sec-${i}">${i + 1}. ${esc(h)}</span>`, `<p>${esc(b)}</p>`]), { open: 0 })}<p class="tiny muted mt24">Questions about ${r.params[0] === 'terms' ? 'these terms' : 'this policy'}? <a class="u" href="#/contact">Write to us</a>.</p></div></div></section>` }; } };
 })();
 
 /* ---- 04-select.js ---- */
@@ -1788,7 +1823,9 @@ A.walletCur = el => { F.store.commit(() => { E.user().prefs.walletCur = el.datas
 
 /* ---------- methods ---------- */
 const BANK = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v7m4.7-7v7m4.6-7v7M19 10v7M3.5 20h17"/></svg>';
-F.pmIcon = m => `<span class="pmi pmi-${m.type}" aria-hidden="true">${m.type === 'card' ? `<b>${{ Visa: 'VISA', Mastercard: 'MC', 'American Express': 'AMEX', Discover: 'DISC' }[m.brand] || 'CARD'}</b>` : m.type === 'bank' ? BANK : m.type === 'paypal' ? F.ic('wallet', 18) : F.ic('phone', 18)}</span>`;
+const APPLE = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.6 1.1 8.8.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 1.9-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5 0 0-2.3-.9-2.5-3.6zM14.2 6.1c.6-.7 1-1.8.9-2.8-.9 0-1.9.6-2.6 1.3-.6.6-1 1.7-.9 2.7 1 .1 2-.5 2.6-1.2z"/></svg>';
+// every method is a small chip with its own mark, like a wallet: VISA, MC, Apple Pay, G Pay, PayPal, a bank
+F.pmIcon = m => `<span class="pmi pmi-${m.type}" aria-hidden="true">${m.type === 'card' ? `<b>${{ Visa: 'VISA', Mastercard: 'MC', 'American Express': 'AMEX', Discover: 'DISC' }[m.brand] || 'CARD'}</b>` : m.type === 'bank' ? BANK : m.type === 'paypal' ? '<b>PayPal</b>' : m.type === 'apple' ? `${APPLE}<b>Pay</b>` : '<b>G Pay</b>'}</span>`;
 F.pmSub = m => m.type === 'card' ? `•••• ${m.last4} · ${E.cardExpired(m) ? 'expired' : 'expires'} ${m.exp}` : m.type === 'paypal' ? esc(m.email || 'PayPal account') : 'Express checkout · •••• ' + m.last4;
 U.luhn = n => { let s = 0, alt = false; for (let i = n.length - 1; i >= 0; i--) { let d = +n[i]; if (alt) { d *= 2; if (d > 9) d -= 9; } s += d; alt = !alt; } return n.length >= 13 && s % 10 === 0; };
 E.cardBrand = n => /^3[47]/.test(n) ? 'American Express' : /^4/.test(n) ? 'Visa' : /^(5[1-5]|2[2-7])/.test(n) ? 'Mastercard' : /^6(011|5)/.test(n) ? 'Discover' : '';
@@ -1851,6 +1888,8 @@ F.payBlock = (u, cityId, amount, o = {}) => {
   ${rest > 0 ? `<fieldset class="${w > 0 ? 'mt16' : ''}"><legend class="lbl">${fromW ? 'Pay the remaining ' + E.money(rest, cityId, true) + ' with' : 'Pay with'}</legend><div class="pmethods">${u.methods.filter(m => !E.cardExpired(m)).map(m => `<label class="pm"><input type="radio" name="pm" value="${m.id}" data-ch="payMethod" ${p.method === m.id ? 'checked' : ''}>${F.pmIcon(m)}<span><strong>${esc(m.nick || m.brand)}</strong><small class="d-b muted">${F.pmSub(m)}</small></span></label>`).join('')}</div><button class="btn-link tiny mt8" data-a="addMethod">${F.ic('plus', 12)} Add a payment method</button></fieldset>` : `<div class="notice small">${F.ic('wallet', 16)}<span>Your Wallet covers the full amount.</span></div>`}
   ${o.note === false ? '' : `<p class="tiny muted mt16">${F.ic('lock', 11)} Your statement shows ${E.desc(cityId)}.${o.note ? ' ' + o.note : ''}</p>`}</div>`;
 };
+// the pay button names what the card is charged (the Wallet's share goes first), or says the Wallet covers it
+F.payCta = (u, cityId, amount, verb) => { const p = F.payState(u), w = E.walletIn(u, cityId), rest = U.r2(amount - (p.wallet && w > 0 ? Math.min(w, amount) : 0)); return rest > 0 ? `Pay ${E.money(rest, cityId, true)} and ${verb}` : `${verb[0].toUpperCase() + verb.slice(1)} with Wallet`; };
 F.C.payWallet = el => { F.ui.pay.wallet = el.checked; F.rerender(); };
 F.C.payMethod = el => { F.ui.pay.method = el.value; F.rerender(); };
 // Takes the money now (Wallet first, then the chosen method). Returns { ok, label, wallet, card } or { ok:false, reason }
@@ -1872,7 +1911,7 @@ F.Fm.topUp = async (f, d) => {
 };
 F.Fm.redeem = (f, d) => {
   const code = String(d.code || '').trim().toUpperCase(); if (!code) return;
-  const r = F.store.commit((s, p) => { p.gifts = p.gifts || []; const g = p.gifts.find(x => x.code === code); if (!g) return { ok: false, reason: 'That code isn’t recognised.' }; if (g.redeemedBy) return { ok: false, reason: 'That code has already been used.' }; g.redeemedBy = E.user().id; g.at = now(); E.walletTx(E.user(), g.usd, 'Gift code · ' + code); return { ok: true, usd: g.usd }; });
+  const r = F.store.commit((s, p) => { p.gifts = p.gifts || []; const g = p.gifts.find(x => x.code === code); if (!g) return { ok: false, reason: 'That code isn’t recognized.' }; if (g.redeemedBy) return { ok: false, reason: 'That code has already been used.' }; g.redeemedBy = E.user().id; g.at = now(); E.walletTx(E.user(), g.usd, 'Gift code · ' + code); return { ok: true, usd: g.usd }; });
   if (!r.ok) return F.toast(r.reason, 'err'); F.toast(`${F.wmoney(r.usd, E.user())} added from your gift.`); F.rerender();
 };
 })();
@@ -2049,7 +2088,7 @@ F.pages.join = {
     ${u.verified ? '' : `<div class="verline">${F.ic('lock', 18)}<div><strong>Verify your identity first</strong><div class="tiny muted">Once, for every FLINGR site.</div></div><button class="btn btn-pri btn-sm" data-a="verifyId">Verify now</button></div>`}
     <div class="card"><span class="lbl">Payment</span><div class="mt16">${F.payBlock(u, cityId, price, { note: `Renews ${j.cycle === 'year' ? 'every year' : 'every month'} on the same date. Cancel any time; member prices run to the end of the period.` })}</div></div>
     <label class="check"><input type="checkbox" id="joinOk"><span>I agree to the <a class="u" href="#/legal/terms" data-a="legalModal" data-k="terms">membership terms</a>: it renews automatically until I cancel, and I can pause up to ${M().pauseMax} months a year.</span></label>
-    <button class="btn btn-pri btn-lg btn-block" data-a="joinPay" data-p="${p.id}" ${u.verified ? '' : 'disabled'}>Pay ${E.money(price, cityId, true)} and join</button></div>
+    <button class="btn btn-pri btn-lg btn-block" data-a="joinPay" data-p="${p.id}" ${u.verified ? '' : 'disabled'}>${F.payCta(u, cityId, price, 'join')}</button></div>
     <aside class="co-side"><div class="card co-sum"><span class="lbl">${esc(p.kicker)}</span><h2 class="h-disp h3 mt8">${esc(p.name)}</h2><ul class="ticks mt16">${p.perks.map(x => `<li>${F.ic('check', 14)}<span>${x}</span></li>`).join('')}</ul>
     <div class="sum mt24">${F.kv(j.cycle === 'year' ? 'Yearly' : 'Monthly', E.money(full, cityId, true))}${fo && price < full ? F.kv(`Founding price · ${M().foundingPct}% off for life`, '−' + E.money(full - price, cityId, true), 'kv-disc') : ''}${F.kv('Due today', E.money(price, cityId, true), 'kv-total')}</div>
     <p class="tiny muted mt16">Next charge ${U.fmt(E.periodEnd(Date.now(), j.cycle, tz), tz, 'md')}. Prices include ${E.city(cityId).taxLabel.toLowerCase()}.</p></div></aside></div></div></section>` };
@@ -2086,13 +2125,15 @@ A.retryRenew = async el => { F.busy(el, true, 'Trying'); await U.sleep(500); E.t
 (() => {
 const E = F.E, A = F.A;
 const st = () => F.ui.wc = F.ui.wc || Object.assign({}, F.SITE.calcStart || {});
+// what membership costs a month today, as the hero says it: the founding price while that offer is open
+F.memberFee = c => { const p = F.SITE.plans[0], fo = E.foundingOpen(), a = E.planPrice(p.id, { cycle: 'month', cityId: c, founding: fo }), full = E.planPrice(p.id, { cycle: 'month', cityId: c }); return fo && a < full ? `from ${E.money(a, c)} a month at the founding price` : `for ${E.money(full, c)} a month`; };
 F.worthCalc = c => {
   const rows = F.SITE.calcRows(c), s = st(), p = F.SITE.plans[0], cur = E.memberOf(E.user());
   const spend = rows.reduce((t, r) => t + (s[r.k] || 0) * r.price, 0), save = Math.round(spend * p.pct / 100), fee = E.planPrice(p.id, { cycle: 'month', cityId: c, founding: E.foundingOpen() }), net = save - fee, withM = spend - save + fee, max = Math.max(spend, withM) || 1;
   return `<div class="calc split al-start"><div>${F.secHead({ eyebrow: 'Is membership worth it?', title: 'How often <span class="it">do you book?</span>', lead: 'A typical month. We add it up at today’s prices, with and without the member price.' })}
   <div class="calc-l">${rows.map(r => `<div class="calc-r"><span>${r.icon ? F.ic(r.icon, 16) : ''}<span><strong class="small">${esc(r.label)}</strong><small class="muted d-b">${E.money(r.price, c)} each${r.sub ? ' · ' + esc(r.sub) : ''}</small></span></span><span class="step"><button class="ibtn" data-a="wcStep" data-k="${r.k}" data-d="-1" aria-label="Fewer: ${esc(r.label.toLowerCase())}" ${s[r.k] ? '' : 'disabled'}>${F.ic('minus', 14)}</button><b aria-live="polite">${s[r.k] || 0}</b><button class="ibtn" data-a="wcStep" data-k="${r.k}" data-d="1" aria-label="More: ${esc(r.label.toLowerCase())}" ${(s[r.k] || 0) >= 12 ? 'disabled' : ''}>${F.ic('plus', 14)}</button></span></div>`).join('')}</div></div>
   <div class="card calc-o"><span class="lbl">Each month</span><div class="h-disp h2 mt8">${spend ? (net > 0 ? `Save ${E.money(net, c)}` : 'Pay as you go') : '—'}</div>
-  <p class="small mt8">${!spend ? 'Add what you’d book in a typical month.' : net > 0 ? `Members save ${E.money(save, c)} on this; membership is ${E.money(fee, c)}.` : `At this pace membership would save ${E.money(save, c)} and cost ${E.money(fee, c)}, so paying per booking is cheaper.`}</p>
+  <p class="small mt8">${!spend ? 'Add what you’d book in a typical month.' : net > 0 ? `${E.money(save, c)} off at member prices, less ${E.money(fee, c)} for membership.` : `At this pace membership would save ${E.money(save, c)} and cost ${E.money(fee, c)}, so paying per booking is cheaper.`}</p>
   ${spend ? `<div class="calc-bars mt24"><div class="${net <= 0 ? 'on' : ''}"><span class="small">Pay as you go</span><i><b style="width:${Math.round(spend / max * 100)}%"></b></i><span class="mono tiny">${E.money(spend, c)}</span></div><div class="${net > 0 ? 'on' : ''}"><span class="small">Member</span><i><b style="width:${Math.round(withM / max * 100)}%"></b></i><span class="mono tiny">${E.money(withM, c)}</span></div></div>` : ''}
   ${cur ? `<p class="small mt24">${F.ic('check', 14)} You’re a member: member prices are already on.</p>` : net > 0 ? `<a class="btn btn-pri btn-block mt24" href="#/join/${p.id}">Become a member</a>` : ''}</div></div>`;
 };
@@ -2220,13 +2261,15 @@ const OV = F.OV = {};
 const ok = () => F.S.prefs.opsAt && now() - F.S.prefs.opsAt < 12 * H;
 F.pages.ops = {
   render(r) {
-    if (!ok()) return { title: 'Operations', html: `<section class="sec"><div class="wrap narrow center"><div class="eyebrow ln jc">Staff only</div><h1 class="h-cond h2 mt16">Operations</h1><form class="stack mt32 ops-in" data-f="opsIn"><div class="field"><label for="opC">Staff code</label><input class="inp mono" id="opC" name="code" autocomplete="off"></div><button type="button" class="btn-link tiny" data-a="opsFill">${F.ic('key', 12)} Use the staff code</button><button class="btn btn-pri">Enter</button></form></div></section>` };
+    if (!ok()) return F.staffIn({ title: 'The back <span class="it">office.</span>', name: 'Operations' });
     const tabs = F.SITE.opsTabs.concat([['clock', 'Clock'], ['health', 'Health'], ['data', 'Data']]), tab = r.params[0] || '';
     if (!tabs.some(t => t[0] === tab) || !OV[tab]) return { redirect: '/ops' };
     return { title: 'Operations', html: `<section class="acct-h"><div class="wrap"><div class="row between wrap-gap end"><div><div class="eyebrow">Operations · ${esc(F.SITE.brand)}</div><h1 class="h-cond acct-n">${esc(tabs.find(t => t[0] === tab)[1])}</h1><p class="tiny muted">Site time ${U.fmt(now(), F.city().tz, 'dt')} ${U.tzAbbr(F.city().tz)}${F.clock.offset() ? ' · moved forward ' + U.dur(Math.round(F.clock.offset() / 6e4)) : ''}</p></div><button class="btn btn-ghost btn-sm" data-a="opsOut">Leave</button></div>
     ${F.subnav(tabs.map(([k, l]) => ['#/ops' + (k ? '/' + k : ''), l]), '#/ops' + (tab ? '/' + tab : ''), 'Operations')}</div></section><section class="sec-sm"><div class="wrap">${OV[tab](r)}</div></section>` };
   }
 };
+// the staff sign-in, in the site's own page style (operations and the front desk)
+F.staffIn = ({ title, name, lead = `For ${esc(F.SITE.brand)} staff. Enter your staff code to go on.` }) => ({ title: name, html: `${F.pageHead({ eyebrow: 'Staff only', title, lead })}<section class="sec-sm"><div class="wrap"><form class="card stack ops-in" data-f="opsIn"><div class="field"><label for="opC">Staff code</label><input class="inp mono" id="opC" name="code" autocomplete="off"></div><button type="button" class="btn-link tiny" data-a="opsFill">${F.ic('key', 12)} Use the staff code</button><button class="btn btn-pri">Enter</button></form></div></section>` });
 F.Fm.opsIn = (f, d) => { if (String(d.code || '').trim().toUpperCase() !== F.SITE.opsCode) return F.fieldErr(f, 'code', 'That code isn’t right.'); F.store.commit(s => { s.prefs.opsAt = now(); }); F.rerender(); };
 A.opsFill = () => F.fill($('form[data-f=opsIn]'), { code: F.SITE.opsCode });
 A.opsOut = () => { F.store.commit(s => { s.prefs.opsAt = 0; }); F.nav('/'); };
@@ -2268,7 +2311,7 @@ F.pages.help = {
     const list = CT().faq.filter(f => (!cat || f[0] === cat) && (!q || (f[1] + ' ' + f[2]).toLowerCase().includes(q)));
     return { title: 'Help', html: `${F.pageHead({ eyebrow: 'Help', title: 'Ask us <span class="it">anything.</span>', lead: 'Plain answers. If yours isn’t here, a person answers the phone around the clock.' })}
     <section class="sec-sm"><div class="wrap help"><nav class="help-nav" aria-label="Topics"><a class="${!cat ? 'on' : ''}" href="#/help">All topics</a>${cats.map(c => `<a class="${cat === c ? 'on' : ''}" href="#/help${U.q({ cat: c })}">${c}</a>`).join('')}</nav>
-    <div><form class="help-s" data-f="helpSearch"><label class="sr" for="hq">Search help</label><input class="inp" id="hq" name="q" value="${esc(r.q.q || '')}" placeholder="Search, for example “cancel” or “partner”"><button class="btn btn-pri btn-sm">Search</button></form>
+    <div><form class="help-s" data-f="helpSearch"><label class="sr" for="hq">Search help</label><input class="inp" id="hq" name="q" value="${esc(r.q.q || '')}" placeholder="Search help"><button class="btn btn-pri btn-sm">Search</button></form>
     ${list.length ? `<div class="mt24">${list.map(f => `<details class="acc"><summary class="row between"><span>${esc(f[1])}</span>${F.ic('plus', 14)}</summary><div class="acc-b small">${esc(f[2])}</div></details>`).join('')}</div>` : `<div class="mt32">${F.empty('Nothing matches that', 'Try a shorter word, or call us.')}</div>`}
     <div class="card mt32 row between wrap-gap"><div><h2 class="h-disp h4">Still need help?</h2><p class="small muted mt4">Call or write; we answer day and night.</p></div><span class="row nowrap"><button class="btn btn-ghost btn-sm" data-a="call">Call</button><a class="btn btn-pri btn-sm" href="#/contact">Write to us</a></span></div></div></div></section>` };
   }
@@ -2281,7 +2324,7 @@ F.pages.contact = {
     <section class="sec-sm"><div class="wrap split al-start"><form class="card stack" data-f="contact" novalidate><div class="fgrid"><div class="field"><label for="ctN">Name</label><input class="inp" id="ctN" name="name" value="${u ? esc(u.name) : ''}" required></div><div class="field"><label for="ctE">Email</label><input class="inp" id="ctE" name="email" type="email" value="${u ? esc(u.email) : ''}" required></div></div>
     <div class="field"><label for="ctT">About</label><select class="inp" id="ctT" name="topic">${(F.SITE.topics || ['A booking', 'Membership', 'Payments', 'Something else']).map(t => `<option>${t}</option>`).join('')}</select></div>
     <div class="field"><label for="ctM">Message</label><textarea class="inp" id="ctM" name="msg" rows="5" required></textarea></div><button class="btn btn-pri">Send</button></form>
-    <div class="stack">${F.CITIES.map(c => `<div class="card row between wrap-gap"><div><strong>${c.name}</strong><p class="small muted">${esc((F.SITE.venues && F.SITE.venues[c.id] && F.SITE.venues[c.id].addr) || '')}</p></div><button class="btn-link mono" data-a="call" data-c="${c.id}">${c.phone}</button></div>`).join('')}</div></div></section>` };
+    <div class="stack">${F.CITIES.map(c => `<div class="card ct-c"><strong>${c.name}</strong><p class="small muted mt4">${esc((F.SITE.venues && F.SITE.venues[c.id] && F.SITE.venues[c.id].addr) || '')}</p><button class="btn-link mono mt16" data-a="call" data-c="${c.id}">${c.phone}</button></div>`).join('')}</div></div></section>` };
   }
 };
 F.Fm.contact = (f, d) => {
@@ -2290,32 +2333,37 @@ F.Fm.contact = (f, d) => {
   f.innerHTML = `<div class="notice">${F.ic('check', 16)}<span>Sent. Your reference is <strong class="mono">${no}</strong>; we reply within the hour.</span></div>`;
 };
 // Gift codes are FLINGR-wide: bought here, spendable on any FLINGR site
+// the preview is a gift card at bank-card shape (1.586:1) in the chosen design; every line follows the form as it is typed
+F.giftCard = ({ design = '', title, amt, sub = '', msg = '', to = '', from = '' }) => `<div class="gc gd-${design}" aria-live="polite"><div class="gc-top"><span class="gc-logo">${F.SITE.logo}</span><span class="gc-k">Gift card</span></div><div class="gc-mid"><div class="gc-t">${esc(title)}</div><div class="gc-a"><span class="gc-amt">${amt}</span>${sub ? `<span class="gc-sub">${esc(sub)}</span>` : ''}</div></div><p class="gc-msg">${esc(msg || 'Your message appears here.')}</p><div class="gc-bot"><span>For ${esc(to || 'someone special')}</span><span>From ${esc(from)}</span></div></div>`;
+F.giftDesigns = (cur, act) => (F.SITE.giftDesigns || []).length ? `<div class="chiprow gc-ds mt16" role="group" aria-label="Design">${F.SITE.giftDesigns.map(([k, l]) => `<button type="button" class="chip chip-sm ${cur === k ? 'on' : ''}" data-a="${act}" data-k="design" data-v="${k}" aria-pressed="${cur === k}"><i class="gc-sw gd-${k}"></i>${l}</button>`).join('')}</div>` : '';
+const giftPrev = (g, c, u) => F.giftCard({ design: g.design, title: F.SITE.giftName || 'FLINGR gift code', amt: E.pm(g.usd, c), sub: 'Works on every FLINGR site', msg: g.msg, to: g.to, from: g.from || (u ? E.first(u) : 'you') });
 F.pages.gift = {
   render() {
-    const u = E.user(), g = F.ui.gift = F.ui.gift || { usd: 250 }, c = F.cityId();
-    return { title: 'Gift', html: `${F.pageHead({ eyebrow: 'Gift', title: F.SITE.giftTitle || 'Give them <span class="it">time.</span>', lead: F.SITE.giftLead || 'A FLINGR gift code adds to their Wallet. It never expires and works on every FLINGR site. What they spend it on stays private.' })}
-    <section class="sec-sm"><div class="wrap split al-start"><div class="card gcard-big"><span class="lbl">${esc(F.SITE.brand)} gift</span><div class="h-disp gift-amt mt16">${E.pm(g.usd, c)}</div><p class="small muted mt8">${esc(g.msg || 'Your message appears here.')}</p><p class="tiny muted mt16">${esc(g.to || 'To someone')} · from ${esc(g.from || (u ? E.first(u) : 'you'))}</p></div>
-    <form class="card stack" data-f="gift"><fieldset><legend class="lbl">Amount</legend><div class="row wrap-gap">${[100, 250, 500, 1000].map(v => `<button type="button" class="chip ${g.usd === v ? 'on' : ''}" data-a="giftAmt" data-v="${v}" aria-pressed="${g.usd === v}">${E.pm(v, c)}</button>`).join('')}</div></fieldset>
-    <div class="fgrid"><div class="field"><label for="gfT">To</label><input class="inp" id="gfT" name="to" value="${esc(g.to || '')}" data-c="giftField" data-k="to"></div><div class="field"><label for="gfE">Their email</label><input class="inp" id="gfE" name="email" type="email" value="${esc(g.email || '')}" data-c="giftField" data-k="email"></div></div>
-    <div class="field"><label for="gfM">Message <span class="muted">(optional)</span></label><textarea class="inp" id="gfM" name="msg" rows="3" maxlength="200" data-c="giftField" data-k="msg">${esc(g.msg || '')}</textarea></div>
-    ${u ? F.payBlock(u, c, E.cp(c, g.usd)) : ''}<button class="btn btn-pri">${u ? 'Pay ' + E.pm(g.usd, c, true) + ' and send' : 'Sign in to buy'}</button></form></div></section>` };
+    const u = E.user(), c = F.cityId(), g = F.ui.gift = F.ui.gift || { usd: 250, design: ((F.SITE.giftDesigns || [])[0] || [''])[0] }, amt = E.cp(c, g.usd);
+    return { title: 'Gift', html: `${F.pageHead({ eyebrow: 'Gift', title: F.SITE.giftTitle || 'Give them <span class="it">time.</span>', lead: F.SITE.giftLead || 'A FLINGR gift code adds to their Wallet. It never expires and works on every FLINGR site. What they spend it on stays private.', extra: F.SITE.giftExtra ? F.SITE.giftExtra() : '' })}
+    <section class="sec-sm"><div class="wrap gift-g"><div class="gift-l"><div class="gc-prev">${giftPrev(g, c, u)}</div>${F.giftDesigns(g.design, 'giftSet')}</div>
+    <form class="gift-f" data-f="gift"><div class="card stack"><fieldset><legend class="lbl">Amount</legend><div class="row wrap-gap">${[100, 250, 500, 1000].map(v => `<button type="button" class="chip ${g.usd === v ? 'on' : ''}" data-a="giftAmt" data-v="${v}" aria-pressed="${g.usd === v}">${E.pm(v, c)}</button>`).join('')}</div></fieldset>
+    <div class="fgrid"><div class="field"><label for="gfT">To</label><input class="inp" id="gfT" name="to" value="${esc(g.to || '')}" data-c="giftField" data-k="to" autocomplete="off"></div><div class="field"><label for="gfE">Their email</label><input class="inp" id="gfE" name="email" type="email" value="${esc(g.email || '')}" data-c="giftField" data-k="email"></div></div>
+    <div class="field"><label for="gfM">Message <span class="muted">(optional)</span></label><textarea class="inp" id="gfM" name="msg" rows="3" maxlength="140" data-c="giftField" data-k="msg">${esc(g.msg || '')}</textarea></div></div>
+    <div class="card stack"><span class="lbl">Summary</span><div class="sum">${F.kv('Gift code', E.money(amt, c, true))}${F.kv('Arrives', 'By email, straight away')}</div>${u ? F.payBlock(u, c, amt) : ''}<button class="btn btn-pri btn-block">${u ? F.payCta(u, c, amt, 'send') : 'Sign in to buy'}</button></div></form></div></section>` };
   }
 };
 A.giftAmt = el => { F.ui.gift.usd = +el.dataset.v; F.rerender(); };
-F.C.giftField = el => { F.ui.gift[el.dataset.k] = el.value; const prev = $('.gcard-big'); if (prev) { const g = F.ui.gift; prev.querySelector('p.small').textContent = g.msg || 'Your message appears here.'; } };
+A.giftSet = el => { F.ui.gift[el.dataset.k] = el.dataset.v; F.rerender(); };
+F.C.giftField = el => { F.ui.gift[el.dataset.k] = el.value; const p = $('.gc-prev'); if (p) p.innerHTML = giftPrev(F.ui.gift, F.cityId(), E.user()); };
 F.Fm.gift = async (f, d) => {
   const u = F.requireUser('/gift'); if (!u) return; F.clearErr(f);
   if (!d.to) return F.fieldErr(f, 'to', 'Who is it for?'); if (!U.validEmail(d.email)) return F.fieldErr(f, 'email', 'Enter their email.');
   const g = F.ui.gift, c = F.cityId(), amt = E.cp(c, g.usd), code = 'FLNG-' + U.code(4) + '-' + U.code(4), b = f.querySelector('button.btn-pri'); F.busy(b, true, 'Paying'); await U.sleep(600);
   const r = await F.store.atomic((s, p) => { const ch = F.takePayment(E.user(), c, amt, 'Gift code ' + code); if (!ch.ok) return ch; p.gifts = p.gifts || []; p.gifts.push({ code, usd: g.usd, to: d.to, email: d.email, msg: d.msg, from: E.user().id, at: now(), redeemedBy: null, site: F.SITE.id }); E.mail(E.user().id, 'email', 'Your gift is on its way', `${E.pm(g.usd, c, true)} for ${d.to}, code ${code}. Paid with ${ch.label}.`); return ch; });
   F.busy(b, false); if (!r.ok) return F.toast(r.reason, 'err');
-  F.ui.gift = { usd: 250 }; F.modal(`<div class="center"><div class="ok-mark">${F.ic('gift', 26)}</div><h2 class="h-disp h3 mt16">Sent to ${esc(d.to)}</h2><p class="muted mt8">They’ll get an email with the code <strong class="mono">${code}</strong>. It works on every FLINGR site and never expires.</p><button class="btn btn-pri mt24" data-a="closeModal">Done</button></div>`, { cls: 'modal-sm', label: 'Gift sent' }); F.rerender();
+  F.ui.gift = null; F.modal(`<div class="center"><div class="ok-mark">${F.ic('gift', 26)}</div><h2 class="h-disp h3 mt16">Sent to ${esc(d.to)}</h2><p class="muted mt8">They’ll get an email with the code <strong class="mono">${code}</strong>. It works on every FLINGR site and never expires.</p><button class="btn btn-pri mt24" data-a="closeModal">Done</button></div>`, { cls: 'modal-sm', label: 'Gift sent' }); F.rerender();
 };
 F.pages.journal = {
   render(r) {
     const cat = r.q.cat || '', all = CT().journal, cats = [...new Set(all.map(a => a.cat))], list = all.filter(a => !cat || a.cat === cat);
-    return { title: 'Journal', html: `${F.pageHead({ eyebrow: 'Journal', title: F.SITE.journalTitle || 'Notes, <span class="it">plainly.</span>' })}<section class="sec-sm"><div class="wrap"><div class="chiprow"><a class="chip ${!cat ? 'on' : ''}" href="#/journal">All</a>${cats.map(c => `<a class="chip ${cat === c ? 'on' : ''}" href="#/journal?cat=${encodeURIComponent(c)}">${c}</a>`).join('')}</div>
-    <div class="mt32">${F.showMore('journal' + cat, list, a => `<a class="jcard rv" href="#/journal/${a.slug}">${F.plate({ key: 'site/journal-' + a.slug, art: F.SITE.art(a.slug, 'journal'), cls: 'r32', cap: esc(a.cat) })}<div class="mono tiny muted mt16">${esc(a.cat)} · ${a.read} min · ${U.fmt(now() - a.ago * 864e5, 'UTC', 'md')}</div><h3 class="h-disp h4 mt8">${esc(a.title)}</h3><p class="small muted mt8">${esc(a.excerpt)}</p></a>`, { n: 4, cls: 'g g3 jgrid', more: 'More articles' })}</div></div></section>` };
+    return { title: 'Journal', html: `${F.pageHead({ eyebrow: 'Journal', title: F.SITE.journalTitle || 'Notes, <span class="it">plainly.</span>', lead: F.SITE.journalLead || '' })}<section class="sec-sm"><div class="wrap"><div class="chiprow"><a class="chip ${!cat ? 'on' : ''}" href="#/journal">All</a>${cats.map(c => `<a class="chip ${cat === c ? 'on' : ''}" href="#/journal?cat=${encodeURIComponent(c)}">${c}</a>`).join('')}</div>
+    <div class="mt32">${F.showMore('journal' + cat, list, (a, i) => `<a class="jcard rv${!i && list.length % 3 === 2 ? ' jfeat' : ''}" href="#/journal/${a.slug}">${F.plate({ key: 'site/journal-' + a.slug, art: F.SITE.art(a.slug, 'journal'), cls: 'r32', cap: esc(a.cat) })}<div class="mono tiny muted mt16">${esc(a.cat)} · ${a.read} min · ${U.fmt(now() - a.ago * 864e5, 'UTC', 'md')}</div><h3 class="h-disp h4 mt8">${esc(a.title)}</h3><p class="small muted mt8">${esc(a.excerpt)}</p></a>`, { n: 4, cls: 'g g3 jgrid', more: 'More articles' })}</div></div></section>` };
   }
 };
 F.pages.article = {
@@ -2457,7 +2505,7 @@ F.aaCard = () => {
 A.aaJoin = () => {
   const u = F.requireUser('/membership'); if (!u) return; const c = F.cityId(), price = E.cp(c, E.aaPrice()), own = E.memberOf(u);
   F.bottomSheet(() => `<p class="muted small">${U.list(Object.values(F.ALLACCESS.mids).map(m => m.name))}. Renews monthly; cancel any time from any FLINGR site.</p>${own && !own.allAccess ? `<p class="notice mt16">${F.ic('check', 16)}<span>Your membership here carries on as it is. When it ends, All-Access covers ${esc(F.SITE.brand)}.</span></p>` : ''}
-  <div class="mt24">${F.payBlock(E.user(), c, price)}</div><button class="btn btn-pri btn-block mt24" data-a="aaPay">Pay ${E.money(price, c, true)} and start</button>`, { label: 'All-Access', title: 'FLINGR All-Access', live: true });
+  <div class="mt24">${F.payBlock(E.user(), c, price)}</div><button class="btn btn-pri btn-block mt24" data-a="aaPay">${F.payCta(E.user(), c, price, 'start')}</button>`, { label: 'All-Access', title: 'FLINGR All-Access', live: true });
 };
 A.aaPay = async el => { F.busy(el, true, 'Paying'); await U.sleep(500); const r = await F.store.atomic(() => E.aaBuy(E.user())); F.busy(el, false); if (!r.ok) return F.toast(r.reason, 'err'); F.closeModal(); F.toast('All-Access is on, on every FLINGR site.'); F.rerender(); };
 A.aaCancel = async () => { const a = H.access(E.user().id); if (!(await F.confirm({ title: 'Cancel All-Access?', body: `It stays on until ${U.fmt(a.renews, F.city().tz, 'md')} on every FLINGR site.`, ok: 'Cancel renewal', danger: true }))) return; E.aaCancel(E.user()); F.toast('All-Access will end at the renewal date.'); F.rerender(); };
@@ -2574,8 +2622,8 @@ F.showMore = (id, items, render, { n = 6, nDesk = Infinity, more = 'Show more', 
   ${hp || hd ? `<div class="sm-more${hp ? ' sm-hp' : ''}${hd ? ' sm-hd' : ''}"><button class="btn btn-ghost btn-sm" data-a="showMore" data-id="${esc(id)}">${esc(more)} <span class="sm-n-p">(${hp})</span><span class="sm-n-d">(${hd})</span></button></div>` : ''}`;
 };
 A.showMore = el => { const id = el.dataset.id; F.ui.more[id] = true; const box = $(`[data-more="${id}"]`), w = el.closest('.sm-more'); if (!box) return; const first = $$('.sm-p,.sm-d', box).find(x => getComputedStyle(x).display === 'none'); $$('.sm-p,.sm-d', box).forEach(x => x.classList.remove('sm-p', 'sm-d')); if (w) w.remove(); const f = first && (first.matches(FOC) ? first : first.querySelector(FOC)); if (f) f.focus({ preventScroll: true }); F.say('More shown.'); };
-F.compact = ({ href, key = '', art = '', cls = 'r11', title, sub = '', meta = '', price = '', tag = '', act = '', data = '', full = false }) => {
-  const inner = `${F.plate({ key, art, cls: 'cc-ph ' + cls, full })}<span class="cc-b"><strong class="cc-t">${title}</strong>${sub ? `<span class="cc-s">${sub}</span>` : ''}${meta ? `<span class="cc-m">${meta}</span>` : ''}</span>${price || tag ? `<span class="cc-r">${price ? `<span class="cc-p">${price}</span>` : ''}${tag ? `<span class="badge">${tag}</span>` : ''}</span>` : ''}`;
+F.compact = ({ href, key = '', art = '', cls = 'r11', title, sub = '', meta = '', note = '', price = '', tag = '', act = '', data = '', full = false }) => {
+  const inner = `${F.plate({ key, art, cls: 'cc-ph ' + cls, full })}<span class="cc-b"><strong class="cc-t">${title}</strong>${sub ? `<span class="cc-s">${sub}</span>` : ''}${meta ? `<span class="cc-m">${meta}</span>` : ''}${note ? `<span class="cc-n">${note}</span>` : ''}</span>${price || tag ? `<span class="cc-r">${price ? `<span class="cc-p">${price}</span>` : ''}${tag ? `<span class="badge">${tag}</span>` : ''}</span>` : ''}`;
   return act ? `<button class="cc" data-a="${act}" ${data}>${inner}</button>` : `<a class="cc" href="${href}">${inner}</a>`;
 };
 
@@ -2751,7 +2799,7 @@ E.seasonAll = (cityId, y) => E.memo('season' + cityId + y, () => RULES.map(r => 
 E.season = (cityId = F.cityId(), ms = now()) => { const y = U.parts(E.city(cityId).tz, ms).y; return [].concat(E.seasonAll(cityId, y), E.seasonAll(cityId, y + 1)).filter(e => e.from <= ms && ms <= e.to).sort((a, b) => ORDER[a.kind] - ORDER[b.kind] || a.days - b.days); };
 E.seasonPct = (cityId, tags = [], ms = now()) => E.season(cityId, ms).filter(e => e.pct && (e.tags.includes('all') || e.tags.some(t => tags.includes(t)))).reduce((t, e) => t + e.pct, 0);
 E.seasonPrice = (usd, cityId, tags = [], ms = now()) => { const p = E.seasonPct(cityId, tags, ms); return p ? Math.round(usd * (1 + p / 100) / 5) * 5 : usd; };
-F.seasonBanner = (cityId = F.cityId()) => { const e = E.season(cityId).find(x => x.line && x.kind !== 'season'); return e ? { id: e.id + '-' + e.fromKey, long: esc(e.line), short: esc(e.name), href: e.href || null, cta: e.cta || 'See what’s on' } : null; };
+F.seasonBanner = (cityId = F.cityId()) => { const e = E.season(cityId).find(x => x.line && x.kind !== 'season'); return e ? { id: e.id + '-' + e.fromKey, long: esc(e.line), short: esc(e.name) + (e.pct < 0 ? `: <strong>${-e.pct}% off</strong>` : ''), href: e.href || null, cta: e.cta || 'See what’s on' } : null; };
 
 /* ---------- demand ---------- */
 const CURVE = [.3, .22, .14, .08, .05, .05, .08, .14, .24, .34, .42, .48, .55, .56, .58, .6, .66, .74, .86, .96, 1, .98, .84, .55];
@@ -2907,7 +2955,7 @@ F.FORMATS = {
   blind: { name: 'Blind Practical', icon: 'flag', min: 90, usd: 499, line: 'The mastery exam, with a model who doesn’t know your level.' },
   class: { name: 'Class', icon: 'users', min: 90, usd: 59, group: true, line: 'Up to 12 seats, a live demonstration on a model.' },
   gallery: { name: 'Gallery seat', icon: 'eye', min: 90, usd: 29, group: true, line: 'Watch only, from the dark back row. Nobody looks your way.' },
-  couples: { name: 'Couples workshop', icon: 'users', min: 120, usd: 229, group: true, line: 'Four to six couples practising side by side, the educator going round.' },
+  couples: { name: 'Couples workshop', icon: 'users', min: 120, usd: 229, group: true, line: 'Four to six couples practicing side by side, the educator going round.' },
   stage: { name: 'Stage', icon: 'sparkle', min: 90, usd: -60, group: true, line: 'You are the class demonstration, and we say thank you with money in your Wallet.' }
 };
 F.BOOKABLE = ['voice', 'video', 'earpiece', 'private', 'practical', 'blind'];   // the ones you book with an educator; the rest are on the timetable
@@ -2927,7 +2975,7 @@ F.SKILLS = [
     why: 'A flat, relaxed tongue, the right angle of your head, and patience. You learn to use breath and lips before the tongue, how to keep a rhythm when your neck tires, and how to add a finger without losing the beat.',
     pts: ['A soft, flat tongue covers more and tires less than a pointed one.', 'Keep your head still and move your tongue; the rhythm survives longer.', 'Lips and breath on the inner thighs are part of it, not a delay.'],
     q: [['Which tongue shape lasts longer and covers more?', ['Pointed and hard', 'Soft and flat', 'Curled'], 1], ['What keeps the rhythm steady when your neck gets tired?', ['Move your head faster', 'Rest your head, move only your tongue', 'Stop and start again'], 1], ['When should a finger come in?', ['Straight away', 'Once she’s close and asking for more', 'Never'], 1]],
-    dr: [['The Alphabet', 6, 'Trace the alphabet slowly with your tongue on the inside of your own wrist. Keep the tongue soft and flat.'], ['Neck Hold', 5, 'Lie on your front, chin resting on a pillow, and practise small tongue movements with your head still for five minutes.']],
+    dr: [['The Alphabet', 6, 'Trace the alphabet slowly with your tongue on the inside of your own wrist. Keep the tongue soft and flat.'], ['Neck Hold', 5, 'Lie on your front, chin resting on a pillow, and practice small tongue movements with your head still for five minutes.']],
     ax: [['Where', ['Inner lips', 'Around the hood', 'Over the hood', 'Directly on the glans']], ['Pressure', ['Breath only', 'Soft and flat', 'Firm and flat', 'Pointed']], ['Rhythm', ['Slow licks', 'Side to side', 'Small circles', 'Gentle suction']]] },
   { id: 'gspot', g: 'vulva', n: 'G-Spot & Squirt', s: 'Two fingers, the right curve, and a towel down.', body: 'vulva', room: 'wet', fm: ALL, int: 2, rel: L, fin: 'She squirts',
     why: 'The G-spot is felt, not found: a ridged patch on the front wall that swells with arousal. Squirting is real and comes from steady pressure. You learn the come-here curl, how to keep pressure with your whole arm, and why relaxing matters more than speed.',
@@ -2945,25 +2993,25 @@ F.SKILLS = [
     why: 'Right after an orgasm the clit is often too sensitive to touch. The trick isn’t to keep going, it’s to back off to a wider, softer touch, hold the arousal, and build again. You learn the ten-second reset and the signs that she’s ready for more.',
     pts: ['After the first orgasm, move away from the glans to a cupping, still pressure.', 'Hold, don’t stop: keep contact while the sensitivity fades.', 'Each round is usually quicker than the last; keep the same spot that worked.'],
     q: [['Straight after an orgasm you should…', ['Keep the same fast touch', 'Back off to still, wider pressure', 'Stop touching completely'], 1], ['Each round tends to be…', ['Slower', 'Quicker', 'The same'], 1], ['What tells you she’s ready again?', ['She pushes into your hand', 'You’ve waited a minute', 'She goes quiet'], 0]],
-    dr: [['The Reset', 6, 'Practise switching between a fast small circle and a still, cupped hand on your thigh every thirty seconds without breaking contact.'], ['Sensitivity Scale', 5, 'With your partner, agree a word for “too much” and a word for “again”.']],
+    dr: [['The Reset', 6, 'Practice switching between a fast small circle and a still, cupped hand on your thigh every thirty seconds without breaking contact.'], ['Sensitivity Scale', 5, 'With your partner, agree a word for “too much” and a word for “again”.']],
     ax: [['After each one', ['Lift off completely', 'Still, cupped hand', 'Slow wide circles', 'Keep the same touch']], ['Pressure', ['Feather', 'Light', 'Medium', 'Firm']], ['Build', ['Very slow', 'Slow', 'Steady', 'Fast']]] },
   { id: 'yours', g: 'vulva', n: 'Your First', s: 'Your own orgasm, on your own body, at your own pace.', body: 'self', room: 'suite', fm: ['voice', 'video', 'earpiece', 'private', 'class', 'gallery'], int: 1, rel: L, fin: 'You come',
     why: 'For anyone with a vulva who hasn’t come, rarely comes, or only comes one way. Private, unhurried and practical: what to touch, what to try with a toy, how to stop watching yourself, and how to take what you learn to a partner. Practicals are solo, with your educator coaching from the other side of a screen or in your ear.',
     pts: ['Most people learn to come alone first; that’s normal, not a failure.', 'A wand or air-pulse toy is a tool, not a crutch. Start on the lowest setting over underwear.', 'Spectatoring (watching yourself from outside) stops arousal. Breathe low and keep your attention on one sensation.'],
     q: [['Where do most people first learn to come?', ['With a partner', 'Alone', 'In a class'], 1], ['How should a toy start?', ['Highest setting, direct', 'Lowest setting, over fabric', 'Inside only'], 1], ['What is spectatoring?', ['Watching porn', 'Watching yourself from outside your body', 'Being watched'], 1]],
-    dr: [['Twenty Minutes, No Goal', 20, 'Touch yourself for twenty minutes with no goal of coming. Notice which spot, pressure and speed feels best and write it down.'], ['Low and Slow', 10, 'A toy on the lowest setting over underwear for ten minutes, moving it a centimetre at a time.']],
+    dr: [['Twenty Minutes, No Goal', 20, 'Touch yourself for twenty minutes with no goal of coming. Notice which spot, pressure and speed feels best and write it down.'], ['Low and Slow', 10, 'A toy on the lowest setting over underwear for ten minutes, moving it a centimeter at a time.']],
     ax: [['Where', ['Over underwear', 'Around the hood', 'Over the hood', 'Directly on the glans']], ['Pressure', ['Feather', 'Light', 'Medium', 'Firm']], ['Tool', ['Fingers', 'Fingers with lube', 'Toy on low', 'Toy on medium']]] },
   { id: 'handwork', g: 'penis', n: 'Handwork', s: 'A hand job that people remember for the right reasons.', body: 'penis', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'He comes',
     why: 'Grip, lube and the frenulum. You learn the twist that makes a simple stroke feel new, how to use both hands, what to do with the balls, and how to read when to go faster and when to hold.',
     pts: ['Lots of lube, and a grip firmer than you think, softer at the head.', 'The frenulum, the little ridge under the head, is the most sensitive spot for most.', 'Steady rhythm near the end; a sudden change can lose it.'],
     q: [['The most sensitive spot for most is…', ['The base', 'The frenulum under the head', 'The balls'], 1], ['Grip on the shaft should be…', ['Barely touching', 'Firmer than you think', 'As hard as possible'], 1], ['Near the finish you should…', ['Keep the rhythm steady', 'Switch hands', 'Stop and tease'], 0]],
-    dr: [['The Twist', 6, 'On a cucumber or a toy, practise the rising twist stroke with lube, both hands, two minutes each.'], ['Grip Check', 4, 'Ask your partner to rate your grip one to five on three strokes and remember the number.']],
+    dr: [['The Twist', 6, 'On a cucumber or a toy, practice the rising twist stroke with lube, both hands, two minutes each.'], ['Grip Check', 4, 'Ask your partner to rate your grip one to five on three strokes and remember the number.']],
     ax: [['Where', ['Base and balls', 'Full shaft', 'Shaft and head', 'Head and frenulum']], ['Grip', ['Light', 'Medium', 'Firm', 'Very firm']], ['Stroke', ['Slow long strokes', 'Twisting strokes', 'Short fast strokes', 'Two hands stacked']]] },
   { id: 'throat', g: 'penis', n: 'Deep Throat', s: 'Oral on a penis, and taking it deeper without gagging.', body: 'penis', room: 'suite', fm: ALL, int: 2, rel: L, fin: 'He comes',
     why: 'Most good oral isn’t deep at all: it’s lips, tongue and a hand working together. Then, if you want depth, you train the gag reflex slowly, learn the head angle, and breathe through your nose. You set the pace; nobody pushes your head.',
     pts: ['A hand at the base does half the work and controls the depth.', 'Training the gag reflex takes weeks of short, gentle practice, never force.', 'Tip your head back slightly so mouth and throat line up, and breathe through your nose.'],
     q: [['Who controls the depth?', ['The person receiving', 'You, the person giving', 'Nobody'], 1], ['How is the gag reflex trained?', ['Force through it once', 'Short gentle practice over weeks', 'It can’t be'], 1], ['Breathe through…', ['Your mouth', 'Your nose', 'Neither'], 1]],
-    dr: [['Toothbrush Training', 3, 'Each morning, gently touch the back of your tongue with your toothbrush for a few seconds, a little further each week.'], ['Hand and Mouth', 8, 'On a toy, practise moving your hand and mouth as one unit for eight minutes.']],
+    dr: [['Toothbrush Training', 3, 'Each morning, gently touch the back of your tongue with your toothbrush for a few seconds, a little further each week.'], ['Hand and Mouth', 8, 'On a toy, practice moving your hand and mouth as one unit for eight minutes.']],
     ax: [['Depth', ['Lips at the head', 'Half way, hand at the base', 'Deep, hand guiding', 'All the way']], ['Pressure', ['Soft lips', 'Firm lips', 'Suction', 'Strong suction']], ['Rhythm', ['Slow', 'Steady', 'Fast', 'Teasing pauses']]] },
   { id: 'longer', g: 'penis', n: 'Last Longer', s: 'Stamina you can choose, not luck.', body: 'penis', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'Thirty minutes, his call',
     why: 'Coming too soon is the most common worry men bring us, and the most trainable. You learn to rate your arousal from one to ten, to stop at seven, to relax the pelvic floor instead of clenching, and to breathe low. Six weeks of practice changes most people’s numbers.',
@@ -3005,7 +3053,7 @@ F.SKILLS = [
     why: 'Harness fit, the right first toy, and moving your hips like you mean it. For the receiver, the same preparation as any anal. You learn both sides, plus the power dynamic many couples enjoy around it.',
     pts: ['A harness should sit high and snug; a loose one ruins control.', 'Start with a smaller, flexible toy; size can come later.', 'Move from the hips, not the knees, and keep a hand on them to read how they’re doing.'],
     q: [['Where should a harness sit?', ['Low on the hips', 'High and snug', 'Loose'], 1], ['The first toy should be…', ['Large and firm', 'Smaller and flexible', 'Whatever you have'], 1], ['Power comes from…', ['Your knees', 'Your hips', 'Your hands'], 1]],
-    dr: [['Hip Roll', 6, 'Stand and practise slow hip thrusts with a pillow held in front, keeping your knees soft.'], ['Fit Check', 5, 'Put the harness on and adjust it until the toy doesn’t droop.']],
+    dr: [['Hip Roll', 6, 'Stand and practice slow hip thrusts with a pillow held in front, keeping your knees soft.'], ['Fit Check', 5, 'Put the harness on and adjust it until the toy doesn’t droop.']],
     ax: [['Depth', ['Tip', 'Shallow', 'Half way', 'Deep']], ['Pace', ['Still', 'Slow', 'Steady', 'Fast']], ['Hold', ['Hands on their hips', 'One hand on their back', 'Holding hands', 'No hands']]] },
   { id: 'kiss', g: 'together', n: 'Kissing & Build-up', s: 'The kiss, the neck, and the half hour before anything else.', body: 'any', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'They pull you closer',
     why: 'Slow is sexy. You learn the soft open kiss, how to use your hands while kissing, the neck and ears, and how to stretch anticipation until both of you are aching for more.',
@@ -3017,13 +3065,13 @@ F.SKILLS = [
     why: 'Angle, depth and a rhythm you can both keep. You learn the positions that give clitoral contact during sex, how to grind instead of thrust, how to pace yourself, and how to change position without breaking the mood.',
     pts: ['Grinding often beats thrusting for clitoral contact.', 'A pillow under the hips changes the angle more than any new position.', 'Pick a rhythm you can keep; consistency beats speed.'],
     q: [['For clitoral contact during sex, try…', ['Faster thrusting', 'Grinding', 'Deeper thrusts'], 1], ['The cheapest change of angle is…', ['A pillow under the hips', 'A new position', 'Standing'], 0], ['Good rhythm is…', ['Fast', 'One you can both keep', 'Random'], 1]],
-    dr: [['Grind Practice', 6, 'Clothed, practise slow circular grinding with your partner for six minutes.'], ['Pillow Test', 10, 'Try missionary with and without a pillow and ask which felt better.']],
+    dr: [['Grind Practice', 6, 'Clothed, practice slow circular grinding with your partner for six minutes.'], ['Pillow Test', 10, 'Try missionary with and without a pillow and ask which felt better.']],
     ax: [['Position', ['Them on top', 'Missionary, pillow under', 'Spooning', 'From behind']], ['Depth', ['Shallow', 'Medium', 'Deep', 'Grinding, deep']], ['Pace', ['Slow', 'Steady', 'Fast', 'Building']]] },
   { id: 'massage', g: 'together', n: 'Erotic Massage', s: 'Full-body, oiled, and slowly towards the middle.', body: 'any', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'A full-body release',
     why: 'Long strokes, warm oil and the patience to go everywhere except where they want you, until you do. You learn the strokes, the order, and how to finish with a happy ending they’ll talk about.',
     pts: ['Warm the oil in your hands and never break contact.', 'Long strokes toward the heart, then circles; the inner thighs come late.', 'Tease the edges for a long time before you touch the middle.'],
     q: [['What should your hands never do?', ['Stop moving', 'Lose contact', 'Use oil'], 1], ['When do the inner thighs come?', ['First', 'Late', 'Never'], 1], ['The secret is…', ['Speed', 'Teasing the edges', 'Pressure'], 1]],
-    dr: [['Never Lose Contact', 10, 'Ten minutes on your partner’s back where one hand always touches them.'], ['Warm the Oil', 3, 'Practise pouring oil into your hand, never onto skin, and warming it before each stroke.']],
+    dr: [['Never Lose Contact', 10, 'Ten minutes on your partner’s back where one hand always touches them.'], ['Warm the Oil', 3, 'Practice pouring oil into your hand, never onto skin, and warming it before each stroke.']],
     ax: [['Where', ['Back and shoulders', 'Legs', 'Inner thighs', 'Between the legs']], ['Pressure', ['Feather', 'Light', 'Medium', 'Deep']], ['Stroke', ['Long glides', 'Circles', 'Kneading', 'Fingertip trails']]] },
   { id: 'talk', g: 'together', n: 'Dirty Talk', s: 'Saying it out loud, without cringing.', body: 'any', room: 'suite', fm: ALL, int: 1, rel: L, fin: 'They beg',
     why: 'Most people freeze because they think it has to be porn. It doesn’t. You learn to narrate, to ask, to praise, and to say exactly what you want in a voice that sounds like you.',
@@ -3041,31 +3089,31 @@ F.SKILLS = [
     why: 'For women with women, and anyone with a vulva partner. Tribbing that actually works, the angle of scissoring, using toys together, and the long build of sex without a clock.',
     pts: ['Tribbing works with pressure and grind, not speed.', 'Real scissoring is about angle; a leg over a leg, hips tilted.', 'A double-ended toy or a strap-on are tools, not substitutes.'],
     q: [['Tribbing works with…', ['Speed', 'Pressure and grind', 'Depth'], 1], ['Scissoring is about…', ['Angle', 'Speed', 'Strength'], 0], ['A strap-on is…', ['A substitute', 'A tool you might enjoy', 'Required'], 1]],
-    dr: [['Grind Practice', 6, 'Clothed, practise slow tribbing on a firm pillow to learn the angle.'], ['Toy Talk', 5, 'Choose a toy together and agree how you’d both like to use it.']],
+    dr: [['Grind Practice', 6, 'Clothed, practice slow tribbing on a firm pillow to learn the angle.'], ['Toy Talk', 5, 'Choose a toy together and agree how you’d both like to use it.']],
     ax: [['Act', ['Hands', 'Mouth', 'Tribbing', 'Toy']], ['Pressure', ['Light', 'Medium', 'Firm', 'Grinding hard']], ['Pace', ['Slow', 'Steady', 'Fast', 'Building']]] },
   { id: 'three', g: 'together', n: 'Threesomes & Group Etiquette', s: 'More than two, kindly and without drama.', body: 'any', room: 'suite', fm: ['voice', 'video', 'private', 'class', 'gallery', 'couples'], int: 2, rel: S2, fin: 'Everyone wants a second time',
     why: 'The sex is the easy part. The hard part is the conversation before, attention during, and care after. You learn rules that protect a couple, how to treat a third as a person not a prop, and how to read a room.',
     pts: ['Agree rules as a couple before inviting anyone, and share them with the third.', 'Nobody should be left out for long; check in with your eyes and hands.', 'Plan the aftercare and the morning, including who sleeps where.'],
-    q: [['When are the rules agreed?', ['On the night', 'Before inviting anyone', 'After'], 1], ['The third person is…', ['A guest of honour, not a prop', 'Optional to talk to', 'There for you'], 0], ['What gets planned too?', ['Aftercare and the morning', 'Nothing', 'Only the start'], 0]],
+    q: [['When are the rules agreed?', ['On the night', 'Before inviting anyone', 'After'], 1], ['The third person is…', ['A guest of honor, not a prop', 'Optional to talk to', 'There for you'], 0], ['What gets planned too?', ['Aftercare and the morning', 'Nothing', 'Only the start'], 0]],
     dr: [['The Rules List', 10, 'As a couple, write your yes, maybe and no list for a threesome.'], ['Jealousy Check', 5, 'Each say one thing that might make you jealous, and what would help.']],
     ax: [['Attention', ['On your partner', 'On the third', 'Shared', 'On yourself']], ['Pace', ['Slow', 'Steady', 'Fast', 'Building']], ['Check-ins', ['None', 'Eyes only', 'Touch and eyes', 'Words']]] },
   { id: 'rope', g: 'kink', n: 'Rope', s: 'Safe, beautiful bondage, from the single column to a chest harness.', body: 'any', room: 'rope', fm: ALL, int: 2, rel: L, fin: 'Tied and floating',
     why: 'Rope is part craft, part connection. You learn the single and double column ties, the safety cuts, nerve-safe placement, and how to watch the person in your ropes, not just the knots.',
     pts: ['Safety shears within reach, always.', 'Avoid the inside of the upper arm and the wrists’ nerve paths; check for tingling.', 'Watch their face and breathing more than your knots.'],
     q: [['What’s always within reach?', ['Your phone', 'Safety shears', 'A blindfold'], 1], ['Tingling or numbness means…', ['Keep going', 'Untie now', 'Tighten'], 1], ['Watch…', ['The knots', 'Their face and breathing', 'The clock'], 1]],
-    dr: [['Single Column', 10, 'Tie and untie a single column on your own thigh ten times.'], ['Shears Drill', 3, 'Practise reaching the shears and cutting a rope on a pillow in under five seconds.']],
+    dr: [['Single Column', 10, 'Tie and untie a single column on your own thigh ten times.'], ['Shears Drill', 3, 'Practice reaching the shears and cutting a rope on a pillow in under five seconds.']],
     ax: [['Tie', ['Single column', 'Double column', 'Chest harness', 'Hogtie']], ['Tension', ['Loose', 'Snug', 'Firm', 'Tight']], ['Pace', ['Slow and close', 'Steady', 'Fast', 'With pauses']]] },
   { id: 'impact', g: 'kink', n: 'Impact', s: 'Spanking, flogging and the art of the warm-up.', body: 'any', room: 'rope', fm: ALL, int: 2, rel: L, fin: 'Red, glowing and grinning',
     why: 'Where to hit, how to warm up, and how to build. You learn the safe zones, the difference between thud and sting, rhythm, rubbing in between, and reading when to stop.',
     pts: ['Fleshy areas only: buttocks and thighs. Never kidneys, spine or joints.', 'Warm up with hands and lighter strokes; skin needs to build up.', 'Thud is deep and heavy, sting is sharp; most people like a mix.'],
     q: [['Which areas are safe?', ['Lower back', 'Buttocks and upper thighs', 'Spine'], 1], ['Before heavy strokes you…', ['Start heavy', 'Warm up', 'Use a cane'], 1], ['Thud is…', ['Sharp', 'Deep and heavy', 'Silent'], 1]],
-    dr: [['Pillow Aim', 6, 'Practise hitting the same spot on a pillow ten times with a flogger or your hand.'], ['Warm-up Map', 5, 'With your partner, agree the zones and a number scale from one to ten.']],
+    dr: [['Pillow Aim', 6, 'Practice hitting the same spot on a pillow ten times with a flogger or your hand.'], ['Warm-up Map', 5, 'With your partner, agree the zones and a number scale from one to ten.']],
     ax: [['Where', ['Upper thighs', 'Buttocks', 'Lower buttocks', 'Back of thighs']], ['Intensity', ['Light', 'Medium', 'Heavy', 'Very heavy']], ['Rhythm', ['Slow, with rubs', 'Steady', 'Fast', 'Unpredictable']]] },
   { id: 'dom', g: 'kink', n: 'Dom School', s: 'Taking control, with care that makes it safe to surrender.', body: 'any', room: 'rope', fm: ALL, int: 3, rel: L, fin: 'They surrender completely',
     why: 'Dominance isn’t shouting. It’s presence, clear instructions, consistency and paying attention. You learn negotiation, commands, praise and correction, protocols, and how to hold someone after.',
     pts: ['Negotiate first: limits, safe words, aftercare, and what the scene is for.', 'Calm, clear, slow instructions are more commanding than volume.', 'You’re responsible for their safety the whole time, including after.'],
     q: [['What comes first?', ['The scene', 'Negotiation', 'Punishment'], 1], ['Commanding means…', ['Shouting', 'Calm, clear instructions', 'Never speaking'], 1], ['Who is responsible for safety?', ['The sub', 'You', 'Nobody'], 1]],
-    dr: [['Three Commands', 5, 'Practise giving three simple instructions in a low, slow voice: kneel, look at me, wait.'], ['Negotiation Sheet', 10, 'Fill in a scene sheet with your partner: limits, safe words, aftercare.']],
+    dr: [['Three Commands', 5, 'Practice giving three simple instructions in a low, slow voice: kneel, look at me, wait.'], ['Negotiation Sheet', 10, 'Fill in a scene sheet with your partner: limits, safe words, aftercare.']],
     ax: [['Voice', ['Gentle', 'Calm and firm', 'Stern', 'Shouting']], ['Control', ['Suggestions', 'Clear commands', 'Protocol', 'Total control']], ['Pace', ['Slow', 'Steady', 'Fast', 'Unpredictable']]] },
   { id: 'sub', g: 'kink', n: 'Sub School', s: 'Surrender, with your limits held firmly in your own hands.', body: 'any', room: 'rope', fm: ALL, int: 2, rel: L, fin: 'Deep subspace',
     why: 'Submission is active: you set the limits, you hold the safe word, you choose who earns your trust. You learn to negotiate as a sub, to let go inside a scene, and to ask for the aftercare you need.',
@@ -3101,7 +3149,7 @@ F.SKILLS = [
     why: 'Slow, eye contact, and confidence you can fake until it’s real. You learn to move in what you’ve got, the order of a striptease, how to tease with what stays on, and a lap dance that ends exactly how you want.',
     pts: ['Slower than feels natural; most people rush.', 'Eye contact, then breaking it, is the whole trick.', 'Choose the song first; it sets the pace for everything.'],
     q: [['Pace should be…', ['Faster than you think', 'Slower than feels natural', 'Random'], 1], ['The trick is…', ['Eye contact, then breaking it', 'Never looking', 'Staring'], 0], ['Choose what first?', ['The outfit', 'The song', 'The room'], 1]],
-    dr: [['One Song', 4, 'Undress to one slow song in front of a mirror without rushing.'], ['Chair Practice', 6, 'Practise a lap dance on an empty chair, slower each time.']],
+    dr: [['One Song', 4, 'Undress to one slow song in front of a mirror without rushing.'], ['Chair Practice', 6, 'Practice a lap dance on an empty chair, slower each time.']],
     ax: [['Pace', ['Very slow', 'Slow', 'Steady', 'Fast']], ['Eyes', ['On them', 'Looking away', 'On them, then away', 'Closed']], ['Reveal', ['One piece, slowly', 'Teasing what stays on', 'Two at once', 'All at once']]] },
   { id: 'watched', g: 'show', n: 'Being Watched', s: 'Exhibitionism, on your terms: the stage, the gallery, the thrill.', body: 'any', room: 'suite', fm: ['voice', 'video', 'private', 'class', 'stage'], int: 2, rel: L, fin: 'You loved every second',
     why: 'For anyone who gets a thrill from being seen. You start by talking it through, then perform for your educator, then take the Stage as the live demonstration in a class, with clear rules about what the room may and may not do.',
@@ -3113,7 +3161,7 @@ F.SKILLS = [
     why: 'Watching is a pleasure with rules. You learn the etiquette of a play party, how to watch a partner with someone else, what to say after, and the gallery seat that lets you watch a class without being seen.',
     pts: ['Ask before you watch, and never record.', 'Silence and stillness are part of good watching.', 'Watching your partner with someone else needs talking before and after.'],
     q: [['Before you watch, you…', ['Ask', 'Record', 'Move closer'], 0], ['Good watchers are…', ['Loud', 'Still and quiet', 'Touching'], 1], ['Watching your partner needs…', ['Nothing', 'Talking before and after', 'A drink'], 1]],
-    dr: [['Gallery Rules', 5, 'Read the gallery rules aloud and write the one you think you’ll find hardest.'], ['After Talk', 5, 'Practise the questions you’ll ask your partner after watching them.']],
+    dr: [['Gallery Rules', 5, 'Read the gallery rules aloud and write the one you think you’ll find hardest.'], ['After Talk', 5, 'Practice the questions you’ll ask your partner after watching them.']],
     ax: [['Distance', ['Back row', 'Middle', 'Close', 'Right beside']], ['Presence', ['Silent', 'Quiet sounds', 'Talking', 'Directing']], ['Focus', ['Your partner', 'The others', 'Everyone', 'Yourself']]] }
 ];
 F.SKILL = Object.fromEntries(F.SKILLS.map(s => [s.id, s]));
@@ -3129,7 +3177,7 @@ F.skillOpen = s => F.E.dayOpen(F.skillRel(s)) <= Date.now();
 F.STYLES = { gentle: ['Gentle', 'Patient and warm. Lots of reassurance, never rushed.'], coach: ['Coach', 'Clear steps, honest feedback, a plan for next time.'], drill: ['Drill', 'Short, sharp repetitions until it’s automatic.'], strict: ['Strict', 'Teaches in role: firm instructions, praise you earn.'] };
 F.STUDIOS = {
   la: { name: 'Practice Los Angeles', hood: 'Silver Lake', addr: '2214 Sunset Blvd, Los Angeles, CA 90026', note: 'Private entrance on Maltman Ave. Parking under the building.' },
-  ny: { name: 'Practice New York', hood: 'Tribeca', addr: '61 Leonard Street, 4th floor, New York, NY 10013', note: 'Buzz “Studio 4”. Lift to the fourth floor; reception is behind the frosted door.' },
+  ny: { name: 'Practice New York', hood: 'Tribeca', addr: '61 Leonard Street, 4th floor, New York, NY 10013', note: 'Buzz “Studio 4”. Elevator to the fourth floor; reception is behind the frosted door.' },
   ldn: { name: 'Practice London', hood: 'Clerkenwell', addr: '14 Britton Street, London EC1M 5NW', note: 'Black door beside the bakery. Ring “Practice”.' }
 };
 F.ROOMS = [{ id: 'hall', kind: 'hall', name: 'The Hall', cap: 12, gal: 6 }, { id: 's1', kind: 'suite', name: 'Suite One' }, { id: 's2', kind: 'suite', name: 'Suite Two' }, { id: 's3', kind: 'suite', name: 'Suite Three' }, { id: 'rope', kind: 'rope', name: 'The Rope Room' }, { id: 'wet', kind: 'wet', name: 'The Wet Room' }];
@@ -3155,10 +3203,10 @@ const ED = [
   ['ED-3017', 'Rafael Cruz', 36, 'he/him', 'ny', 'drill', ['mm', 'throat', 'analgive', 'longer', 'handwork'], ['English', 'Spanish'], 'Practice makes the man.', 'Rafael teaches Men × Men and deep throat with drills that work, and he’s honest about how long things take.', 'Sex coach, Men’s Wellness Collective', '2025-08-25'],
   ['ED-3018', 'Ingrid Sorensen', 41, 'she/her', 'ny', 'strict', ['ruin', 'control', 'impact', 'pegging', 'dom'], ['English', 'Danish'], 'Permission is earned.', 'Ingrid teaches orgasm control from both ends of the leash. Precise, wry and very good at reading people.', 'Professional dominant, BDSM safety certified', '2025-02-15'],
   ['ED-3019', 'Tomas Reyes', 38, 'he/him', 'ny', 'coach', ['pspot', 'anal0', 'multim', 'mm', 'massage'], ['English', 'Spanish'], 'The prostate, explained properly.', 'A former nurse who teaches prostate play with clinical clarity and a lot of warmth.', 'Registered nurse (retired), sexual health educator', '2025-06-03'],
-  ['ED-3020', 'Vivian Cho', 47, 'she/her', 'ny', 'gentle', ['yours', 'multi', 'sensation', 'kiss', 'aftercare', 'tongue'], ['English', 'Korean'], 'Late bloomers welcome.', 'Vivian specialises in people starting over: after divorce, after children, after a long gap. Kind, funny, frank.', 'Clinical sexologist (MSc)', '2024-10-28'],
+  ['ED-3020', 'Vivian Cho', 47, 'she/her', 'ny', 'gentle', ['yours', 'multi', 'sensation', 'kiss', 'aftercare', 'tongue'], ['English', 'Korean'], 'Late bloomers welcome.', 'Vivian specializes in people starting over: after divorce, after children, after a long gap. Kind, funny, frank.', 'Clinical sexologist (MSc)', '2024-10-28'],
   ['ED-3021', 'Imani Baptiste', 33, 'she/her', 'ldn', 'gentle', ['clit', 'tongue', 'yours', 'gspot', 'kiss', 'massage'], ['English', 'French'], 'Unhurried, always.', 'Imani teaches pleasure as attention. Her lessons are slow, sensory and full of tiny revelations.', 'Somatic sex educator, Institute for the Study of Somatic Sex Education', '2025-03-16'],
   ['ED-3022', 'Freddie Hale', 35, 'he/him', 'ldn', 'drill', ['longer', 'handwork', 'rhythm', 'multim', 'throat'], ['English'], 'Sets, reps and results.', 'Freddie runs stamina like a training plan. His six-week course is the most re-booked on the London timetable.', 'Pelvic floor trainer, Chartered Society course', '2025-05-05'],
-  ['ED-3023', 'Saoirse Byrne', 31, 'she/her', 'ldn', 'coach', ['anal0', 'analgive', 'pegging', 'ww', 'gspot'], ['English', 'Irish'], 'Anal, without the anxiety.', 'Saoirse makes the scary feel simple with clear steps and a famously dry sense of humour.', 'Sex educator, Brook-trained', '2025-02-27'],
+  ['ED-3023', 'Saoirse Byrne', 31, 'she/her', 'ldn', 'coach', ['anal0', 'analgive', 'pegging', 'ww', 'gspot'], ['English', 'Irish'], 'Anal, without the anxiety.', 'Saoirse makes the scary feel simple with clear steps and a famously dry sense of humor.', 'Sex educator, Brook-trained', '2025-02-27'],
   ['ED-3024', 'Callum Reid', 43, 'he/him', 'ldn', 'strict', ['rope', 'dom', 'impact', 'scenes', 'sub', 'aftercare'], ['English'], 'Knots, nerve and nuance.', 'Callum has taught rope across Europe. Exacting about safety, generous with praise you’ve earned.', 'Rope safety instructor, London Rope Collective', '2025-01-08'],
   ['ED-3025', 'Leila Haddad', 30, 'she/her', 'ldn', 'gentle', ['strip', 'watched', 'talk', 'kiss', 'watching'], ['English', 'Arabic', 'French'], 'Be seen, on your terms.', 'Leila teaches performance: the thrill of being watched, the power of a slow reveal, and the rules that keep it safe.', 'Performer and movement teacher', '2025-09-10'],
   ['ED-3026', 'Rowan Ellis', 37, 'they/them', 'ldn', 'coach', ['three', 'sensation', 'control', 'aftercare', 'watching', 'ww'], ['English'], 'Good play starts with good talk.', 'Rowan’s negotiation workshop is required reading for half of London’s play parties.', 'Community educator, Consent Works', '2025-04-21'],
@@ -3219,7 +3267,7 @@ const MD = [
   ['MD-3108', 'River', 'trans', 'ny', ['ruin', 'impact'], 'Thoughtful and precise; brilliant for first-timers.'],
   ['MD-3109', 'Elodie', 'vulva', 'ldn', ['analgive'], 'Playful and generous; loves the Blended class.'],
   ['MD-3110', 'Poppy', 'vulva', 'ldn', ['pegging', 'rope', 'impact'], 'Gentle and very good at the honest “not quite”.'],
-  ['MD-3111', 'Jasper', 'penis', 'ldn', ['ruin', 'impact'], 'Unflappable; a favourite in the stamina course.'],
+  ['MD-3111', 'Jasper', 'penis', 'ldn', ['ruin', 'impact'], 'Unflappable; a favorite in the stamina course.'],
   ['MD-3112', 'Remy', 'trans', 'ldn', [], 'Bold, warm and up for almost anything in the Rope Room.']
 ];
 // who a model can practise with: vulva models for vulva skills, penis and trans models for penis skills, anyone for the rest
@@ -3238,12 +3286,12 @@ const E = F.E, now = () => Date.now(), D = 864e5;
 const pick = (seed, a) => a[U.hash(seed) % a.length];
 F.CONTENT = {
   faq: [
-    ['Getting started', 'What is Practice?', 'Private lessons in pleasure, kink and confidence, taught by professional educators. Learn by voice, video, in our studios or in a class, and practise hands-on with a practice model when you’re ready.'],
+    ['Getting started', 'What is Practice?', 'Private lessons in pleasure, kink and confidence, taught by professional educators. Learn by voice, video, in our studios or in a class, and practice hands-on with a practice model when you’re ready.'],
     ['Getting started', 'Who is it for?', 'Any adult, any gender, any body, single or with a partner. Skills are named by the body they’re for, not by who you are: anyone can learn Clit Fluency or the P-Spot.'],
     ['Getting started', 'I’m nervous. Where do I start?', 'With the Library and a voice lesson: camera never on, and you can type instead of speak. The Shy Ladder suggests the next step only when you’ve done two at your current one, and never insists.'],
     ['Getting started', 'Do I need a partner?', 'No. Most lessons are solo. If you have a partner, add a seat to your membership, book couples workshops, or use the Earpiece while you’re together at home.'],
     ['Lessons', 'What happens in a practical?', 'Your educator demonstrates on a practice model, then guides your hands. The model holds the Feedback Dial: five lights from “not that” to “don’t change a thing”, and a STOP button. You agree a Practice Contract first: what’s touched, with what protection.'],
-    ['Lessons', 'Who are the practice models?', 'Professional, screened, paid models who choose which skills they practise. They give honest feedback for a living and can stop a lesson at any moment.'],
+    ['Lessons', 'Who are the practice models?', 'Professional, screened, paid models who choose which skills they practice. They give honest feedback for a living and can stop a lesson at any moment.'],
     ['Lessons', 'Can I bring my partner instead of a model?', 'Yes. Choose “with my partner” when you book a practical. You both sign the contract; your educator coaches you both.'],
     ['Lessons', 'What is the Blind Practical?', 'The mastery exam: a practical with a model who doesn’t know your level and gives fewer hints. Pass it and the skill is mastered on your passport.'],
     ['Lessons', 'What is the Earpiece?', 'A voice lesson that happens during your own night at home: your educator in your ear, quietly coaching you with your partner. Your partner must agree before you book.'],
@@ -3281,11 +3329,11 @@ F.CONTENT = {
     cookies: { title: 'Cookie Policy', updated: 'October 22, 2026', sections: [['Essential', 'Sign-in, checkout and security.'], ['Preferences', 'Your city and currency.'], ['Analytics', 'Aggregated, non-identifying usage, only if you agree.']] }
   },
   journal: [
-    { slug: 'why-practice', cat: 'Practice', title: 'Why we built Practice', read: 4, ago: 0, excerpt: 'Nobody teaches this. Porn teaches it badly. So we hired the best teachers we could find and gave them a studio.', body: [['p', 'Every week FLINGR hosts hear the same thing: “Nobody ever showed me.” Not how to touch a clitoris so it works, not how to last, not how to ask for what you want. Sex education stops at biology, and porn starts at performance.'], ['h', 'Lessons, not lectures'], ['p', 'Practice is lessons in the plainest sense: a teacher, a skill, practice, feedback. Learn privately by voice, watch a class from the gallery, or practise hands-on with a model who tells you honestly what works.'], ['h', 'Honest feedback, out loud'], ['p', 'The heart of it is the Feedback Dial: five lights in a model’s hand, from “not that” to “don’t change a thing”, and a STOP button. It turns guesswork into learning.'], ['h', 'At your pace'], ['p', 'You pay per lesson, members pay a little less, and the Shy Ladder never pushes. Start with a voice lesson with your camera off, or start in the Hall. Either is right.']], cta: ['See the skills', '#/skills'] },
-    { slug: 'the-shy-ladder', cat: 'Getting started', title: 'The Shy Ladder', read: 3, ago: 0, excerpt: 'Voice, camera off, camera on, the studio, the practical, the Stage. Climb as high as you like, as slowly as you like.', body: [['p', 'Most people who want to learn are also a little embarrassed. That’s normal and it’s built into how Practice works.'], ['h', 'Seven rungs'], ['p', 'The Library. A voice lesson, camera never on. Video with your camera off. Video with it on. In person. A practical with a model. The Stage. After two lessons on a rung we suggest the next one, once. That’s all.'], ['h', 'Going back down'], ['p', 'Plenty of people do a practical and then go back to voice lessons for a month. The ladder is a map, not a staircase.']], cta: ['Book a voice lesson', '#/skills'] },
-    { slug: 'what-a-practice-model-does', cat: 'Behind the scenes', title: 'What a practice model does', read: 4, ago: 0, excerpt: 'They’re paid professionals who give honest feedback for a living. Here’s how they work, and what they never do.', body: [['p', 'Our practice models choose which skills they practise, how many lessons a day (never more than four), and what is off their list. They are screened, tested and paid for every minute.'], ['h', 'The Dial'], ['p', 'During a practical the model holds the Feedback Dial. It isn’t a score; it’s information. A “not quite” early on is the most useful thing you’ll hear all month.'], ['h', 'The STOP button'], ['p', 'If anything is too much, they press STOP and the lesson ends. Your educator talks you through it afterwards. It happens rarely, and when it does, it’s the system working.']] },
-    { slug: 'squirting-plainly', cat: 'Skills', title: 'Squirting, plainly', read: 5, ago: 0, excerpt: 'It’s real, it isn’t pee, and it comes from steady pressure and permission. What we teach in G-Spot & Squirt.', body: [['p', 'Squirting is the release of fluid from the glands around the urethra during arousal. Some people do it easily, some with practice, some never, and every one of those is normal.'], ['h', 'The technique'], ['p', 'Warm up first. Two fingers, pads up, a come-here motion pressing toward the belly button, driven from the forearm. Keep it steady when she says it feels like she needs to pee. That feeling is the sign.'], ['h', 'The permission'], ['p', 'Towels down before you start, and say out loud that a wet bed is welcome. Half of the skill is making letting go feel safe.']], cta: ['G-Spot & Squirt', '#/skill/gspot'] },
-    { slug: 'stamina-is-trainable', cat: 'Skills', title: 'Stamina is trainable', read: 4, ago: 0, excerpt: 'The arousal scale, the pause at seven, and the muscle you’ve been clenching. Six weeks changes most people’s numbers.', body: [['p', 'Coming sooner than you’d like is the single most common thing men bring to Practice, and the most trainable.'], ['h', 'Know your number'], ['p', 'Rate your arousal from one to ten. Most people only notice at nine. The work is learning to feel seven, and to pause there.'], ['h', 'Relax, don’t clench'], ['p', 'Clenching the pelvic floor speeds you up. Reverse Kegels and slow breathing do the opposite.']], cta: ['Last Longer', '#/program/longer'] }
+    { slug: 'why-practice', cat: 'Practice', title: 'Why we built Practice', read: 4, ago: 2, excerpt: 'Nobody teaches this. Porn teaches it badly. So we hired the best teachers we could find and gave them a studio.', body: [['p', 'Every week FLINGR hosts hear the same thing: “Nobody ever showed me.” Not how to touch a clitoris so it works, not how to last, not how to ask for what you want. Sex education stops at biology, and porn starts at performance.'], ['h', 'Lessons, not lectures'], ['p', 'Practice is lessons in the plainest sense: a teacher, a skill, practice, feedback. Learn privately by voice, watch a class from the gallery, or practice hands-on with a model who tells you honestly what works.'], ['h', 'Honest feedback, out loud'], ['p', 'The heart of it is the Feedback Dial: five lights in a model’s hand, from “not that” to “don’t change a thing”, and a STOP button. It turns guesswork into learning.'], ['h', 'At your pace'], ['p', 'You pay per lesson, members pay a little less, and the Shy Ladder never pushes. Start with a voice lesson with your camera off, or start in the Hall. Either is right.']], cta: ['See the skills', '#/skills'] },
+    { slug: 'the-shy-ladder', cat: 'Getting started', title: 'The Shy Ladder', read: 3, ago: 9, excerpt: 'Voice, camera off, camera on, the studio, the practical, the Stage. Climb as high as you like, as slowly as you like.', body: [['p', 'Most people who want to learn are also a little embarrassed. That’s normal and it’s built into how Practice works.'], ['h', 'Seven rungs'], ['p', 'The Library. A voice lesson, camera never on. Video with your camera off. Video with it on. In person. A practical with a model. The Stage. After two lessons on a rung we suggest the next one, once. That’s all.'], ['h', 'Going back down'], ['p', 'Plenty of people do a practical and then go back to voice lessons for a month. The ladder is a map, not a staircase.']], cta: ['Book a voice lesson', '#/skills'] },
+    { slug: 'what-a-practice-model-does', cat: 'Behind the scenes', title: 'What a practice model does', read: 4, ago: 17, excerpt: 'They’re paid professionals who give honest feedback for a living. Here’s how they work, and what they never do.', body: [['p', 'Our practice models choose which skills they practice, how many lessons a day (never more than four), and what is off their list. They are screened, tested and paid for every minute.'], ['h', 'The Dial'], ['p', 'During a practical the model holds the Feedback Dial. It isn’t a score; it’s information. A “not quite” early on is the most useful thing you’ll hear all month.'], ['h', 'The STOP button'], ['p', 'If anything is too much, they press STOP and the lesson ends. Your educator talks you through it afterwards. It happens rarely, and when it does, it’s the system working.']] },
+    { slug: 'squirting-plainly', cat: 'Skills', title: 'Squirting, plainly', read: 5, ago: 30, excerpt: 'It’s real, it isn’t pee, and it comes from steady pressure and permission. What we teach in G-Spot & Squirt.', body: [['p', 'Squirting is the release of fluid from the glands around the urethra during arousal. Some people do it easily, some with practice, some never, and every one of those is normal.'], ['h', 'The technique'], ['p', 'Warm up first. Two fingers, pads up, a come-here motion pressing toward the belly button, driven from the forearm. Keep it steady when she says it feels like she needs to pee. That feeling is the sign.'], ['h', 'The permission'], ['p', 'Towels down before you start, and say out loud that a wet bed is welcome. Half of the skill is making letting go feel safe.']], cta: ['G-Spot & Squirt', '#/skill/gspot'] },
+    { slug: 'stamina-is-trainable', cat: 'Skills', title: 'Stamina is trainable', read: 4, ago: 46, excerpt: 'The arousal scale, the pause at seven, and the muscle you’ve been clenching. Six weeks changes most people’s numbers.', body: [['p', 'Coming sooner than you’d like is the single most common thing men bring to Practice, and the most trainable.'], ['h', 'Know your number'], ['p', 'Rate your arousal from one to ten. Most people only notice at nine. The work is learning to feel seven, and to pause there.'], ['h', 'Relax, don’t clench'], ['p', 'Clenching the pelvic floor speeds you up. Reverse Kegels and slow breathing do the opposite.']], cta: ['Last Longer', '#/program/longer'] }
   ]
 };
 // What educators say, chosen by rule
@@ -3315,7 +3363,7 @@ const RULES = [
   [/wear|bring|prepare/i, () => `Wear something comfortable. Short nails help for most hands-on skills. Everything else is in the room.`],
   [/thank|thanks|cheers/i, () => `My pleasure. See you soon.`]
 ];
-F.SITE.reply = (t, text) => { const r = RULES.find(([re]) => re.test(text)); return { text: r ? r[1]() : pick(text + t.id, ['Good question. Let’s go through it properly in the lesson, and I’ll write it into your notes.', 'Thanks, noted. I’ll build it into our next lesson.', 'Love that you asked. Short answer: practise slowly; long answer next time we meet.']), min: 2 + U.hash(text) % 6 };
+F.SITE.reply = (t, text) => { const r = RULES.find(([re]) => re.test(text)); return { text: r ? r[1]() : pick(text + t.id, ['Good question. Let’s go through it properly in the lesson, and I’ll write it into your notes.', 'Thanks, noted. I’ll build it into our next lesson.', 'Love that you asked. Short answer: practice slowly; long answer next time we meet.']), min: 2 + U.hash(text) % 6 };
 };
 F.SITE.chips = t => t.key.startsWith('edu:') ? ['I’m a bit nervous', 'What should I bring?', 'Can my partner come?', 'Running late'] : ['What does a lesson cost?', 'I need to move a lesson'];
 F.SITE.mine = u => ({ lessons: F.S.lessons.filter(l => l.userId === u.id), seats: F.S.seats.filter(x => x.userId === u.id), passport: F.S.progress.filter(p => p.userId === u.id), programs: F.S.enrol.filter(x => x.userId === u.id) });
@@ -3396,7 +3444,7 @@ const EDU_W = {
   reply: [() => `I’m sorry, you’re right. Next time tell me to change pace whenever you like; I’ve put a little in your Wallet for the trouble.`, () => `Thank you for being honest. I’d love another go, in whatever style suits you; the next lesson is on me.`]
 };
 const STUDIO_W = {
-  mid: [st => `The ${st.hood} studio is calmer than I expected.`, () => `Reception was discreet and kind, and nobody made a thing of why I was there.`, () => `The suites are spotless, warm and quiet.`, () => `The Hall is smaller and more intimate than the photos suggest.`, () => `Showers, robes, proper towels. Thought of everything.`, () => `The Rope Room is beautifully lit and very well kept.`, () => `Felt private from the door to the suite.`, st => `${st.note.split('.')[0]}, which made arriving easy.`],
+  mid: [st => ({ 'Silver Lake': 'Calm and quiet, which I didn’t expect on Sunset.', Tribeca: 'It feels like a private loft, not a business.', Clerkenwell: 'Quiet rooms behind a very ordinary door.' })[st.hood] || `The ${st.hood} studio is calm and quiet.`, () => `Reception was discreet and kind, and nobody made a thing of why I was there.`, () => `The suites are spotless, warm and quiet.`, () => `The Hall is smaller and more intimate than the photos suggest.`, () => `Showers, robes, proper towels. Thought of everything.`, () => `The Rope Room is beautifully lit and very well kept.`, () => `Felt private from the door to the suite.`, st => `${st.note.split('.')[0]}, which made arriving easy.`],
   close: [() => `Already booked the next visit.`, () => `Would happily go back.`, () => '', () => `Lovely space.`],
   mild: [() => `Nice studio, though the changing area was busy when I arrived.`, () => `Good space; the waiting room could be a little warmer.`],
   low: [() => `Hard to find the entrance the first time.`, () => `A bit of street noise in Suite Two.`],
@@ -3710,8 +3758,8 @@ E.finishLesson = (l, n) => {
   if (pass && l.format === 'blind' && !p.mastery) p.mastery = { at: n, lessonId: l.id };
   const lvAfter = E.level(u, s.id);
   l.report = { at: n, pass: prac ? pass : true, by, level: lvAfter, up: lvAfter > lvBefore, text: F.PR_TALK.report(e, s, l, pass, p), next: F.PR_TALK.next(s, lvAfter) };
-  l.history.push({ at: n, note: prac ? (pass ? 'Passed.' : 'Not yet. Keep practising.') : 'Lesson finished.' });
-  E.notify(u.id, 'bookings', `Lesson report from ${e.first}`, prac ? (pass ? `Passed: ${s.n}. ${lvAfter > lvBefore ? 'Level ' + lvAfter + ' on your passport.' : ''}` : `${s.n}: not yet. ${e.first} has written what to practise.`) : `${s.n}: ${e.first}’s notes and your plan for next time.`, '#/account/lesson/' + l.id, n, l.id);
+  l.history.push({ at: n, note: prac ? (pass ? 'Passed.' : 'Not yet. Keep practicing.') : 'Lesson finished.' });
+  E.notify(u.id, 'bookings', `Lesson report from ${e.first}`, prac ? (pass ? `Passed: ${s.n}. ${lvAfter > lvBefore ? 'Level ' + lvAfter + ' on your passport.' : ''}` : `${s.n}: not yet. ${e.first} has written what to practice.`) : `${s.n}: ${e.first}’s notes and your plan for next time.`, '#/account/lesson/' + l.id, n, l.id);
   if (l.programId) programStep(u, l);
 };
 const programStep = (u, l) => { const en = S().enrol.find(x => x.id === l.programId); if (!en || en.status !== 'active') return; const pg = F.PROGRAM[en.programId], last = en.lessons[en.lessons.length - 1]; if (l.id !== last) return; const passed = l.report && l.report.pass; en.status = passed ? 'passed' : 'retake'; en.endedAt = now(); if (!passed && pg.promise) { const back = (en.paid && en.paid.money) || E.cp(en.cityId, pg.usd); E.refund(u, en.cityId, back, `${pg.name}: go again on us`, en.id); E.notify(u.id, 'bookings', `${pg.name}: go again on us`, `The final practical wasn’t a pass this time, so ${E.money(back, en.cityId, true)} is back in your Wallet to go again.`, '#/account/wallet', now(), en.id); } else E.notify(u.id, 'bookings', `${pg.name}: passed`, `Congratulations. It’s on your skill passport.`, '#/account/passport', now(), en.id); };
@@ -3921,16 +3969,16 @@ F.pages.skill = {
 };
 
 /* ---------- educators: who teaches here and why you can trust them (not a place to pick) ---------- */
-const VETTING = [['Credentials checked', 'Every educator holds a recognised qualification in sex education, sex therapy, pelvic health or a professional kink practice. We see the certificates.'], ['Approved skill by skill', 'Educators teach only the skills they’ve been assessed on, after a trial lesson with our head of teaching.'], ['Background-checked', 'Identity and a criminal-record check before the first lesson, renewed every year.'], ['Reviewed after every lesson', 'Members rate every lesson; anything below four stars is read by a person the same day.']];
+const VETTING = [['Credentials checked', 'Every educator holds a recognized qualification in sex education, sex therapy, pelvic health or a professional kink practice. We see the certificates.'], ['Approved skill by skill', 'Educators teach only the skills they’ve been assessed on, after a trial lesson with our head of teaching.'], ['Background-checked', 'Identity and a criminal-record check before the first lesson, renewed every year.'], ['Reviewed after every lesson', 'Members rate every lesson; anything below four stars is read by a person the same day.']];
 F.eduCred = e => { const yr = +e.joined.slice(0, 4), sk = e.skills.slice(0, 3).map(id => E.skill(id)).filter(Boolean);
   return `<article class="ecred"><a class="ecred-a" href="#/educator/${e.id}">${F.eduPlate(e, 'r45 ecred-p')}<span class="ecred-b"><span class="row between nowrap"><strong class="ecred-n">${esc(e.name)}</strong>${F.revMeta('edu', e.id)}</span><span class="small">${esc(e.cred)}</span><span class="tiny muted">${e.remote ? 'Teaches online from ' + esc(F.place(e)) : esc(F.STUDIOS[e.city].name)} · at Practice since ${yr} · ${esc(e.langs.join(', '))}</span><q class="ecred-q">${esc(e.line)}</q></span></a><p class="tiny muted ecred-s">Teaches ${sk.map(x => `<a class="u" href="#/skill/${x.id}">${esc(x.n)}</a>`).join(', ')}${e.skills.length > 3 ? ` and ${e.skills.length - 3} more` : ''}</p></article>`; };
 F.pages.educators = {
   render() {
     const c = F.cityId(), today = E.todayKey(c), act = F.EDUCATORS.filter(e => E.eduActive(e, today)), here = E.ranked(act.filter(e => e.city === c), e => F.prTarget('edu', e.id)), remote = E.ranked(act.filter(e => e.remote), e => F.prTarget('edu', e.id));
     const fresh = act.filter(e => e.joined > U.addDays(today, -45)), n = act.length;
-    return { title: 'Educators', html: `${F.pageHead({ eyebrow: 'Educators', title: 'Teachers, <span class="it">not</span> performers.', lead: `${n} sex educators, therapists, coaches and professional dominants, each approved for the skills they teach. You choose the skill; we match the educator.` })}
-    <section class="sec-sm"><div class="wrap">${F.secHead({ eyebrow: 'In ' + esc(F.city().name), lead: fresh.length ? `New this season: ${fresh.map(e => esc(e.name)).join(', ')}.` : '' })}${F.showMore('ed-' + c, here, F.eduCred, { n: 4, nDesk: 9, cls: 'ecreds', more: 'More educators in ' + esc(F.city().name) })}
-    <div class="mt48">${F.secHead({ eyebrow: 'Teaching online', lead: 'Voice, video and earpiece lessons from other time zones.' })}${F.showMore('ed-remote', remote, F.eduCred, { n: 2, nDesk: 6, cls: 'ecreds', more: 'More online educators' })}</div></div></section>
+    return { title: 'Educators', html: `${F.pageHead({ eyebrow: 'Educators', title: 'Teachers, <span class="it">not</span> performers.', lead: `Sex educators, therapists, coaches and professional dominants: ${n} across three cities and online, each approved for the skills they teach.` })}
+    <section class="sec-sm"><div class="wrap">${F.secHead({ eyebrow: `In ${esc(F.city().name)} · ${here.length}`, lead: fresh.length ? `New this season: ${fresh.map(e => esc(e.name)).join(', ')}.` : '' })}${F.showMore('ed-' + c, here, F.eduCred, { n: 4, nDesk: 9, cls: 'ecreds', more: 'More educators in ' + esc(F.city().name) })}
+    <div class="mt48">${F.secHead({ eyebrow: `Teaching online · ${remote.length}`, lead: 'Voice, video and earpiece lessons from other time zones.' })}${F.showMore('ed-remote', remote, F.eduCred, { n: 2, nDesk: 6, cls: 'ecreds', more: 'More online educators' })}</div></div></section>
     <section class="sec-sm sec-deep"><div class="wrap split al-start"><div>${F.secHead({ eyebrow: 'Standards', title: 'How we <span class="it">vet</span> educators' })}<a class="btn btn-pri" href="#/skills">Browse skills</a></div><div>${F.acc(VETTING, { name: 'vet', open: 0 })}</div></div></section>` };
   }
 };
@@ -3977,7 +4025,7 @@ F.pages.class = {
 };
 
 /* ---------- programs ---------- */
-F.progCard = p => { const c = F.cityId(); return `<a class="card pcard spot-on rv" href="#/program/${p.id}"><span class="lbl">${p.weeks} weeks · ${p.plan.length} lessons</span><h3 class="h-disp h3 mt8">${esc(p.name)}</h3><p class="small muted mt8">${esc(p.blurb)}</p><div class="pcard-f mt24"><span class="mono">${E.money(E.listPrice(p.usd, c, ['program']), c)}</span><span class="tiny muted">members ${E.money(E.mprice(E.listPrice(p.usd, c, ['program'])), c)}</span></div>${p.promise ? '<span class="tag ok mt16">Pass, or go again on us</span>' : ''}</a>`; };
+F.progCard = p => { const c = F.cityId(); return `<a class="card pcard spot-on rv" href="#/program/${p.id}"><span class="lbl">${p.weeks} weeks · ${p.plan.length} lessons</span><h3 class="h-disp h3 mt8">${esc(p.name)}</h3><p class="small muted mt8">${esc(p.blurb)}</p>${p.promise ? '<span class="tag ok mt16">Pass, or go again on us</span>' : ''}<div class="pcard-f"><span class="mono">${E.money(E.listPrice(p.usd, c, ['program']), c)}</span><span class="tiny muted">members ${E.money(E.mprice(E.listPrice(p.usd, c, ['program'])), c)}</span></div></a>`; };
 F.pages.programs = { render: () => ({ title: 'Programs', html: `${F.pageHead({ eyebrow: 'Programs', title: 'A plan, <span class="it">booked for you.</span>', lead: 'Three to eight weeks, the right educators at the times you choose, for 15% less than the lessons apart. Programs with a final practical come with a promise: pass, or your money back to go again.'})}<section class="sec-sm"><div class="wrap g g3 pgrid">${F.PROGRAMS.map(F.progCard).join('')}</div></section>` }) };
 F.pages.program = {
   render(r) {
@@ -3986,22 +4034,22 @@ F.pages.program = {
     return { title: p.name, html: `${F.detailHead({ back: `<a class="btn-link tiny" href="#/programs">${F.ic('back', 12)} Programs</a>`, art: F.skillArt(E.skill(p.skills[0]), 'r45'), title: esc(p.name), line: esc(p.blurb), meta: `<span class="mono">${E.money(cost.price, c)}</span>${cost.member ? ' member price' : ` · members ${E.money(E.mprice(cost.full), c)}`} · ${p.weeks} weeks · ${p.plan.length} lessons`, cta: open ? `<a class="btn btn-pri" href="#/enrol/${p.id}">Choose start and times</a>` : '<p class="small muted">Opens with its skills.</p>' })}
     ${F.detailBody(`<div><h2 class="eyebrow ln">Week by week</h2><ol class="plan-l mt24">${p.plan.map(([w, f, what]) => `<li><span class="mono">Week ${w}</span><div><strong>${esc(what)}</strong><small class="d-b muted">${F.FORMATS[f].name} · ${U.dur(F.FORMATS[f].min)}</small></div></li>`).join('')}</ol></div>
     <div><h2 class="eyebrow ln">Skills</h2><div class="clist mt16">${p.skills.map(id => F.skillRow(E.skill(id))).join('')}</div></div>`, `<div class="card dbook"><span class="lbl">The whole program</span><div class="row wrap-gap end mt8"><span class="h-disp dbook-p">${E.money(cost.price, c)}</span><span class="small muted">${cost.member ? `<s>${E.money(cost.full, c)}</s> member price` : `members ${E.money(E.mprice(cost.full), c)}`}</span></div><p class="small muted mt8">${p.weeks} weeks · ${p.plan.length} lessons, booked for you · 15% less than the lessons apart</p>${open ? `<a class="btn btn-pri btn-block mt24 dbook-go" href="#/enrol/${p.id}">Choose start and times</a>` : ''}</div>${p.promise ? `<div class="card-s"><strong>The promise</strong><p class="small mt8">Do every lesson and the drills between them. If the final practical isn’t a pass, the program price comes back to your Wallet to go again.</p></div>` : ''}`)}
-    ${open ? F.bookBar({ title: esc(p.name), sub: E.money(cost.price, c), btn: { label: 'Enrol', href: '#/enrol/' + p.id } }) : ''}` };
+    ${open ? F.bookBar({ title: esc(p.name), sub: E.money(cost.price, c), btn: { label: 'Enroll', href: '#/enrol/' + p.id } }) : ''}` };
   }
 };
 
 /* ---------- membership, how it works, studios ---------- */
-F.pages.membership = { render: () => { const c = F.cityId(), u = E.user(), sv = F.savingsLine(u); return { title: 'Membership', html: `${F.pageHead({ eyebrow: 'Membership', title: 'Pay per lesson, <span class="it">or join.</span>', lead: `Paying per lesson is the default. Membership is a simple add-on: ${F.SITE.plans[0].pct}% off everything you book, for ${E.pm(F.SITE.plans[0].usd, c)} a month. Pause or cancel any time.`})}
+F.pages.membership = { render: () => { const c = F.cityId(), u = E.user(), sv = F.savingsLine(u); return { title: 'Membership', html: `${F.pageHead({ eyebrow: 'Membership', title: 'Pay per lesson, <span class="it">or join.</span>', lead: `Paying per lesson is the default. Membership is a simple add-on: ${F.SITE.plans[0].pct}% off everything you book, ${F.memberFee(c)}. Pause or cancel any time.`})}
   <section class="sec-sm"><div class="wrap">${sv ? `<div class="card-s mb24">${sv}</div>` : ''}${F.planGrid(c)}</div></section>
   <section class="sec-sm sec-deep"><div class="wrap">${F.worthCalc(c)}</div></section>
   <section class="sec-sm"><div class="wrap"><div class="accs">${F.acc(F.CONTENT.faq.filter(x => x[0] === 'Membership').map(x => [x[1], esc(x[2])]), { name: 'mem' })}</div><div class="mt48">${F.aaCard()}</div></div></section>` }; } };
-F.pages.how = { render: () => ({ title: 'How it works', html: `${F.pageHead({ eyebrow: 'How it works', title: 'Learn it. <span class="it">Practise it.</span>', lead: 'Five levels for every skill, seven ways to learn, and a promise that nothing ever happens you didn’t agree to.'})}
+F.pages.how = { render: () => ({ title: 'How it works', html: `${F.pageHead({ eyebrow: 'How it works', title: 'Learn it. <span class="it">Practice it.</span>', lead: 'Five levels for every skill, seven ways to learn, and a promise that nothing ever happens you didn’t agree to.'})}
   <section class="sec-sm"><div class="wrap"><h2 class="eyebrow ln">Five levels</h2><ol class="lv5 mt24">${F.LEVELS.map((l, i) => `<li><span class="h-cond">${i + 1}</span><div><strong>${l}</strong><p class="small muted mt4">${F.LEVEL_LINE[i]}</p></div></li>`).join('')}</ol></div></section>
   <section class="sec-sm sec-deep"><div class="wrap"><h2 class="eyebrow ln">The Shy Ladder</h2><p class="lead">Start wherever feels right. After two lessons on a rung we suggest the next, once.</p><ol class="ladder mt24">${F.LADDER.map(([k, l], i) => `<li><span class="mono">${i + 1}</span>${l}</li>`).join('')}</ol></div></section>
-  <section class="sec-sm" id="dial"><div class="wrap split al-start"><div><h2 class="eyebrow ln">A practical, step by step</h2><ol class="plan-l mt24">${['Meet your educator and model; agree the Practice Contract.', 'Your educator demonstrates on the model and explains every move.', 'Your hands: you choose where, how firm and what rhythm.', 'The model’s Dial lights up from one to five. Check in when you’re unsure.', 'Hold what works. Finish, or try again next time.', 'A written report and your next step, the same evening.'].map((x, i) => `<li><span class="mono">${i + 1}</span><div>${x}</div></li>`).join('')}</ol></div><div class="dial-show">${[[1, 'Not quite.'], [3, 'Mm. Nice.'], [5, 'Don’t change a thing.']].map(([n, t]) => `<div class="row nowrap dd-r">${F.dial(n)}<span class="hand">${t}</span></div>`).join('')}</div></div></section>
+  <section class="sec-sm" id="dial"><div class="wrap split al-start"><div><h2 class="eyebrow ln">A practical, step by step</h2><ol class="plan-l plan-n mt24">${['Meet your educator and model; agree the Practice Contract.', 'Your educator demonstrates on the model and explains every move.', 'Your hands: you choose where, how firm and what rhythm.', 'The model’s Dial lights up from one to five. Check in when you’re unsure.', 'Hold what works. Finish, or try again next time.', 'A written report and your next step, the same evening.'].map((x, i) => `<li><span class="mono">${i + 1}</span><div>${x}</div></li>`).join('')}</ol></div><div class="dial-show">${[[1, 'Not quite.'], [3, 'Mm. Nice.'], [5, 'Don’t change a thing.']].map(([n, t]) => `<div class="row nowrap dd-r">${F.dial(n)}<span class="hand">${t}</span></div>`).join('')}</div></div></section>
   <section class="sec-sm sec-deep" id="safety"><div class="wrap split al-start"><div><h2 class="eyebrow ln">Safety and consent</h2><h3 class="h-cond h2 mt16">Agreed <span class="it">first</span></h3></div><div>${F.acc([['The Practice Contract', 'What’s touched, by whom, with what protection. Nothing outside it happens.'], ['Protection', 'Gloves, condoms and dams by default. Barrier-free only with tests within 14 days on both sides and both agreeing.'], ['Health tests', 'A sexual health test within 30 days for practicals and the Stage. Your consent card for the model is filled in from your record.'], ['Practice models', 'They choose their skills, work at most four practicals a day, and hold a STOP button.'], ['Recording', 'No recording, ever, in any format.'], ['Reporting', 'Report anything from your lesson page; a person reviews it within the hour.']], { open: 0, name: 'safety' })}</div></div></section>` }) };
 F.pages.studios = { render: () => ({ title: 'Studios', html: `${F.pageHead({ eyebrow: 'Studios', title: 'Three cities, <span class="it">six rooms each.</span>', lead: 'The Hall for classes, three suites for one-to-one lessons, the Rope Room and the Wet Room. Open 11am to 11pm.'})}
-  <section class="sec-sm"><div class="wrap g g3 al-start">${F.CITIES.map(c => { const st = F.STUDIOS[c.id]; return `<div class="card"><div class="row between nowrap"><span class="lbl">${c.name} · ${esc(st.hood)}</span>${F.revMeta('studio', c.id)}</div><h2 class="h-disp h3 mt8">${esc(st.name)}</h2><p class="small mt16">${esc(st.addr)}</p><p class="small muted mt8">${esc(st.note)}</p><p class="small muted mt16">${F.ROOMS.map(r => r.name).join(' · ')}</p><button class="btn-link mono mt16" data-a="call" data-c="${c.id}">${c.phone}</button><div class="mt24">${F.reviewBrief(F.prTarget('studio', c.id), { n: 1 })}</div></div>`; }).join('')}</div></section>` }) };
+  <section class="sec-sm"><div class="wrap g g3">${F.CITIES.map(c => { const st = F.STUDIOS[c.id]; return `<div class="card stu"><span class="lbl">${c.name} · ${esc(st.hood)}</span><h2 class="h-disp h3 mt8">${esc(st.name)}</h2><p class="small mt16 stu-a">${esc(st.addr)}</p><p class="small muted mt8 stu-n">${esc(st.note)}</p><p class="small muted mt16">${F.ROOMS.map(r => r.name).join(' · ')}</p><button class="btn-link mono mt16" data-a="call" data-c="${c.id}">${c.phone}</button><div class="stu-r">${F.reviewBrief(F.prTarget('studio', c.id), { n: 1 })}</div></div>`; }).join('')}</div></section>` }) };
 })();
 
 /* ---- 41-book.js ---- */
@@ -4083,7 +4131,7 @@ F.pages.book = {
     <section class="costep ${e ? 'done' : 'open'}">${head(2, 'Educator', e ? esc(e.name) : U.plural(edus.length, 'educator') + ' teach this')}<div class="costep-b">${e ? `<div class="row between"><div class="row nowrap">${F.eduPlate(e, 'r11 av-56')}<div><strong>${esc(e.name)}</strong><small class="d-b muted">${b.pickEdu ? '' : 'Matched for you · '}${F.STYLES[e.style][0]} · ${e.remote ? 'Teaches online' : F.place(e)} · ${F.revMeta('edu', e.id)}</small></div></div><button class="btn-link tiny" data-a="bkEdu" data-v="">Change</button></div>` : `<div class="row wrap-gap mb16"><label class="sr" for="bkSt">Style</label><select class="inp inp-sm" id="bkSt" data-ch="bkPref" data-k="style"><option value="">Any style</option>${Object.entries(F.STYLES).map(([k, v]) => `<option value="${k}" ${b.style === k ? 'selected' : ''}>${v[0]}</option>`).join('')}</select><label class="sr" for="bkL">Language</label><select class="inp inp-sm" id="bkL" data-ch="bkPref" data-k="lang"><option value="">Any language</option>${[...new Set(F.EDUCATORS.flatMap(x => x.langs))].sort().map(l => `<option ${b.lang === l ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
     <div class="elist">${edus.map(({ e: x, fit, next }) => `<button class="eopt" data-a="bkEdu" data-v="${x.id}" ${next ? '' : 'disabled'}>${F.eduPlate(x, 'r11 av-48')}<span><strong>${esc(x.name)}</strong><small class="d-b muted">${x.gender} · ${F.STYLES[x.style][0]} · ${x.remote ? 'Remote, ' + F.place(x) : F.place(x)}${fit.why.length ? ' · ' + fit.why.join(' · ') : ''}</small></span><span class="eopt-r"><span class="mono tiny">${fit.sc}% fit</span><small class="d-b muted">${next ? 'Next ' + U.keyFmt(next, 'dshort') : 'Fully booked'}</small></span></button>`).join('') || F.empty('Nobody free for this yet', 'Try another format or city.')}</div>`}</div></section>
     <section class="costep ${!e ? 'locked' : b.start ? 'done' : 'open'}">${head(3, 'Time', b.start ? U.fmt(b.start, tz, 'dt') + ' ' + U.tzAbbr(tz, b.start) : '')}${e ? `<div class="costep-b">
-      ${prac(b.fmt) ? `<div class="seg seg-sm mb16" role="group" aria-label="Practise with">${[[false, 'With a practice model'], [true, 'With my partner']].map(([v, l]) => `<button class="seg-b ${b.partner === v ? 'on' : ''}" data-a="bkPartner" data-v="${v}" aria-pressed="${b.partner === v}">${l}</button>`).join('')}</div>${!b.partner ? `<div class="field mb16"><label for="bkM">Practice model</label><select class="inp" id="bkM" data-ch="bkModel"><option value="">Any suitable model</option>${E.modelsFor(s, c).map(m => `<option value="${m.id}" ${b.modelId === m.id ? 'selected' : ''}>${esc(m.name)} · ${esc(m.line)}</option>`).join('')}</select></div>` : ''}` : ''}
+      ${prac(b.fmt) ? `<div class="seg seg-sm mb16" role="group" aria-label="Practice with">${[[false, 'With a practice model'], [true, 'With my partner']].map(([v, l]) => `<button class="seg-b ${b.partner === v ? 'on' : ''}" data-a="bkPartner" data-v="${v}" aria-pressed="${b.partner === v}">${l}</button>`).join('')}</div>${!b.partner ? `<div class="field mb16"><label for="bkM">Practice model</label><select class="inp" id="bkM" data-ch="bkModel"><option value="">Any suitable model</option>${E.modelsFor(s, c).map(m => `<option value="${m.id}" ${b.modelId === m.id ? 'selected' : ''}>${esc(m.name)} · ${esc(m.line)}</option>`).join('')}</select></div>` : ''}` : ''}
       ${b.fmt === 'video' ? `<div class="seg seg-sm mb16" role="group" aria-label="Your camera">${[['off', 'Camera off'], ['body', 'Body only'], ['on', 'Camera on']].map(([v, l]) => `<button class="seg-b ${b.cam === v ? 'on' : ''}" data-a="bkCam" data-v="${v}" aria-pressed="${b.cam === v}">${l}</button>`).join('')}</div>` : ''}
       ${sugg.length ? `<span class="lbl">Suggested for you</span><div class="sugg mt8 mb16">${sugg.map(x => `<button class="fopt ${x.start === b.start ? 'on' : ''}" data-a="bkTime" data-v="${x.start}" data-k="${U.dayKey(x.start, tz)}"><span><strong>${U.fmt(x.start, tz, 'date')}, ${U.fmt(x.start, tz, 'time')}</strong><small class="d-b muted">${esc(x.why)}</small></span></button>`).join('')}</div>` : ''}
       <div class="days hscroll-x">${daysHtml}</div>${b.key ? `<div class="slots mt16">${slots.length ? slots.map(x => `<button class="chip ${x.start === b.start ? 'on' : ''}" data-a="bkTime" data-v="${x.start}">${U.fmt(x.start, tz, 'time')}</button>`).join('') : '<p class="small muted">Nothing left that day.</p>'}</div>` : ''}<p class="tiny muted mt16">Times in ${F.FORMATS[b.fmt].remote ? 'your' : E.city(c).name} time (${U.tzAbbr(tz)}).</p>
@@ -4097,8 +4145,8 @@ F.pages.book = {
     <section class="costep ${step < 4 ? 'locked' : 'open'}">${head(5, 'Payment')}${step >= 4 ? `<div class="costep-b stack">
       ${isMember ? `<p class="small">${F.ic('check', 14)} Member price: ${E.money(pp.member * n, c, true)} less than the list price.</p>` : `<p class="small muted">Members pay ${E.money(E.mprice(pp.full), c, true)} for this lesson. <a class="u" href="#/membership">About membership</a></p>`}
       ${n > 1 ? `<p class="small">A pack of ${n}, paid once now: ${E.money(saving, c, true)} less than booking them one by one.</p>` : `<form class="promo row nowrap" data-f="bkPromo"><label class="sr" for="bkPr">Promo code</label><input class="inp inp-sm" id="bkPr" name="code" value="${esc(b.promo)}" placeholder="Promo code" autocomplete="off"><button class="btn btn-ghost btn-sm">Apply</button></form>${pr && !pr.ok ? `<p class="ferr">${esc(pr.reason)}</p>` : ''}`}${F.payBlock(u, c, due)}
-      <button class="btn btn-pri btn-lg btn-block" data-a="bkConfirm" ${err || (b.fmt === 'earpiece' && !b.partnerOk) ? 'disabled' : ''}>Pay ${E.money(due, c, true)} and book${n > 1 ? ' · ' + n + ' lessons' : ''}</button><p class="tiny muted">Move free up to ${E.moveLimit(u)} hours before. Cancel more than 24 hours ahead for everything back.</p></div>` : ''}</section></div>
-    <aside class="co-side co-side-end"><div class="card co-sum">${F.skillArt(s, 'r11')}<h2 class="h-disp h3 mt16">${esc(s.n)}</h2><p class="small muted mt8">${f.name} · ${U.dur(f.min)}</p><div class="sum mt16">${F.kv('Educator', e ? esc(e.name) : '—')}${prac(b.fmt) ? F.kv('Practise with', b.partner ? 'Your partner' : b.modelId ? esc(E.model(b.modelId).name) : sl && sl.modelId ? esc(E.model(sl.modelId).name) : 'A practice model') : ''}${F.kv('When', b.start ? U.fmt(b.start, tz, 'dt') : '—')}${F.kv('Where', f.remote ? (b.fmt === 'earpiece' ? 'Your place, in your ear' : 'Online, from your lesson page') : esc(F.STUDIOS[c].name))}${n > 1 ? F.kv('Lessons', `${n}, weekly`) : ''}${F.kv(n > 1 ? 'List price' : 'Lesson', E.money(pp.full * n, c, true))}${pp.member ? F.kv('Member price', '−' + E.money(pp.member * n, c, true), 'kv-disc') : ''}${saving ? F.kv('Pack saving', '−' + E.money(saving, c, true), 'kv-disc') : ''}${pr && pr.ok ? F.kv(esc(pr.label), '−' + E.money(pr.amount, c, true), 'kv-disc') : ''}${F.kv('Total', E.money(due, c, true), 'kv-total')}</div><p class="small mt16">Your passport: level ${E.level(u, s.id)} of 5</p></div></aside></div></div></section>
+      <button class="btn btn-pri btn-lg btn-block" data-a="bkConfirm" ${err || (b.fmt === 'earpiece' && !b.partnerOk) ? 'disabled' : ''}>${F.payCta(u, c, due, 'book')}${n > 1 ? ' · ' + n + ' lessons' : ''}</button><p class="tiny muted">Move free up to ${E.moveLimit(u)} hours before. Cancel more than 24 hours ahead for everything back.</p></div>` : ''}</section></div>
+    <aside class="co-side co-side-end"><div class="card co-sum">${F.skillArt(s, 'r11')}<h2 class="h-disp h3 mt16">${esc(s.n)}</h2><p class="small muted mt8">${f.name} · ${U.dur(f.min)}</p><div class="sum mt16">${F.kv('Educator', e ? esc(e.name) : '—')}${prac(b.fmt) ? F.kv('Practice with', b.partner ? 'Your partner' : b.modelId ? esc(E.model(b.modelId).name) : sl && sl.modelId ? esc(E.model(sl.modelId).name) : 'A practice model') : ''}${F.kv('When', b.start ? U.fmt(b.start, tz, 'dt') : '—')}${F.kv('Where', f.remote ? (b.fmt === 'earpiece' ? 'Your place, in your ear' : 'Online, from your lesson page') : esc(F.STUDIOS[c].name))}${n > 1 ? F.kv('Lessons', `${n}, weekly`) : ''}${F.kv(n > 1 ? 'List price' : 'Lesson', E.money(pp.full * n, c, true))}${pp.member ? F.kv('Member price', '−' + E.money(pp.member * n, c, true), 'kv-disc') : ''}${saving ? F.kv('Pack saving', '−' + E.money(saving, c, true), 'kv-disc') : ''}${pr && pr.ok ? F.kv(esc(pr.label), '−' + E.money(pr.amount, c, true), 'kv-disc') : ''}${F.kv('Total', E.money(due, c, true), 'kv-total')}</div><p class="small mt16">Your passport: level ${E.level(u, s.id)} of 5</p></div></aside></div></div></section>
     ${F.bookBar({ title: esc(s.n), sub: b.start ? U.fmt(b.start, tz, 'dt') : f.name + ' · ' + U.dur(f.min), price: E.money(due, c, true), btn: { label: !e ? 'Choose educator' : !b.start ? 'Choose a time' : 'Review and pay', a: 'bkJump' } })}` };
   }
 };
@@ -4132,18 +4180,18 @@ A.bkConfirm = async el => {
 F.pages.enrol = {
   render(r) {
     const p = F.PROGRAM[r.params[0]]; if (!p) return F.pages.notfound.render(r);
-    const u = E.user(); if (!u) return { title: 'Enrol', html: F.signedOut('Sign in to enrol', 'Your FLINGR account works here.', r.full) };
+    const u = E.user(); if (!u) return { title: 'Enroll', html: F.signedOut('Sign in to enroll', 'Your FLINGR account works here.', r.full) };
     if (!E.programOpen(p)) return { redirect: '/program/' + p.id };
     const st = F.ui.en = F.ui.en && F.ui.en.id === p.id ? F.ui.en : { id: p.id, when: 'eve', start: null }, c = F.cityId(), today = E.todayKey(c);
     const mondays = []; for (let i = 1; mondays.length < 4; i++) { const k = U.addDays(today, i); if (U.wd(k) === 1) mondays.push(k); } if (!st.start) st.start = mondays[0];
     const cost = E.costFor(u, p.usd, c, ['program']);
     const needs = p.plan.some(x => x[1] === 'practical'), miss = needs && (!p.skills.every(id => E.prog(u, id).theory) || !E.healthOk(u, U.zoned(E.city(c).tz, st.start, 0) + p.weeks * 7 * D));
-    return { title: 'Enrol in ' + p.name, html: `<section class="co-page"><div class="wrap"><a class="btn-link tiny" href="#/program/${p.id}">${F.ic('back', 12)} ${esc(p.name)}</a><h1 class="h-cond h2 mt16">Enrol</h1><div class="co mt32"><div class="stack">
+    return { title: 'Enroll in ' + p.name, html: `<section class="co-page"><div class="wrap"><a class="btn-link tiny" href="#/program/${p.id}">${F.ic('back', 12)} ${esc(p.name)}</a><h1 class="h-cond h2 mt16">Enroll</h1><div class="co mt32"><div class="stack">
     <div class="card"><span class="lbl">Start</span><div class="row wrap-gap mt16">${mondays.map(k => `<button class="chip ${st.start === k ? 'on' : ''}" data-a="enStart" data-v="${k}">Mon ${U.keyFmt(k, 'dshort')}</button>`).join('')}</div>
     <span class="lbl mt24">When suits you</span><div class="fopts fopts-g mt16" role="group" aria-label="When suits you">${[['eve', 'Weekday evenings', '6pm to 9pm'], ['day', 'Weekday daytime', '11am to 5pm'], ['wknd', 'Weekends', '11am to 8pm']].map(([v, l, sub]) => `<button class="fopt ${st.when === v ? 'on' : ''}" data-a="enWhen" data-v="${v}" aria-pressed="${st.when === v}"><span><strong>${l}</strong><small class="d-b muted">${sub}</small></span></button>`).join('')}</div><p class="small muted mt16">We book every lesson with the best-matched educator at those times in ${F.city().name}. You can move any of them later.</p></div>
     ${miss ? `<div class="notice">${F.ic('alert', 16)}<span>The final practical needs the theory check${p.skills.length > 1 ? 's' : ''} and a health test within 30 days of it. We’ll book everything else now and leave the practical for you to book when you’re ready.</span></div>` : ''}
     <div class="card"><span class="lbl">Payment</span><div class="sum mt16">${F.kv('The program', E.money(cost.full, c, true))}${cost.member ? F.kv('Member price', '−' + E.money(cost.member, c, true), 'kv-disc') : ''}${F.kv('Total', E.money(cost.price, c, true), 'kv-total')}</div><div class="mt16">${F.payBlock(u, c, cost.price)}</div></div>
-    <button class="btn btn-pri btn-lg btn-block" data-a="enGo" ${u.verified ? '' : 'disabled'}>Pay ${E.money(cost.price, c, true)} and enrol</button>${u.verified ? '' : '<button class="btn-link tiny" data-a="verifyId">Verify your identity first</button>'}</div>
+    <button class="btn btn-pri btn-lg btn-block" data-a="enGo" ${u.verified ? '' : 'disabled'}>${F.payCta(u, c, cost.price, 'enroll')}</button>${u.verified ? '' : '<button class="btn-link tiny" data-a="verifyId">Verify your identity first</button>'}</div>
     <aside class="co-side"><div class="card co-sum"><h2 class="h-disp h3">${esc(p.name)}</h2><ol class="plan-l mt16">${p.plan.map(([w, f, what]) => `<li><span class="mono">W${w}</span><div class="small">${esc(what)}<small class="d-b muted">${F.FORMATS[f].name}</small></div></li>`).join('')}</ol></div></aside></div></div></section>` };
   }
 };
@@ -4162,7 +4210,7 @@ A.seatBook = el => {
   F.ui.pay = F.ui.pay || { wallet: true };
   F.modal(`<h2 class="h-disp h3">${kind === 'stage' ? 'Take the Stage' : kind === 'gallery' ? 'A gallery seat' : c.kind === 'couples' ? 'A couple’s mat' : 'A seat'}</h2><p class="small muted mt8">${esc(s.n)} · ${U.fmt(c.start, E.city(c.cityId).tz, 'dt')}</p>
   ${kind === 'stage' ? `<div class="stack mt24"><p class="small">You’re the live demonstration, with your partner or solo, guided by ${esc(E.edu(c.eduId).first)}. The room watches; nobody else touches you, and nothing is recorded. Stop at any moment and the model takes over. Afterwards we put ${E.pm(-F.FORMATS.stage.usd, c.cityId)} in your Wallet as thanks.</p><label class="check"><input type="checkbox" id="stOk"><span>I understand and I’d like to take the Stage.</span></label></div>` : usd ? `<div class="mt24"><p class="small">${E.money(cost.price, c.cityId, true)} for this place${cost.member ? ', the member price' : ''}.</p>${F.payBlock(u, c.cityId, cost.price)}</div>` : ''}
-  <button class="btn btn-pri btn-block mt24" data-a="seatGo" data-c="${c.id}" data-k="${kind}">${kind === 'stage' ? 'Volunteer' : 'Pay ' + E.money(cost.price, c.cityId, true)}</button>`, { cls: 'modal-sm', label: 'Book a place' });
+  <button class="btn btn-pri btn-block mt24" data-a="seatGo" data-c="${c.id}" data-k="${kind}">${kind === 'stage' ? 'Volunteer' : F.payCta(u, c.cityId, cost.price, 'book')}</button>`, { cls: 'modal-sm', label: 'Book a place' });
 };
 A.seatGo = async el => {
   if (el.dataset.k === 'stage' && !(document.getElementById('stOk') || {}).checked) return F.toast('Please confirm first.', 'err');
@@ -4267,7 +4315,7 @@ A.simFinish = el => { F.store.commit(() => { const l = E.lesson(el.dataset.l); l
 /* ---------- after ---------- */
 const report = (l, s, e, m, u) => {
   const rp = l.report || {}, dials = l.sim ? l.sim.log.filter(x => x.dial != null).map(x => x.dial) : [], mine = F.S.reviews.find(r => r.lessonId === l.id || r.ref === l.id);
-  return `<div class="bd2"><div class="stack">${F.sheetTile({ act: 'recapSheet', data: `data-l="${l.id}"`, title: 'Your lesson recap', sub: l.sim && l.sim.log.some(x => x.pick) ? `The Dial minute by minute, what worked, and what to practise before the next lesson.` : `What you covered with ${esc(e.first)}, and what to practise before the next lesson.`, cta: 'Open the recap', head: 'RECAP' })}<div class="paper rp">${prac(l) ? `<div class="rp-stamp">${F.stamp({ top: 'Practice', mid: rp.pass ? 'Passed' : 'Not yet', bot: s.n, rot: -9, size: 128, color: rp.pass ? '#1F3F8F' : '#B5651D' })}</div>` : ''}<span class="lbl">Lesson report · ${U.fmt(rp.at || l.end, E.lessonTz(l), 'md')}</span><h2 class="h-disp h3 mt8">${esc(s.n)}</h2><p class="small muted mt4">${F.FORMATS[l.format].name} with ${esc(e.name)}${m ? ' and ' + esc(m.name) : ''}</p>
+  return `<div class="bd2"><div class="stack">${F.sheetTile({ act: 'recapSheet', data: `data-l="${l.id}"`, title: 'Your lesson recap', sub: l.sim && l.sim.log.some(x => x.pick) ? `The Dial minute by minute, what worked, and what to practice before the next lesson.` : `What you covered with ${esc(e.first)}, and what to practice before the next lesson.`, cta: 'Open the recap', head: 'RECAP' })}<div class="paper rp">${prac(l) ? `<div class="rp-stamp">${F.stamp({ top: 'Practice', mid: rp.pass ? 'Passed' : 'Not yet', bot: s.n, rot: -9, size: 128, color: rp.pass ? '#1F3F8F' : '#B5651D' })}</div>` : ''}<span class="lbl">Lesson report · ${U.fmt(rp.at || l.end, E.lessonTz(l), 'md')}</span><h2 class="h-disp h3 mt8">${esc(s.n)}</h2><p class="small muted mt4">${F.FORMATS[l.format].name} with ${esc(e.name)}${m ? ' and ' + esc(m.name) : ''}</p>
     ${dials.length ? `<div class="dchart mt24" role="img" aria-label="Dial readings">${dials.map(d => `<i style="height:${8 + d * 15}px" class="l${d}"></i>`).join('')}</div><p class="tiny muted mt8">The Dial, minute by minute</p>` : ''}
     <p class="hand rp-note mt24">${esc(rp.text || '')}</p><p class="sig mt16">${esc(e.first)}</p>
     ${F.passStrip(u, s)}<p class="small mt16"><strong>${esc(rp.next || '')}</strong></p></div>
@@ -4369,7 +4417,7 @@ const me = () => E.edu(F.S.prefs.studioEdu || '');
 F.pages.studio = {
   render(r) {
     const e = me();
-    if (!e) return { title: 'Educator Studio', html: `<section class="sec"><div class="wrap narrow center"><div class="eyebrow ln jc">Educator Studio</div><h1 class="h-cond h2 mt16">Teach at Practice</h1><p class="lead jc-t">Your day, your members, your notes and your pay. Sign in as an educator.</p><form class="stack mt32 ops-in" data-f="stIn"><div class="field"><label for="stE">Educator</label><select class="inp" id="stE" name="e">${F.EDUCATORS.filter(x => E.eduActive(x, E.todayKey('la'))).map(x => `<option value="${x.id}">${esc(x.name)} · ${esc(F.place(x))}</option>`).join('')}</select></div><button class="btn btn-pri">Open my studio</button></form></div></section>` };
+    if (!e) return { title: 'Educator Studio', html: `${F.pageHead({ eyebrow: 'Educator Studio', title: 'Teach at <span class="it">Practice.</span>', lead: 'Your day, your members, your notes and your pay. Sign in as an educator.' })}<section class="sec-sm"><div class="wrap"><form class="card stack ops-in" data-f="stIn"><div class="field"><label for="stE">Educator</label><select class="inp" id="stE" name="e">${F.EDUCATORS.filter(x => E.eduActive(x, E.todayKey('la'))).map(x => `<option value="${x.id}">${esc(x.name)} · ${esc(F.place(x))}</option>`).join('')}</select></div><button class="btn btn-pri">Open my studio</button></form></div></section>` };
     const tab = r.params[0] || '', tabs = [['', 'Today'], ['week', 'Week'], ['messages', 'Messages'], ['time', 'Days off'], ['pay', 'Pay and reviews']];
     if (!tabs.some(t => t[0] === tab)) return { redirect: '/studio' };
     return { title: 'Educator Studio', html: `<section class="acct-h"><div class="wrap"><div class="row between wrap-gap end"><div class="row nowrap">${F.eduPlate(e, 'r11 av-56')}<div><div class="eyebrow">Educator Studio</div><h1 class="h-cond acct-n">${esc(e.name)}</h1><p class="tiny muted">${F.STYLES[e.style][0]} · ${e.remote ? 'Remote, ' + F.place(e) : F.STUDIOS[e.city].name} · ${e.skills.length} skills</p></div></div><button class="btn btn-ghost btn-sm" data-a="stOut">Switch educator</button></div>${F.subnav(tabs.map(([k, l]) => ['#/studio' + (k ? '/' + k : ''), l]), '#/studio' + (tab ? '/' + tab : ''), 'Studio')}</div></section><section class="sec-sm"><div class="wrap">${SV[tab](e)}</div></section>` };
@@ -4492,7 +4540,7 @@ F.contractPaper = o => {
   return `<div class="paper pf pc"><header class="pp-head"><div><div class="pp-org">${F.SITE.logo}</div><div class="tiny">Practice Contract · form PR-PC</div></div><div class="pp-ref"><span class="lbl">Lesson</span><span class="typed">${esc(o.no || 'Draft')}</span><span class="tiny">${o.start ? U.fmt(o.start, tz, 'md') : ''}</span></div></header>
   <h2 class="pp-title">Practice Contract<small>Agreed before every in-person lesson · read aloud at the start · anyone may stop at any moment</small></h2>
   <div class="pf-secs">
-  <section class="pf-sec"><h3 class="pf-h"><span class="mono">A</span> Who and where</h3>${line('Member', esc(o.u.name))}${line('Educator', esc(o.edu ? o.edu.name : '—'))}${prac ? line('Practising with', esc(with_)) : ''}${line('Skill', esc(s.n) + ' · ' + F.FORMATS[o.fmt].name)}${line('Studio', esc(F.STUDIOS[o.cityId].name) + (o.room ? ' · ' + esc((F.ROOMS.find(r => r.id === o.room) || {}).name || '') : ''))}${line('When', o.start ? U.fmt(o.start, tz, 'dt') : 'To be chosen')}</section>
+  <section class="pf-sec"><h3 class="pf-h"><span class="mono">A</span> Who and where</h3>${line('Member', esc(o.u.name))}${line('Educator', esc(o.edu ? o.edu.name : '—'))}${prac ? line('Practicing with', esc(with_)) : ''}${line('Skill', esc(s.n) + ' · ' + F.FORMATS[o.fmt].name)}${line('Studio', esc(F.STUDIOS[o.cityId].name) + (o.room ? ' · ' + esc((F.ROOMS.find(r => r.id === o.room) || {}).name || '') : ''))}${line('When', o.start ? U.fmt(o.start, tz, 'dt') : 'To be chosen')}</section>
   <section class="pf-sec"><h3 class="pf-h"><span class="mono">B</span> Protection</h3>${F.PROTECT.map(p => `<div class="pf-row" style="--pfc:1"><span class="pf-l">${esc(p)}</span>${t(o.protect.includes(p), 'p' + p)}</div>`).join('')}</section>
   ${prac ? `<section class="pf-sec"><h3 class="pf-h"><span class="mono">C</span> Where hands go <small>only these, for this lesson</small></h3>${hands.map(h => `<div class="pf-row" style="--pfc:1"><span class="pf-l">${esc(h)}</span>${t(true, 'h' + h)}</div>`).join('')}<div class="pf-row" style="--pfc:1"><span class="pf-l">The ${o.partner ? 'educator' : 'model and educator'} may guide my hands</span>${t(o.guide, 'guide')}</div></section>` : ''}
   <section class="pf-sec"><h3 class="pf-h"><span class="mono">${prac ? 'D' : 'C'}</span> Stopping</h3>${line('Safe word', esc(o.safe || 'Red'))}<p class="small mt8">STOP always works too. In a practical the model holds a STOP button; pressed once, everything ends and the educator talks it through. Nothing about stopping counts against anyone.</p></section>
